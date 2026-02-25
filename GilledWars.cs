@@ -30,22 +30,22 @@ namespace Gorthax.GilledWarsAnglers
         internal DirectoriesManager DirectoriesManager => ModuleParameters.DirectoriesManager;
         internal Gw2ApiManager Gw2ApiManager => ModuleParameters.Gw2ApiManager;
 
-        private SettingEntry<KeyBinding> ToggleHotkey { get; set; }
+private SettingEntry<KeyBinding> ToggleHotkey { get; set; }
         private SettingEntry<string> _customApiKey { get; set; }
         private SettingEntry<string> _drfToken { get; set; }
         private SettingEntry<string> _discordWebhookUrl { get; set; }
 
         // --- API Config ---
         private const string API_BASE_URL = "https://api.gilledwars.com";
-        private static readonly HttpClient _httpClient = new HttpClient(private static readonly HttpClient _httpClient = CreateHttpClient();
+        private static readonly HttpClient _httpClient = CreateHttpClient();
 
-private static HttpClient CreateHttpClient()
-{
-    var client = new HttpClient();
-    // This is your VIP badge. 
-    client.DefaultRequestHeaders.Add("X-Gilled-Wars-Client", "SecureBlishModule_v1");
-    return client;
-});
+        private static HttpClient CreateHttpClient()
+        {
+            var client = new HttpClient();
+            
+            client.DefaultRequestHeaders.Add("X-Gilled-Wars-Client", "SecureBlishModule_v1");
+            return client;
+        }
 
         // --- UI Elements ---
         private Panel _mainWindow;
@@ -1954,3 +1954,4 @@ private static HttpClient CreateHttpClient()
     }
 
 }
+
