@@ -17,7 +17,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Gorthax.GilledWarsAnglers
+namespace Gorthax.GilledWars
 {
     [Export(typeof(Module))]
     public class GilledWars : Module
@@ -1973,3 +1973,4 @@ namespace Gorthax.GilledWarsAnglers
         public bool IsSuperPb { get; set; }
     }
 }
+
