@@ -1,4 +1,4 @@
-﻿using Blish_HUD;
+using Blish_HUD;
 using Blish_HUD.Controls;
 using Blish_HUD.Input;
 using Blish_HUD.Modules;
@@ -30,7 +30,7 @@ namespace Gorthax.GilledWarsAnglers
         internal DirectoriesManager DirectoriesManager => ModuleParameters.DirectoriesManager;
         internal Gw2ApiManager Gw2ApiManager => ModuleParameters.Gw2ApiManager;
 
-private SettingEntry<KeyBinding> ToggleHotkey { get; set; }
+        private SettingEntry<KeyBinding> ToggleHotkey { get; set; }
         private SettingEntry<string> _customApiKey { get; set; }
         private SettingEntry<string> _drfToken { get; set; }
         private SettingEntry<string> _discordWebhookUrl { get; set; }
@@ -42,7 +42,7 @@ private SettingEntry<KeyBinding> ToggleHotkey { get; set; }
         private static HttpClient CreateHttpClient()
         {
             var client = new HttpClient();
-            
+            // This is your VIP badge. 
             client.DefaultRequestHeaders.Add("X-Gilled-Wars-Client", "SecureBlishModule_v1");
             return client;
         }
@@ -83,6 +83,7 @@ private SettingEntry<KeyBinding> ToggleHotkey { get; set; }
         // --- State Variables ---
         private static readonly Random _rnd = new Random();
         private bool _isCasualLoggingActive = false;
+        private DateTime _lastSubmitTime = DateTime.MinValue;
 
         // --- Tournament Variables ---
         private bool _isTournamentActive = false;
@@ -700,14 +701,14 @@ private SettingEntry<KeyBinding> ToggleHotkey { get; set; }
             if (pbObj.BestWeight == null || weight > pbObj.BestWeight.Weight)
             {
                 isNewPbWeight = true;
-                
-                pbObj.BestWeight = new SubRecord { Weight = weight, Length = length, Signature = globalSig, IsCheater = false, IsSuperPb = isSuperPb, CaughtWithDrf = usedDrf, CharacterName = charName };
+
+                pbObj.BestWeight = new SubRecord { Weight = weight, Length = length, Signature = globalSig, IsCheater = false, IsSuperPb = isSuperPb, CaughtWithDrf = usedDrf, CharacterName = charName, IsSubmitted = false };
             }
             if (pbObj.BestLength == null || length > pbObj.BestLength.Length)
             {
                 isNewPbLength = true;
               
-                pbObj.BestLength = new SubRecord { Weight = weight, Length = length, Signature = globalSig, IsCheater = false, IsSuperPb = isSuperPb, CaughtWithDrf = usedDrf, CharacterName = charName };
+                pbObj.BestLength = new SubRecord { Weight = weight, Length = length, Signature = globalSig, IsCheater = false, IsSuperPb = isSuperPb, CaughtWithDrf = usedDrf, CharacterName = charName, IsSubmitted = false };
             }
 
             if (isNewPbWeight || isNewPbLength) SavePersonalBests(); RefreshFishLogUI();
@@ -925,12 +926,22 @@ private SettingEntry<KeyBinding> ToggleHotkey { get; set; }
                         return;
                     }
 
+                    // --- 5 MINUTE COOLDOWN CHECK ---
+                    if ((DateTime.Now - _lastSubmitTime).TotalMinutes < 5)
+                    {
+                        ScreenNotification.ShowNotification("Button on Cool down. Please wait a few minutes.", ScreenNotification.NotificationType.Warning);
+                        return;
+                    }
+
                     pushLeaderboardBtn.Enabled = false;
                     pushLeaderboardBtn.Text = "Pushing...";
 
-                    
                     var eligibleCatches = new List<object>();
                     string charName = GameService.Gw2Mumble.PlayerCharacter.Name ?? "UnknownPlayer";
+
+                    // Track which records we are sending so we can flag them as submitted later
+                    var submittedWeights = new List<SubRecord>();
+                    var submittedLengths = new List<SubRecord>();
 
                     foreach (var kvp in _personalBests)
                     {
@@ -938,45 +949,52 @@ private SettingEntry<KeyBinding> ToggleHotkey { get; set; }
                         var rec = kvp.Value;
                         var dbFish = _allFishEntries.FirstOrDefault(x => x.Data.ItemId == fId)?.Data;
                         string fName = dbFish != null ? dbFish.Name : "Unknown";
-                       
                         string fLoc = dbFish != null ? dbFish.Location : "Unknown";
 
-                        
-                        if (rec.BestWeight != null && rec.BestWeight.CaughtWithDrf && !rec.BestWeight.IsCheater)
+                        // Check if NOT submitted yet
+                        if (rec.BestWeight != null && rec.BestWeight.CaughtWithDrf && !rec.BestWeight.IsCheater && !rec.BestWeight.IsSubmitted)
                         {
                             string cName = rec.BestWeight.CharacterName ?? "Unknown";
                             eligibleCatches.Add(new { itemId = fId, name = fName, weight = rec.BestWeight.Weight, length = rec.BestWeight.Length, signature = rec.BestWeight.Signature, isSuper = rec.BestWeight.IsSuperPb, type = "weight", characterName = cName, location = fLoc });
+                            submittedWeights.Add(rec.BestWeight);
                         }
 
-                        
-                        if (rec.BestLength != null && rec.BestLength.CaughtWithDrf && !rec.BestLength.IsCheater)
+                        // Check if NOT submitted yet
+                        if (rec.BestLength != null && rec.BestLength.CaughtWithDrf && !rec.BestLength.IsCheater && !rec.BestLength.IsSubmitted)
                         {
                             string cName = rec.BestLength.CharacterName ?? "Unknown";
                             eligibleCatches.Add(new { itemId = fId, name = fName, weight = rec.BestLength.Weight, length = rec.BestLength.Length, signature = rec.BestLength.Signature, isSuper = rec.BestLength.IsSuperPb, type = "length", characterName = cName, location = fLoc });
+                            submittedLengths.Add(rec.BestLength);
                         }
                     }
 
                     if (eligibleCatches.Count == 0)
                     {
-                        ScreenNotification.ShowNotification("No DRF-tracked PBs to submit!", ScreenNotification.NotificationType.Warning);
+                        ScreenNotification.ShowNotification("No new PB recorded.", ScreenNotification.NotificationType.Warning);
                         pushLeaderboardBtn.Enabled = true;
                         pushLeaderboardBtn.Text = "Push PBs to Leaderboard";
                         return;
                     }
 
-                  
+                    // Set cooldown
+                    _lastSubmitTime = DateTime.Now;
+
                     var payload = new { catches = eligibleCatches };
                     try
                     {
                         string jsonPayload = JsonConvert.SerializeObject(payload);
                         var content = new StringContent(jsonPayload, Encoding.UTF8, "application/json");
 
-
                         var response = await _httpClient.PostAsync($"{API_BASE_URL}/submit-leaderboard", content);
 
                         if (response.IsSuccessStatusCode)
                         {
-                            ScreenNotification.ShowNotification($"Successfully submitted {eligibleCatches.Count} records!");
+                            // Flag all successfully sent catches as submitted and save the file
+                            foreach (var w in submittedWeights) w.IsSubmitted = true;
+                            foreach (var l in submittedLengths) l.IsSubmitted = true;
+                            SavePersonalBests();
+
+                            ScreenNotification.ShowNotification("PB submitted to the Leaderboards, good luck!");
                         }
                         else
                         {
@@ -1913,6 +1931,7 @@ private SettingEntry<KeyBinding> ToggleHotkey { get; set; }
         public bool IsSuperPb { get; set; }
         public bool CaughtWithDrf { get; set; }
         public string CharacterName { get; set; }
+        public bool IsSubmitted { get; set; }
     }
 
     public class FishData
@@ -1947,11 +1966,10 @@ private SettingEntry<KeyBinding> ToggleHotkey { get; set; }
         public string CharacterName { get; set; }
         public string Signature { get; set; }
         public string TourneySig { get; set; }
+        
 
         // UI Color Flags
         public bool IsNewPb { get; set; }
         public bool IsSuperPb { get; set; }
     }
-
 }
-
