@@ -1,0 +1,39 @@
+{
+  "manifest_version": 1,
+  "name": "Gilled Wars",
+  "version": "1.0.0",
+  "namespace": "GilledWars",
+  "package": "GilledWars.dll",
+  "description": "Tournament fishing logger with verification, cooler UI, and personal best tracking. You can add a webhook for a discord server channel and the end results will auto populate there. Usng a secure API connection to the Gilled Wars website, we generate a room code unique to you, that when done will delete itself so it cant be used again after the tournament ends. Your Discord webhook is never shared with anyone or exposed. It remains secure.",
+  "author": {
+    "name": "Gorthax",
+    "username": "Gorthax.8129"
+  },
+  "contributors": [],
+  "url": "https://github.com/blish-hud/blish-hud",
+  "dependencies": {
+    "bh.blishhud": ">= 1.3.0"
+  },
+  "api_permissions": {
+    "account": {
+      "optional": false,
+      "details": "Required for basic account verification and character info."
+    },
+    "inventories": {
+      "optional": false,
+      "details": "Required to verify fish catches by checking inventory item count changes."
+    },
+    "progression": {
+      "optional": false,
+      "details": "Required for a future update for Zone Analyzer Feature."
+    },
+    "guilds": {
+      "optional": false,
+      "details": "Required to log which guild you represent when the fish was caught."
+    },
+    "characters": {
+      "optional": false,
+      "details": "Required to verify character fish was caught on!"
+    }
+  }
+}

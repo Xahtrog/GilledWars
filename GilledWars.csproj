@@ -1,0 +1,1169 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="ref\images\603243.png" />
+    <None Remove="ref\images\Abyssal_Squid.png" />
+    <None Remove="ref\images\Alabaster_Oscar.png" />
+    <None Remove="ref\images\Albino_Axolotl.png" />
+    <None Remove="ref\images\Albino_Blindfish.png" />
+    <None Remove="ref\images\Albino_Gourami.png" />
+    <None Remove="ref\images\Alewife.png" />
+    <None Remove="ref\images\Alpine_Char.png" />
+    <None Remove="ref\images\Amberjack.png" />
+    <None Remove="ref\images\Amber_Trout.png" />
+    <None Remove="ref\images\Aquatic_Frog.png" />
+    <None Remove="ref\images\Arapaima.png" />
+    <None Remove="ref\images\Armored_Scalefish.png" />
+    <None Remove="ref\images\Arowana.png" />
+    <None Remove="ref\images\Aurelian_Herring.png" />
+    <None Remove="ref\images\Axolotl.png" />
+    <None Remove="ref\images\Balance_Fish.png" />
+    <None Remove="ref\images\Barramundi.png" />
+    <None Remove="ref\images\Bastion_Fish.png" />
+    <None Remove="ref\images\Beacons_Perch.png" />
+    <None Remove="ref\images\Beluga.png" />
+    <None Remove="ref\images\Benthic_Behemoth.png" />
+    <None Remove="ref\images\Bicuda.png" />
+    <None Remove="ref\images\Bitterling.png" />
+    <None Remove="ref\images\Black_Bass.png" />
+    <None Remove="ref\images\Black_Carp.png" />
+    <None Remove="ref\images\Black_Crappie.png" />
+    <None Remove="ref\images\Black_Lionfish.png" />
+    <None Remove="ref\images\Blightbob.png" />
+    <None Remove="ref\images\Blobfish.png" />
+    <None Remove="ref\images\Bloodfish.png" />
+    <None Remove="ref\images\Blowfish.png" />
+    <None Remove="ref\images\Bluefin_Trevally.png" />
+    <None Remove="ref\images\Bluefin_Tuna.png" />
+    <None Remove="ref\images\Bluegill.png" />
+    <None Remove="ref\images\Blue_Dorado.png" />
+    <None Remove="ref\images\Blue_Marlin.png" />
+    <None Remove="ref\images\Bonefish.png" />
+    <None Remove="ref\images\Boreal_Cod.png" />
+    <None Remove="ref\images\Boxfish.png" />
+    <None Remove="ref\images\Brackish_Goby.png" />
+    <None Remove="ref\images\Branded_Eel.png" />
+    <None Remove="ref\images\Bream.png" />
+    <None Remove="ref\images\Brook_Trout.png" />
+    <None Remove="ref\images\Bullhead_Catfish.png" />
+    <None Remove="ref\images\Buried_Angst.png" />
+    <None Remove="ref\images\Canthan_Carp.png" />
+    <None Remove="ref\images\Catfish.png" />
+    <None Remove="ref\images\Celestial_Fish.png" />
+    <None Remove="ref\images\Cerulean_Salamander.png" />
+    <None Remove="ref\images\Chain_Pickerel.png" />
+    <None Remove="ref\images\Chambered_Nautilus.png" />
+    <None Remove="ref\images\Cherry_Barb.png" />
+    <None Remove="ref\images\Cherry_Salmon.png" />
+    <None Remove="ref\images\Chestnut_Sea_Bream.png" />
+    <None Remove="ref\images\Clawfish.png" />
+    <None Remove="ref\images\Cobia.png" />
+    <None Remove="ref\images\Codmander.png" />
+    <None Remove="ref\images\Corvina.png" />
+    <None Remove="ref\images\Crimson_Snapper.png" />
+    <None Remove="ref\images\Croaker.png" />
+    <None Remove="ref\images\Cutlass_Fish.png" />
+    <None Remove="ref\images\Cutthroat_Trout.png" />
+    <None Remove="ref\images\Cuttlefish.png" />
+    <None Remove="ref\images\Daijun_Blackfin.png" />
+    <None Remove="ref\images\Dandan.png" />
+    <None Remove="ref\images\Dark_Sleeper.png" />
+    <None Remove="ref\images\Daydream.png" />
+    <None Remove="ref\images\Dead_Alewife.png" />
+    <None Remove="ref\images\Delavan_Guppy.png" />
+    <None Remove="ref\images\Dhuum_Fish.png" />
+    <None Remove="ref\images\Diamond_Trevally.png" />
+    <None Remove="ref\images\Divinity_Angelfin.png" />
+    <None Remove="ref\images\Dragonet.png" />
+    <None Remove="ref\images\Dragonfish.png" />
+    <None Remove="ref\images\Dunkleosteus.png" />
+    <None Remove="ref\images\Dusky_Grouper.png" />
+    <None Remove="ref\images\Dustfish.png" />
+    <None Remove="ref\images\Electric_Eel.png" />
+    <None Remove="ref\images\Elonian_Bass.png" />
+    <None Remove="ref\images\Elon_Tetra.png" />
+    <None Remove="ref\images\Emerald_Snapper.png" />
+    <None Remove="ref\images\Emperor_Fish.png" />
+    <None Remove="ref\images\Empress_Fish.png" />
+    <None Remove="ref\images\Fangfish.png" />
+    <None Remove="ref\images\Firemouth.png" />
+    <None Remove="ref\images\Fire_Eel.png" />
+    <None Remove="ref\images\Flamefin_Betta.png" />
+    <None Remove="ref\images\Flapjack_Octopus.png" />
+    <None Remove="ref\images\Flayfin.png" />
+    <None Remove="ref\images\Flowerhead.png" />
+    <None Remove="ref\images\Flying_Fish.png" />
+    <None Remove="ref\images\Fractured_Fish.png" />
+    <None Remove="ref\images\Frenzied_Cephalopod.png" />
+    <None Remove="ref\images\Freshwater_Eel.png" />
+    <None Remove="ref\images\Frilled_Shark.png" />
+    <None Remove="ref\images\Fugu_Fish.png" />
+    <None Remove="ref\images\Gar.png" />
+    <None Remove="ref\images\Garnet_Ram.png" />
+    <None Remove="ref\images\Geyser_Batfin.png" />
+    <None Remove="ref\images\Ghostfish.png" />
+    <None Remove="ref\images\Giant_Barb.png" />
+    <None Remove="ref\images\Giant_Catfish.png" />
+    <None Remove="ref\images\Giant_Gourami.png" />
+    <None Remove="ref\images\Giant_Octopus.png" />
+    <None Remove="ref\images\Giant_Paddlefish.png" />
+    <None Remove="ref\images\Giant_Trevally.png" />
+    <None Remove="ref\images\Gilded_Loach.png" />
+    <None Remove="ref\images\Glacial_Snakehead.png" />
+    <None Remove="ref\images\Globefish.png" />
+    <None Remove="ref\images\Glowing_Coalfish.png" />
+    <None Remove="ref\images\Glutfish.png" />
+    <None Remove="ref\images\Golden_Dorado.png" />
+    <None Remove="ref\images\Golden_Mahseer.png" />
+    <None Remove="ref\images\Golden_Trout.png" />
+    <None Remove="ref\images\Goldfish.png" />
+    <None Remove="ref\images\Goliath_Grouper.png" />
+    <None Remove="ref\images\GooglyEyed_Squid.png" />
+    <None Remove="ref\images\Gourami.png" />
+    <None Remove="ref\images\Grayling.png" />
+    <None Remove="ref\images\Green_Sawfish.png" />
+    <None Remove="ref\images\Hagfish.png" />
+    <None Remove="ref\images\Halibut.png" />
+    <None Remove="ref\images\Holy_Mackerel.png" />
+    <None Remove="ref\images\Honeycomb_Grouper.png" />
+    <None Remove="ref\images\Horseshoe_Crab.png" />
+    <None Remove="ref\images\Humphead_Wrasse.png" />
+    <None Remove="ref\images\Icefish.png" />
+    <None Remove="ref\images\Icy_Lumpfish.png" />
+    <None Remove="ref\images\Igneous_Rockfish.png" />
+    <None Remove="ref\images\Indigo_Drakefish.png" />
+    <None Remove="ref\images\Jade_Lamprey.png" />
+    <None Remove="ref\images\Jade_Sea_Turtle.png" />
+    <None Remove="ref\images\Jokopu.png" />
+    <None Remove="ref\images\Jundia.png" />
+    <None Remove="ref\images\Juvenile_Frogfish.png" />
+    <None Remove="ref\images\Kahawai.png" />
+    <None Remove="ref\images\Kaluga.png" />
+    <None Remove="ref\images\King_Crab.png" />
+    <None Remove="ref\images\King_Salmon.png" />
+    <None Remove="ref\images\Knifefish.png" />
+    <None Remove="ref\images\Knowledge_Fish.png" />
+    <None Remove="ref\images\Krytan_Crawfish.png" />
+    <None Remove="ref\images\Krytan_Puffer.png" />
+    <None Remove="ref\images\Largemouth_Bass.png" />
+    <None Remove="ref\images\Leafy_Sea_Dragon.png" />
+    <None Remove="ref\images\Longhorn_Boxfish.png" />
+    <None Remove="ref\images\Lornars_Bass.png" />
+    <None Remove="ref\images\Lowland_Grunt.png" />
+    <None Remove="ref\images\Lungfish.png" />
+    <None Remove="ref\images\Maddened_Mackerel.png" />
+    <None Remove="ref\images\Magma_Ray.png" />
+    <None Remove="ref\images\Maguuma_Jack.png" />
+    <None Remove="ref\images\Maguuma_Trout.png" />
+    <None Remove="ref\images\Mahseer.png" />
+    <None Remove="ref\images\ManofWar.png" />
+    <None Remove="ref\images\Mantis_Shrimp.png" />
+    <None Remove="ref\images\Marbled_Lungfish.png" />
+    <None Remove="ref\images\Mega_Prawn.png" />
+    <None Remove="ref\images\Melandrus_Lurker.png" />
+    <None Remove="ref\images\Mohawk_Bream.png" />
+    <None Remove="ref\images\Monkfish.png" />
+    <None Remove="ref\images\Moonfin_Striker.png" />
+    <None Remove="ref\images\MouseEared_Octopus.png" />
+    <None Remove="ref\images\Mudskipper.png" />
+    <None Remove="ref\images\Mud_Skate.png" />
+    <None Remove="ref\images\Mullet.png" />
+    <None Remove="ref\images\Murkwater_Darter.png" />
+    <None Remove="ref\images\Muskellunge.png" />
+    <None Remove="ref\images\Mystic_Remora.png" />
+    <None Remove="ref\images\Natural_Fish.png" />
+    <None Remove="ref\images\Northern_Pike.png" />
+    <None Remove="ref\images\Oarfish.png" />
+    <None Remove="ref\images\Obscure_Fish.png" />
+    <None Remove="ref\images\Old_Whiskers.png" />
+    <None Remove="ref\images\Opah.png" />
+    <None Remove="ref\images\Orrian_Anglerfish.png" />
+    <None Remove="ref\images\Oscar.png" />
+    <None Remove="ref\images\Pacu.png" />
+    <None Remove="ref\images\Paddlefish.png" />
+    <None Remove="ref\images\Parrotfish.png" />
+    <None Remove="ref\images\Payara.png" />
+    <None Remove="ref\images\Peacock_Bass.png" />
+    <None Remove="ref\images\Petrifish.png" />
+    <None Remove="ref\images\Phantom_Pollock.png" />
+    <None Remove="ref\images\Piranha.png" />
+    <None Remove="ref\images\Pollock.png" />
+    <None Remove="ref\images\Pompano.png" />
+    <None Remove="ref\images\Porgy.png" />
+    <None Remove="ref\images\Primal_Maguuma_Trout.png" />
+    <None Remove="ref\images\Pufferfish.png" />
+    <None Remove="ref\images\Quagmire_Eel.png" />
+    <None Remove="ref\images\Queenfish.png" />
+    <None Remove="ref\images\Queens_Flipper.png" />
+    <None Remove="ref\images\Queen_Parrotfish.png" />
+    <None Remove="ref\images\Rainbow_Glowfish.png" />
+    <None Remove="ref\images\Rainbow_Trout.png" />
+    <None Remove="ref\images\RedEyed_Piranha.png" />
+    <None Remove="ref\images\Redfin_Barb.png" />
+    <None Remove="ref\images\Redtail_Catfish.png" />
+    <None Remove="ref\images\Red_Gurnard.png" />
+    <None Remove="ref\images\Red_Herring.png" />
+    <None Remove="ref\images\Ripsaw_Catfish.png" />
+    <None Remove="ref\images\Risen_Sea_Bass.png" />
+    <None Remove="ref\images\Rockfish.png" />
+    <None Remove="ref\images\Rock_Bass.png" />
+    <None Remove="ref\images\Rohu.png" />
+    <None Remove="ref\images\Roosterfish.png" />
+    <None Remove="ref\images\Round_Goby.png" />
+    <None Remove="ref\images\Royal_Featherback.png" />
+    <None Remove="ref\images\Royal_Pike.png" />
+    <None Remove="ref\images\Royal_Starfish.png" />
+    <None Remove="ref\images\Sailfin_Molly.png" />
+    <None Remove="ref\images\Sailfish.png" />
+    <None Remove="ref\images\Sand_Carp.png" />
+    <None Remove="ref\images\Sardinata.png" />
+    <None Remove="ref\images\Scorpion_Fish.png" />
+    <None Remove="ref\images\Seahorse.png" />
+    <None Remove="ref\images\Sea_Perch.png" />
+    <None Remove="ref\images\Sea_Robin.png" />
+    <None Remove="ref\images\Sea_Trout.png" />
+    <None Remove="ref\images\Shaderock_Salamander.png" />
+    <None Remove="ref\images\Sheatfish.png" />
+    <None Remove="ref\images\Sheepshead.png" />
+    <None Remove="ref\images\Shimmering_Squid.png" />
+    <None Remove="ref\images\Shinota_Blackfin.png" />
+    <None Remove="ref\images\Shipwreck_Moray.png" />
+    <None Remove="ref\images\Silverfish.png" />
+    <None Remove="ref\images\Silver_Bichir.png" />
+    <None Remove="ref\images\Silver_Drum.png" />
+    <None Remove="ref\images\Silver_Moony.png" />
+    <None Remove="ref\images\Skipjack_Tuna.png" />
+    <None Remove="ref\images\Slaughterfish.png" />
+    <None Remove="ref\images\Smallmouth_Bass.png" />
+    <None Remove="ref\images\Snakehead.png" />
+    <None Remove="ref\images\Snook.png" />
+    <None Remove="ref\images\Snowflake_Eel.png" />
+    <None Remove="ref\images\Snow_Crab.png" />
+    <None Remove="ref\images\Sockeye.png" />
+    <None Remove="ref\images\Speckled_Perch.png" />
+    <None Remove="ref\images\Spectacled_Lumper.png" />
+    <None Remove="ref\images\Spectral_Jellyfish.png" />
+    <None Remove="ref\images\Spotted_Flounder.png" />
+    <None Remove="ref\images\Spotted_Pufferfish.png" />
+    <None Remove="ref\images\Spotted_Stingray.png" />
+    <None Remove="ref\images\Stargazer.png" />
+    <None Remove="ref\images\Starry_Flounder.png" />
+    <None Remove="ref\images\Steelhead_Trout.png" />
+    <None Remove="ref\images\Stingray.png" />
+    <None Remove="ref\images\Stone_Guiyu.png" />
+    <None Remove="ref\images\Stone_Loach.png" />
+    <None Remove="ref\images\Strength_Fish.png" />
+    <None Remove="ref\images\Striped_Barracuda.png" />
+    <None Remove="ref\images\Striped_Bass.png" />
+    <None Remove="ref\images\Striped_Catfish.png" />
+    <None Remove="ref\images\Sturgeon.png" />
+    <None Remove="ref\images\Sunfish.png" />
+    <None Remove="ref\images\Sunscale_Striker.png" />
+    <None Remove="ref\images\Surubim.png" />
+    <None Remove="ref\images\Swampblight_Lamprey.png" />
+    <None Remove="ref\images\Swordfish.png" />
+    <None Remove="ref\images\Taimen.png" />
+    <None Remove="ref\images\Tarpon.png" />
+    <None Remove="ref\images\ThreeEyed_Carp.png" />
+    <None Remove="ref\images\Tigerfish.png" />
+    <None Remove="ref\images\Tilapia.png" />
+    <None Remove="ref\images\Toadfish.png" />
+    <None Remove="ref\images\Totemfish.png" />
+    <None Remove="ref\images\Tripletail.png" />
+    <None Remove="ref\images\Twilight_Striker.png" />
+    <None Remove="ref\images\Unholy_Mackerel.png" />
+    <None Remove="ref\images\Unicorn_Fish.png" />
+    <None Remove="ref\images\Vampire_Squid.png" />
+    <None Remove="ref\images\Venomfish.png" />
+    <None Remove="ref\images\Violet_Screamer.png" />
+    <None Remove="ref\images\Viperfish.png" />
+    <None Remove="ref\images\Volcanic_Blackfish.png" />
+    <None Remove="ref\images\Vundu.png" />
+    <None Remove="ref\images\Wahoo.png" />
+    <None Remove="ref\images\Walleye.png" />
+    <None Remove="ref\images\Warmouth.png" />
+    <None Remove="ref\images\Weever.png" />
+    <None Remove="ref\images\White_Bass.png" />
+    <None Remove="ref\images\Wolffish.png" />
+    <None Remove="ref\images\Yellowtail_Snapper.png" />
+    <None Remove="ref\images\Yellow_Perch.png" />
+    <None Remove="ref\images\Zander.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="ref\images\603243.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Abyssal_Squid.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Alabaster_Oscar.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Albino_Axolotl.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Albino_Blindfish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Albino_Gourami.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Alewife.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Alpine_Char.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Amberjack.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Amber_Trout.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Aquatic_Frog.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Arapaima.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Armored_Scalefish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Arowana.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Aurelian_Herring.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Axolotl.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Balance_Fish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Barramundi.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Bastion_Fish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Beacons_Perch.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Beluga.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Benthic_Behemoth.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Bicuda.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Bitterling.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Black_Bass.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Black_Carp.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Black_Crappie.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Black_Lionfish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Blightbob.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Blobfish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Bloodfish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Blowfish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Bluefin_Trevally.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Bluefin_Tuna.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Bluegill.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Blue_Dorado.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Blue_Marlin.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Bonefish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Boreal_Cod.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Boxfish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Brackish_Goby.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Branded_Eel.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Bream.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Brook_Trout.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Bullhead_Catfish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Buried_Angst.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Canthan_Carp.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Catfish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Celestial_Fish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Cerulean_Salamander.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Chain_Pickerel.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Chambered_Nautilus.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Cherry_Barb.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Cherry_Salmon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Chestnut_Sea_Bream.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Clawfish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Cobia.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Codmander.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Corvina.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Crimson_Snapper.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Croaker.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Cutlass_Fish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Cutthroat_Trout.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Cuttlefish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Daijun_Blackfin.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Dandan.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Dark_Sleeper.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Daydream.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Dead_Alewife.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Delavan_Guppy.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Dhuum_Fish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Diamond_Trevally.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Divinity_Angelfin.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Dragonet.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Dragonfish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Dunkleosteus.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Dusky_Grouper.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Dustfish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Electric_Eel.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Elonian_Bass.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Elon_Tetra.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Emerald_Snapper.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Emperor_Fish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Empress_Fish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Fangfish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Firemouth.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Fire_Eel.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Flamefin_Betta.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Flapjack_Octopus.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Flayfin.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Flowerhead.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Flying_Fish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Fractured_Fish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Frenzied_Cephalopod.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Freshwater_Eel.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Frilled_Shark.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Fugu_Fish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Gar.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Garnet_Ram.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Geyser_Batfin.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Ghostfish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Giant_Barb.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Giant_Catfish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Giant_Gourami.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Giant_Octopus.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Giant_Paddlefish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Giant_Trevally.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Gilded_Loach.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Glacial_Snakehead.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Globefish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Glowing_Coalfish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Glutfish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Golden_Dorado.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Golden_Mahseer.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Golden_Trout.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Goldfish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Goliath_Grouper.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\GooglyEyed_Squid.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Gourami.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Grayling.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Green_Sawfish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Hagfish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Halibut.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Holy_Mackerel.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Honeycomb_Grouper.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Horseshoe_Crab.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Humphead_Wrasse.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Icefish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Icy_Lumpfish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Igneous_Rockfish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Indigo_Drakefish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Jade_Lamprey.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Jade_Sea_Turtle.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Jokopu.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Jundia.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Juvenile_Frogfish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Kahawai.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Kaluga.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\King_Crab.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\King_Salmon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Knifefish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Knowledge_Fish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Krytan_Crawfish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Krytan_Puffer.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Largemouth_Bass.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Leafy_Sea_Dragon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Longhorn_Boxfish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Lornars_Bass.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Lowland_Grunt.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Lungfish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Maddened_Mackerel.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Magma_Ray.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Maguuma_Jack.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Maguuma_Trout.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Mahseer.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\ManofWar.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Mantis_Shrimp.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Marbled_Lungfish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Mega_Prawn.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Melandrus_Lurker.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Mohawk_Bream.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Monkfish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Moonfin_Striker.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\MouseEared_Octopus.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Mudskipper.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Mud_Skate.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Mullet.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Murkwater_Darter.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Muskellunge.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Mystic_Remora.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Natural_Fish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Northern_Pike.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Oarfish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Obscure_Fish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Old_Whiskers.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Opah.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Orrian_Anglerfish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Oscar.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Pacu.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Paddlefish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Parrotfish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Payara.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Peacock_Bass.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Petrifish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Phantom_Pollock.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Piranha.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Pollock.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Pompano.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Porgy.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Primal_Maguuma_Trout.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Pufferfish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Quagmire_Eel.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Queenfish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Queens_Flipper.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Queen_Parrotfish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Rainbow_Glowfish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Rainbow_Trout.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\RedEyed_Piranha.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Redfin_Barb.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Redtail_Catfish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Red_Gurnard.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Red_Herring.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Ripsaw_Catfish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Risen_Sea_Bass.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Rockfish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Rock_Bass.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Rohu.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Roosterfish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Round_Goby.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Royal_Featherback.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Royal_Pike.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Royal_Starfish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Sailfin_Molly.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Sailfish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Sand_Carp.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Sardinata.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Scorpion_Fish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Seahorse.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Sea_Perch.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Sea_Robin.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Sea_Trout.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Shaderock_Salamander.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Sheatfish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Sheepshead.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Shimmering_Squid.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Shinota_Blackfin.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Shipwreck_Moray.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Silverfish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Silver_Bichir.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Silver_Drum.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Silver_Moony.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Skipjack_Tuna.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Slaughterfish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Smallmouth_Bass.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Snakehead.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Snook.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Snowflake_Eel.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Snow_Crab.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Sockeye.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Speckled_Perch.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Spectacled_Lumper.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Spectral_Jellyfish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Spotted_Flounder.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Spotted_Pufferfish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Spotted_Stingray.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Stargazer.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Starry_Flounder.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Steelhead_Trout.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Stingray.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Stone_Guiyu.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Stone_Loach.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Strength_Fish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Striped_Barracuda.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Striped_Bass.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Striped_Catfish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Sturgeon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Sunfish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Sunscale_Striker.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Surubim.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Swampblight_Lamprey.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Swordfish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Taimen.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Tarpon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\ThreeEyed_Carp.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Tigerfish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Tilapia.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Toadfish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Totemfish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Tripletail.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Twilight_Striker.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Unholy_Mackerel.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Unicorn_Fish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Vampire_Squid.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Venomfish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Violet_Screamer.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Viperfish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Volcanic_Blackfish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Vundu.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Wahoo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Walleye.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Warmouth.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Weever.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\White_Bass.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Wolffish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Yellowtail_Snapper.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Yellow_Perch.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ref\images\Zander.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BlishHUD" Version="1.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+
+</Project>
