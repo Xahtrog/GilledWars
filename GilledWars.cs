@@ -44,7 +44,7 @@ namespace Gorthax.Gilledwars
         private static HttpClient CreateHttpClient()
         {
             var client = new HttpClient();
-            
+
             client.DefaultRequestHeaders.Add("X-Gilled-Wars-Client", "SecureBlishModule_v1");
             return client;
         }
@@ -192,7 +192,7 @@ namespace Gorthax.Gilledwars
             RefreshFishLogUI();
             base.OnModuleLoaded(e);
         }
-      
+
         private void CopyToClipboard(string text)
         {
             if (string.IsNullOrEmpty(text)) return;
@@ -210,7 +210,7 @@ namespace Gorthax.Gilledwars
             catch (Exception ex) { Logger.Error(ex, "Threaded clipboard copy failed."); }
         }
 
-        
+
         private string GetGlobalSeed()
         {
             byte[] buffer = new byte[32];
@@ -282,15 +282,15 @@ namespace Gorthax.Gilledwars
             return BitConverter.Int64BitsToDouble(bits);
         }
 
-         private string GenerateSignature(double weight, double length, string name, bool isSuperPb, string salt)
-          {
-        
-          string raw = $"{salt}|{weight:F2}|{length:F2}|{name}|{isSuperPb}";
-             using (SHA256 sha256 = SHA256.Create())
-             {
-         byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(raw));
+        private string GenerateSignature(double weight, double length, string name, bool isSuperPb, string salt)
+        {
+
+            string raw = $"{salt}|{weight:F2}|{length:F2}|{name}|{isSuperPb}";
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(raw));
                 return Convert.ToBase64String(bytes).Substring(0, 12);
-        }
+            }
         }
 
 
@@ -352,7 +352,7 @@ namespace Gorthax.Gilledwars
                 for (int i = 0; i < db.Count; i++)
                 {
                     var f = db[i];
-                    
+
                     f.Name = DescrambleString(f.Name, i, legacySeed);
                     f.Rarity = DescrambleString(f.Rarity, i, legacySeed);
                     f.Location = DescrambleString(f.Location, i, legacySeed);
@@ -373,137 +373,175 @@ namespace Gorthax.Gilledwars
             catch (Exception ex) { Logger.Error(ex, "JSON Load Fail"); }
         }
 
-              private async Task InitializeAccountAndLoadAsync()
-{
-    // 1. FOLDER MIGRATION LOGIC
-    try
-    {
-        string oldHardcodedPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Guild Wars 2", "addons", "blishhud", "gilledwarsanglers");
-        string newBlishPath = ModuleDirectory; // This uses the path from DirectoriesManager
-
-        if (Directory.Exists(oldHardcodedPath) && !Directory.Exists(newBlishPath))
+        private async Task InitializeAccountAndLoadAsync()
         {
-            Logger.Info($"Migrating old folder {oldHardcodedPath} to {newBlishPath}");
-            // Move handles the move across same drive or copy/delete across different drives
-            Directory.Move(oldHardcodedPath, newBlishPath);
-        }
-    }
-    catch (Exception ex) { Logger.Warn(ex, "Failed to migrate old module folder."); }
+            string newDir = ModuleDirectory;   // Correct folder: .../storage/gilledwars
+            Directory.CreateDirectory(newDir);
 
-    // 2. ACCOUNT INITIALIZATION
-    try
-    {
-        bool accountFound = false;
+            Logger.Info($"[GilledWars] Using correct folder: {newDir}");
 
-        if (!string.IsNullOrWhiteSpace(_customApiKey.Value))
-        {
-            try
+            // Old folders we want to completely remove
+            // REMOVED "gilledwars" FROM THIS LIST SO IT DOES NOT NUKE ITSELF!
+            string[] oldDirs = {
+                Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+                             "Guild Wars 2", "addons", "blishhud", "gilledwarsanglers"),
+                Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+                             "Guild Wars 2", "addons", "blishhud", "gilledwarsanglers_OLD")
+            };
+
+            bool didMigrate = false;
+
+            foreach (string oldDir in oldDirs)
             {
-                var connection = new Gw2Sharp.Connection(_customApiKey.Value);
-                using (var client = new Gw2Sharp.Gw2Client(connection))
+                if (!Directory.Exists(oldDir)) continue;
+
+                Logger.Info($"[GilledWars] Found old folder to clean: {oldDir}");
+
+                // 1. Migrate the important files
+                foreach (string oldFile in Directory.GetFiles(oldDir, "personal_bests*.json"))
                 {
-                    var acc = await client.WebApi.V2.Account.GetAsync();
-                    _localAccountName = acc.Name.Replace(".", "_"); 
-                    accountFound = true;
-                }
-            }
-            catch { Logger.Warn("Custom API Key failed. Falling back to Blish HUD API."); }
-        }
-
-        if (!accountFound)
-        {
-            int retries = 10; 
-            while (retries > 0)
-            {
-                if (Gw2ApiManager.HasPermissions(new[] { Gw2Sharp.WebApi.V2.Models.TokenPermission.Account }))
-                {
-                    var acc = await Gw2ApiManager.Gw2ApiClient.V2.Account.GetAsync();
-                    _localAccountName = acc.Name.Replace(".", "_");
-                    accountFound = true;
-                    break; 
-                }
-                await Task.Delay(1000); 
-                retries--;
-            }
-        }
-
-        // 3. FILE MIGRATION (Move generic .json to account-specific .json)
-        if (accountFound)
-        {
-            string oldFile = Path.Combine(ModuleDirectory, "personal_bests.json");
-            string newFile = Path.Combine(ModuleDirectory, $"personal_bests_{_localAccountName}.json");
-
-            if (File.Exists(oldFile) && !File.Exists(newFile))
-            {
-                File.Move(oldFile, newFile);
-            }
-        }
-    }
-    catch (Exception ex) { Logger.Error(ex, "Fatal error during account initialization."); }
-
-    LoadPersonalBests();
-    RefreshFishLogUI();
-}
-
-   private void LoadPersonalBests()
-{
-    string fileName = _localAccountName == "UnknownAccount" ? "personal_bests.json" : $"personal_bests_{_localAccountName}.json";
-    string path = Path.Combine(ModuleDirectory, fileName);
-
-    _isCheater = false;
-
-    if (File.Exists(path))
-    {
-        try
-        {
-            string json = File.ReadAllText(path);
-            var loaded = JsonConvert.DeserializeObject<Dictionary<int, PersonalBestRecord>>(json) ?? new Dictionary<int, PersonalBestRecord>();
-            _personalBests = new Dictionary<int, PersonalBestRecord>();
-
-            string seed = GetGlobalSeed();
-
-            foreach (var kvp in loaded)
-            {
-                int itemId = kvp.Key;
-                var rec = kvp.Value;
-                var dbFish = _allFishEntries.FirstOrDefault(x => x.Data.ItemId == itemId)?.Data;
-                string fishName = dbFish != null ? dbFish.Name : "Unknown";
-
-                void ValidateRecord(SubRecord sub)
-                {
-                    if (sub == null) return;
-                    string cName = sub.CharacterName ?? "Unknown";
-                    string expectedSig = GenerateSignature(sub.Weight, sub.Length, fishName, sub.IsSuperPb, seed + cName + _localAccountName);
-
-                    if (sub.Signature != expectedSig)
+                    string dest = Path.Combine(newDir, Path.GetFileName(oldFile));
+                    try
                     {
-                        sub.IsCheater = true;
-                        _isCheater = true;
+                        if (File.Exists(dest)) File.Delete(dest);
+                        File.Move(oldFile, dest);
+                        Logger.Info($"[GilledWars] Migrated: {Path.GetFileName(oldFile)}");
+                        didMigrate = true;
+                    }
+                    catch (Exception ex)
+                    {
+                        Logger.Warn(ex, $"Failed to migrate {Path.GetFileName(oldFile)}");
                     }
                 }
 
-                ValidateRecord(rec.BestWeight);
-                ValidateRecord(rec.BestLength);
+                // 2. Completely delete the old folder
+                try
+                {
+                    Directory.Delete(oldDir, true);   // recursive delete
+                    Logger.Info($"[GilledWars] ✅ Completely deleted old folder: {oldDir}");
+                }
+                catch (Exception ex)
+                {
+                    Logger.Warn(ex, $"Could not delete {oldDir} (files may be locked)");
+                }
+            }
 
-                _personalBests.Add(itemId, rec);
-                _caughtFishIds.Add(itemId);
+            if (didMigrate)
+            {
+                ScreenNotification.ShowNotification("Gilled Wars: Files migrated & old folder cleaned up!",
+                    ScreenNotification.NotificationType.Info);
+            }
+
+            // === Account detection ===
+            bool accountFound = false;
+
+            if (!string.IsNullOrWhiteSpace(_customApiKey.Value))
+            {
+                try
+                {
+                    var connection = new Gw2Sharp.Connection(_customApiKey.Value);
+                    using (var client = new Gw2Sharp.Gw2Client(connection))
+                    {
+                        var acc = await client.WebApi.V2.Account.GetAsync();
+                        _localAccountName = acc.Name.Replace(".", "_");
+                        accountFound = true;
+                    }
+                }
+                catch { Logger.Warn("Custom API Key failed."); }
+            }
+
+            if (!accountFound)
+            {
+                int retries = 15;
+                while (retries > 0)
+                {
+                    if (Gw2ApiManager.HasPermissions(new[] { Gw2Sharp.WebApi.V2.Models.TokenPermission.Account }))
+                    {
+                        var acc = await Gw2ApiManager.Gw2ApiClient.V2.Account.GetAsync();
+                        _localAccountName = acc.Name.Replace(".", "_");
+                        accountFound = true;
+                        break;
+                    }
+                    await Task.Delay(800);
+                    retries--;
+                }
+            }
+
+            if (!accountFound)
+                _localAccountName = "UnknownAccount";
+
+            LoadPersonalBests();
+            RefreshFishLogUI();
+
+            Logger.Info($"[GilledWars] Loaded with account: {_localAccountName}");
+        }
+
+        private void LoadPersonalBests()
+        {
+            string fileName = _localAccountName == "UnknownAccount"
+                ? "personal_bests.json"
+                : $"personal_bests_{_localAccountName}.json";
+
+            string path = Path.Combine(ModuleDirectory, fileName);
+
+            _isCheater = false;
+
+            if (File.Exists(path))
+            {
+                try
+                {
+                    string json = File.ReadAllText(path);
+                    var loaded = JsonConvert.DeserializeObject<Dictionary<int, PersonalBestRecord>>(json)
+                                 ?? new Dictionary<int, PersonalBestRecord>();
+
+                    _personalBests = new Dictionary<int, PersonalBestRecord>();
+                    string seed = GetGlobalSeed();
+
+                    foreach (var kvp in loaded)
+                    {
+                        int itemId = kvp.Key;
+                        var rec = kvp.Value;
+
+                        void ValidateRecord(SubRecord sub)
+                        {
+                            if (sub == null) return;
+                            string cName = sub.CharacterName ?? "Unknown";
+                            string expected = GenerateSignature(sub.Weight, sub.Length,
+                                _allFishEntries.FirstOrDefault(x => x.Data.ItemId == itemId)?.Data.Name ?? "Unknown",
+                                sub.IsSuperPb, seed + cName + _localAccountName);
+
+                            if (sub.Signature != expected)
+                                sub.IsCheater = _isCheater = true;
+                        }
+
+                        ValidateRecord(rec.BestWeight);
+                        ValidateRecord(rec.BestLength);
+
+                        _personalBests[itemId] = rec;
+                        _caughtFishIds.Add(itemId);
+                    }
+                }
+                catch (Exception ex) { Logger.Error(ex, "Failed to load personal bests"); }
             }
         }
-        catch (Exception ex) { Logger.Error(ex, "Failed to load personal bests."); }
-    }
-}
 
-private void SavePersonalBests()
-{
-    string fileName = _localAccountName == "UnknownAccount" ? "personal_bests.json" : $"personal_bests_{_localAccountName}.json";
-    string path = Path.Combine(ModuleDirectory, fileName);
+        private void SavePersonalBests()
+        {
+            string fileName = _localAccountName == "UnknownAccount"
+                ? "personal_bests.json"
+                : $"personal_bests_{_localAccountName}.json";
 
-    try {
-        File.WriteAllText(path, JsonConvert.SerializeObject(_personalBests));
-    } catch (Exception ex) {
-        Logger.Error(ex, "Failed to save personal bests.");
-    }
-}
+            string path = Path.Combine(ModuleDirectory, fileName);
+
+            try
+            {
+                File.WriteAllText(path, JsonConvert.SerializeObject(_personalBests));
+            }
+            catch (Exception ex)
+            {
+                Logger.Error(ex, "Failed to save personal bests");
+            }
+        }
         private async Task<Dictionary<int, int>> GetActiveCharacterBags()
         {
             if (string.IsNullOrWhiteSpace(_customApiKey.Value)) return null;
@@ -747,7 +785,7 @@ private void SavePersonalBests()
             if (_rnd.NextDouble() <= 0.00005)
             {
                 isSuperPb = true;
-              
+
                 double bonusMult = 1.01 + (Math.Pow(_rnd.NextDouble(), 4.0) * 0.11);
                 weight = Math.Round(maxW * bonusMult, 2);
                 length = Math.Round(maxL * bonusMult, 2);
@@ -776,7 +814,7 @@ private void SavePersonalBests()
             if (pbObj.BestLength == null || length > pbObj.BestLength.Length)
             {
                 isNewPbLength = true;
-              
+
                 pbObj.BestLength = new SubRecord { Weight = weight, Length = length, Signature = globalSig, IsCheater = false, IsSuperPb = isSuperPb, CaughtWithDrf = usedDrf, CharacterName = charName, IsSubmitted = false };
             }
 
@@ -1379,7 +1417,7 @@ private void SavePersonalBests()
                     string rawPayload = decoded.Substring(0, lastPipeIndex);
                     string providedSig = decoded.Substring(lastPipeIndex + 1);
 
-                    
+
                     string[] payloadParts = rawPayload.Split('|');
                     string roomCode = payloadParts[0];
                     string expectedSig = GenerateMasterSignature(rawPayload, roomCode);
@@ -1754,13 +1792,13 @@ private void SavePersonalBests()
             string rawPayload = string.Join("|", parts);
             string masterSig = GenerateMasterSignature(rawPayload, _tourneyRoomCode);
 
-            
+
             _lastGeneratedCode = Convert.ToBase64String(Encoding.UTF8.GetBytes($"{rawPayload}|{masterSig}"));
 
 
             try
             {
-                
+
                 string accountName = "UnknownAccount";
                 if (Gw2ApiManager.HasPermissions(new[] { Gw2Sharp.WebApi.V2.Models.TokenPermission.Account }))
                 {
@@ -1770,7 +1808,7 @@ private void SavePersonalBests()
 
                 var payload = new
                 {
-                    accountName = accountName, 
+                    accountName = accountName,
                     playerName = charName,
                     verifyCode = _lastGeneratedCode,
                     catches = catchPayloadList
@@ -2022,14 +2060,14 @@ private void SavePersonalBests()
 
     public class PersonalBestRecord
     {
-        
+
         public double Weight { get; set; }
         public double Length { get; set; }
         public string Signature { get; set; }
         public bool IsCheater { get; set; }
         public bool IsSuperPb { get; set; }
 
-        
+
         public SubRecord BestWeight { get; set; }
         public SubRecord BestLength { get; set; }
     }
@@ -2078,12 +2116,10 @@ private void SavePersonalBests()
         public string CharacterName { get; set; }
         public string Signature { get; set; }
         public string TourneySig { get; set; }
-        
+
 
         // UI Color Flags
         public bool IsNewPb { get; set; }
         public bool IsSuperPb { get; set; }
     }
 }
-
-
