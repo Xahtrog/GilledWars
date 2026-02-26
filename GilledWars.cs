@@ -17,7 +17,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Gorthax.GilledWarsAnglers
+namespace Gorthax.Gilled
 {
     [Export(typeof(Module))]
     public class GilledWars : Module
@@ -472,47 +472,28 @@ namespace Gorthax.GilledWarsAnglers
 
                         var dbFish = _allFishEntries.FirstOrDefault(x => x.Data.ItemId == itemId)?.Data;
                         string fishName = dbFish != null ? dbFish.Name : "Unknown";
-                        
 
-                        bool fileNeedsSaving = false;
-
-                        // --- SUB-METHOD FOR MIGRATION LOGIC ---
-                        void MigrateRecord(SubRecord sub)
+                        // --- CLEANED LOADING LOGIC ---
+                        void ValidateRecord(SubRecord sub)
                         {
                             if (sub == null) return;
                             string cName = sub.CharacterName ?? "Unknown";
 
-                            // Calculate what the signature SHOULD be under the NEW rules
-                            string newStyleSig = GenerateSignature(sub.Weight, sub.Length, fishName, sub.IsSuperPb, seed + cName + _localAccountName);
+                            // Only check against the NEW rule (Seed + Character + Account)
+                            string expectedSig = GenerateSignature(sub.Weight, sub.Length, fishName, sub.IsSuperPb, seed + cName + _localAccountName);
 
-                            // If the current signature doesn't match the new style, it's either an old log or a cheat
-                            if (sub.Signature != newStyleSig)
+                            if (sub.Signature != expectedSig)
                             {
-                                // Calculate what it WOULD HAVE BEEN under the OLD rules
-                                string oldStyleSig = GenerateSignature(sub.Weight, sub.Length, fishName, sub.IsSuperPb, seed + cName);
-
-                                // If it matches the old rules, blindly re-sign it to the new rules!
-                                if (sub.Signature == oldStyleSig)
-                                {
-                                    sub.Signature = newStyleSig;
-                                    fileNeedsSaving = true;
-                                }
-                                else
-                                {
-                                    // If it doesn't match old OR new, it's actually tampered data
-                                    sub.IsCheater = true;
-                                    _isCheater = true;
-                                }
+                                sub.IsCheater = true;
+                                _isCheater = true;
                             }
                         }
 
-                        MigrateRecord(rec.BestWeight);
-                        MigrateRecord(rec.BestLength);
+                        ValidateRecord(rec.BestWeight);
+                        ValidateRecord(rec.BestLength);
 
                         _personalBests.Add(itemId, rec);
                         _caughtFishIds.Add(itemId);
-
-                        if (fileNeedsSaving) SavePersonalBests(); // Lock in the new signatures immediately
                     }
                 }
                 catch (Exception ex)
@@ -1059,27 +1040,42 @@ namespace Gorthax.GilledWarsAnglers
                         var dbFish = _allFishEntries.FirstOrDefault(x => x.Data.ItemId == fId)?.Data;
                         string fName = dbFish != null ? dbFish.Name : "Unknown";
                         string fLoc = dbFish != null ? dbFish.Location : "Unknown";
-                        string seed = GetGlobalSeed();
 
-                        // Check Weight Record
+                        // Check Weight Record - Send stored signature directly
                         if (rec.BestWeight != null && rec.BestWeight.CaughtWithDrf && !rec.BestWeight.IsCheater && !rec.BestWeight.IsSubmitted)
                         {
-                            string cName = rec.BestWeight.CharacterName ?? "Unknown";
-                            // RE-CALCULATE SIGNATURE TO INCLUDE ACCOUNT NAME FOR THE API
-                            string apiSig = GenerateSignature(rec.BestWeight.Weight, rec.BestWeight.Length, fName, rec.BestWeight.IsSuperPb, seed + cName + accountName);
-
-                            eligibleCatches.Add(new { accountName = accountName, itemId = fId, name = fName, weight = rec.BestWeight.Weight, length = rec.BestWeight.Length, signature = apiSig, isSuper = rec.BestWeight.IsSuperPb, type = "weight", characterName = cName, location = fLoc });
+                            eligibleCatches.Add(new
+                            {
+                                accountName = _localAccountName,
+                                itemId = fId,
+                                name = fName,
+                                weight = rec.BestWeight.Weight,
+                                length = rec.BestWeight.Length,
+                                signature = rec.BestWeight.Signature, // Use the signature exactly as stored
+                                isSuper = rec.BestWeight.IsSuperPb,
+                                type = "weight",
+                                characterName = rec.BestWeight.CharacterName ?? "Unknown",
+                                location = fLoc
+                            });
                             submittedWeights.Add(rec.BestWeight);
                         }
 
-                        // Check Length Record
+                        // Check Length Record - Send stored signature directly
                         if (rec.BestLength != null && rec.BestLength.CaughtWithDrf && !rec.BestLength.IsCheater && !rec.BestLength.IsSubmitted)
                         {
-                            string cName = rec.BestLength.CharacterName ?? "Unknown";
-                            // RE-CALCULATE SIGNATURE TO INCLUDE ACCOUNT NAME FOR THE API
-                            string apiSig = GenerateSignature(rec.BestLength.Weight, rec.BestLength.Length, fName, rec.BestLength.IsSuperPb, seed + cName + accountName);
-
-                            eligibleCatches.Add(new { accountName = accountName, itemId = fId, name = fName, weight = rec.BestLength.Weight, length = rec.BestLength.Length, signature = apiSig, isSuper = rec.BestLength.IsSuperPb, type = "length", characterName = cName, location = fLoc });
+                            eligibleCatches.Add(new
+                            {
+                                accountName = _localAccountName,
+                                itemId = fId,
+                                name = fName,
+                                weight = rec.BestLength.Weight,
+                                length = rec.BestLength.Length,
+                                signature = rec.BestLength.Signature, // Use the signature exactly as stored
+                                isSuper = rec.BestLength.IsSuperPb,
+                                type = "length",
+                                characterName = rec.BestLength.CharacterName ?? "Unknown",
+                                location = fLoc
+                            });
                             submittedLengths.Add(rec.BestLength);
                         }
                     }
