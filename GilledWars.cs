@@ -30,6 +30,8 @@ namespace Gorthax.Gilled
         internal DirectoriesManager DirectoriesManager => ModuleParameters.DirectoriesManager;
         internal Gw2ApiManager Gw2ApiManager => ModuleParameters.Gw2ApiManager;
 
+        private string ModuleDirectory => DirectoriesManager.GetFullDirectoryPath("gilledwars");
+
         private SettingEntry<KeyBinding> ToggleHotkey { get; set; }
         private SettingEntry<string> _customApiKey { get; set; }
         private SettingEntry<string> _drfToken { get; set; }
@@ -371,148 +373,137 @@ namespace Gorthax.Gilled
             catch (Exception ex) { Logger.Error(ex, "JSON Load Fail"); }
         }
 
-        private async Task InitializeAccountAndLoadAsync()
-        {
-            string dir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Guild Wars 2", "addons", "blishhud", "gilledwarsanglers");
-            Directory.CreateDirectory(dir);
+              private async Task InitializeAccountAndLoadAsync()
+{
+    // 1. FOLDER MIGRATION LOGIC
+    try
+    {
+        string oldHardcodedPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Guild Wars 2", "addons", "blishhud", "gilledwarsanglers");
+        string newBlishPath = ModuleDirectory; // This uses the path from DirectoriesManager
 
+        if (Directory.Exists(oldHardcodedPath) && !Directory.Exists(newBlishPath))
+        {
+            Logger.Info($"Migrating old folder {oldHardcodedPath} to {newBlishPath}");
+            // Move handles the move across same drive or copy/delete across different drives
+            Directory.Move(oldHardcodedPath, newBlishPath);
+        }
+    }
+    catch (Exception ex) { Logger.Warn(ex, "Failed to migrate old module folder."); }
+
+    // 2. ACCOUNT INITIALIZATION
+    try
+    {
+        bool accountFound = false;
+
+        if (!string.IsNullOrWhiteSpace(_customApiKey.Value))
+        {
             try
             {
-                bool accountFound = false;
-
-                // ATTEMPT 1: Use Custom API Key (Instant if provided)
-                if (!string.IsNullOrWhiteSpace(_customApiKey.Value))
+                var connection = new Gw2Sharp.Connection(_customApiKey.Value);
+                using (var client = new Gw2Sharp.Gw2Client(connection))
                 {
-                    try
-                    {
-                        var connection = new Gw2Sharp.Connection(_customApiKey.Value);
-                        using (var client = new Gw2Sharp.Gw2Client(connection))
-                        {
-                            var acc = await client.WebApi.V2.Account.GetAsync();
-                            _localAccountName = acc.Name.Replace(".", "_"); 
-                            accountFound = true;
-                        }
-                    }
-                    catch { Logger.Warn("Custom API Key failed. Falling back to Blish HUD API."); }
-                }
-
-                // ATTEMPT 2: Wait for Blish HUD's Global API (Patient loop)
-                if (!accountFound)
-                {
-                    int retries = 10; 
-                    while (retries > 0)
-                    {
-                        if (Gw2ApiManager.HasPermissions(new[] { Gw2Sharp.WebApi.V2.Models.TokenPermission.Account }))
-                        {
-                            var acc = await Gw2ApiManager.Gw2ApiClient.V2.Account.GetAsync();
-                            _localAccountName = acc.Name.Replace(".", "_");
-                            accountFound = true;
-                            break; 
-                        }
-                        await Task.Delay(1000); 
-                        retries--;
-                    }
-                }
-
-                
-                if (accountFound)
-                {
-                    string oldPath = Path.Combine(dir, "personal_bests.json");
-                    string newPath = Path.Combine(dir, $"personal_bests_{_localAccountName}.json");
-
-                    if (File.Exists(oldPath) && !File.Exists(newPath))
-                    {
-                        try
-                        {
-                            File.Move(oldPath, newPath);
-                            Logger.Info($"Successfully migrated legacy personal_bests.json to {Path.GetFileName(newPath)}");
-                        }
-                        catch (Exception ex)
-                        {
-                            Logger.Warn(ex, "Failed to migrate legacy personal bests file.");
-                        }
-                    }
-                }
-                else
-                {
-                    Logger.Warn("Could not fetch Account Name after 10 seconds. Defaulting to standard file.");
+                    var acc = await client.WebApi.V2.Account.GetAsync();
+                    _localAccountName = acc.Name.Replace(".", "_"); 
+                    accountFound = true;
                 }
             }
-            catch (Exception ex) { Logger.Error(ex, "Fatal error during account initialization."); }
-
-            // Finally, load the file and refresh the UI
-            LoadPersonalBests();
-            RefreshFishLogUI();
+            catch { Logger.Warn("Custom API Key failed. Falling back to Blish HUD API."); }
         }
 
-        private void LoadPersonalBests()
+        if (!accountFound)
         {
-            string dir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Guild Wars 2", "addons", "blishhud", "gilledwars");
-            Directory.CreateDirectory(dir);
-
-            string fileName = _localAccountName == "UnknownAccount" ? "personal_bests.json" : $"personal_bests_{_localAccountName}.json";
-            string path = Path.Combine(dir, fileName);
-
-            _isCheater = false;
-
-            if (File.Exists(path))
+            int retries = 10; 
+            while (retries > 0)
             {
-                try
+                if (Gw2ApiManager.HasPermissions(new[] { Gw2Sharp.WebApi.V2.Models.TokenPermission.Account }))
                 {
-                    string json = File.ReadAllText(path);
-                    var loaded = JsonConvert.DeserializeObject<Dictionary<int, PersonalBestRecord>>(json) ?? new Dictionary<int, PersonalBestRecord>();
-                    _personalBests = new Dictionary<int, PersonalBestRecord>();
-
-                    string seed = GetGlobalSeed();
-
-                    foreach (var kvp in loaded)
-                    {
-                        int itemId = kvp.Key;
-                        var rec = kvp.Value;
-
-                        var dbFish = _allFishEntries.FirstOrDefault(x => x.Data.ItemId == itemId)?.Data;
-                        string fishName = dbFish != null ? dbFish.Name : "Unknown";
-
-                        // --- CLEANED LOADING LOGIC ---
-                        void ValidateRecord(SubRecord sub)
-                        {
-                            if (sub == null) return;
-                            string cName = sub.CharacterName ?? "Unknown";
-
-                            // Only check against the NEW rule (Seed + Character + Account)
-                            string expectedSig = GenerateSignature(sub.Weight, sub.Length, fishName, sub.IsSuperPb, seed + cName + _localAccountName);
-
-                            if (sub.Signature != expectedSig)
-                            {
-                                sub.IsCheater = true;
-                                _isCheater = true;
-                            }
-                        }
-
-                        ValidateRecord(rec.BestWeight);
-                        ValidateRecord(rec.BestLength);
-
-                        _personalBests.Add(itemId, rec);
-                        _caughtFishIds.Add(itemId);
-                    }
+                    var acc = await Gw2ApiManager.Gw2ApiClient.V2.Account.GetAsync();
+                    _localAccountName = acc.Name.Replace(".", "_");
+                    accountFound = true;
+                    break; 
                 }
-                catch (Exception ex)
-                {
-                    Logger.Error(ex, "Failed to load personal bests.");
-                }
+                await Task.Delay(1000); 
+                retries--;
             }
         }
-        private void SavePersonalBests()
+
+        // 3. FILE MIGRATION (Move generic .json to account-specific .json)
+        if (accountFound)
         {
-            string dir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Guild Wars 2", "addons", "blishhud", "gilledwarsanglers");
-            Directory.CreateDirectory(dir);
+            string oldFile = Path.Combine(ModuleDirectory, "personal_bests.json");
+            string newFile = Path.Combine(ModuleDirectory, $"personal_bests_{_localAccountName}.json");
 
-            string fileName = _localAccountName == "UnknownAccount" ? "personal_bests.json" : $"personal_bests_{_localAccountName}.json";
-            string path = Path.Combine(dir, fileName);
-
-            File.WriteAllText(path, JsonConvert.SerializeObject(_personalBests));
+            if (File.Exists(oldFile) && !File.Exists(newFile))
+            {
+                File.Move(oldFile, newFile);
+            }
         }
+    }
+    catch (Exception ex) { Logger.Error(ex, "Fatal error during account initialization."); }
 
+    LoadPersonalBests();
+    RefreshFishLogUI();
+}
+
+   private void LoadPersonalBests()
+{
+    string fileName = _localAccountName == "UnknownAccount" ? "personal_bests.json" : $"personal_bests_{_localAccountName}.json";
+    string path = Path.Combine(ModuleDirectory, fileName);
+
+    _isCheater = false;
+
+    if (File.Exists(path))
+    {
+        try
+        {
+            string json = File.ReadAllText(path);
+            var loaded = JsonConvert.DeserializeObject<Dictionary<int, PersonalBestRecord>>(json) ?? new Dictionary<int, PersonalBestRecord>();
+            _personalBests = new Dictionary<int, PersonalBestRecord>();
+
+            string seed = GetGlobalSeed();
+
+            foreach (var kvp in loaded)
+            {
+                int itemId = kvp.Key;
+                var rec = kvp.Value;
+                var dbFish = _allFishEntries.FirstOrDefault(x => x.Data.ItemId == itemId)?.Data;
+                string fishName = dbFish != null ? dbFish.Name : "Unknown";
+
+                void ValidateRecord(SubRecord sub)
+                {
+                    if (sub == null) return;
+                    string cName = sub.CharacterName ?? "Unknown";
+                    string expectedSig = GenerateSignature(sub.Weight, sub.Length, fishName, sub.IsSuperPb, seed + cName + _localAccountName);
+
+                    if (sub.Signature != expectedSig)
+                    {
+                        sub.IsCheater = true;
+                        _isCheater = true;
+                    }
+                }
+
+                ValidateRecord(rec.BestWeight);
+                ValidateRecord(rec.BestLength);
+
+                _personalBests.Add(itemId, rec);
+                _caughtFishIds.Add(itemId);
+            }
+        }
+        catch (Exception ex) { Logger.Error(ex, "Failed to load personal bests."); }
+    }
+}
+
+private void SavePersonalBests()
+{
+    string fileName = _localAccountName == "UnknownAccount" ? "personal_bests.json" : $"personal_bests_{_localAccountName}.json";
+    string path = Path.Combine(ModuleDirectory, fileName);
+
+    try {
+        File.WriteAllText(path, JsonConvert.SerializeObject(_personalBests));
+    } catch (Exception ex) {
+        Logger.Error(ex, "Failed to save personal bests.");
+    }
+}
         private async Task<Dictionary<int, int>> GetActiveCharacterBags()
         {
             if (string.IsNullOrWhiteSpace(_customApiKey.Value)) return null;
@@ -2094,3 +2085,4 @@ namespace Gorthax.Gilled
         public bool IsSuperPb { get; set; }
     }
 }
+
