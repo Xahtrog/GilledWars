@@ -17,7 +17,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Gorthax.Gilled
+namespace Gorthax.Gilledwars
 {
     [Export(typeof(Module))]
     public class GilledWars : Module
@@ -2085,4 +2085,5 @@ private void SavePersonalBests()
         public bool IsSuperPb { get; set; }
     }
 }
+
 
