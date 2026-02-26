@@ -1,7 +1,7 @@
 {
   "manifest_version": 1,
   "name": "Gilled Wars",
-  "version": "1.0.9",
+  "version": "1.1.0",
   "namespace": "Gorthax.GilledWars",
   "package": "GilledWars.dll",
   "description": "Tournament fishing logger with verification, cooler UI, and personal best tracking. You can add a webhook for a discord server channel and the end results will auto populate there. Usng a secure API connection to the Gilled Wars website, we generate a room code unique to you, that when done will delete itself so it cant be used again after the tournament ends. Your Discord webhook is never shared with anyone or exposed. It remains secure.",
