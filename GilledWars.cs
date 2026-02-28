@@ -87,6 +87,17 @@ namespace Gorthax.Gilledwars
         private bool _isCasualLoggingActive = false;
         private DateTime _lastSubmitTime = DateTime.MinValue;
         private string _localAccountName = "UnknownAccount";
+        private Panel _leaderboardWindow;
+        private Dropdown _lbSortDropdown;
+        private Dropdown _lbSpeciesDropdown;
+        private FlowPanel _lbListPanel;
+        private bool _isDraggingLeaderboard;
+        private Point _leaderboardDragOffset;
+        private List<LeaderboardEntry> _cachedLeaderboardData = null;
+        private DateTime _lastLeaderboardFetchTime = DateTime.MinValue;
+        private Panel _speciesSelectionWindow;
+        private StandardButton _speciesFilterBtn;
+        private string _currentlySelectedSpecies = "All Species";
 
         // --- Tournament Variables ---
         private bool _isTournamentActive = false;
@@ -149,6 +160,7 @@ namespace Gorthax.Gilledwars
             _isDraggingSummary = false;
             _isCompactDragging = false;
             _isDraggingTarget = false;
+            _isDraggingLeaderboard = false;
         }
         protected override void OnModuleLoaded(EventArgs e)
         {
@@ -171,11 +183,9 @@ namespace Gorthax.Gilledwars
                 if (_mainWindow != null) _mainWindow.Visible = !_mainWindow.Visible;
             };
 
+            // Clean Hotkey Registration
             ToggleHotkey.Value.Enabled = true;
-            ToggleHotkey.Value.Activated += (s, ev) => {
-                if (_mainWindow != null) _mainWindow.Visible = !_mainWindow.Visible;
-                ScreenNotification.ShowNotification("Gilled Wars UI Toggled!");
-            };
+            ToggleHotkey.Value.Activated += OnToggleHotkeyActivated;
 
             _cheaterLabel = new Label
             {
@@ -189,10 +199,250 @@ namespace Gorthax.Gilledwars
                 StrokeText = true,
                 ShowShadow = true
             };
+
             RefreshFishLogUI();
             base.OnModuleLoaded(e);
         }
 
+        private void ShowLeaderboardWindow()
+        {
+            if (_leaderboardWindow != null)
+            {
+                _leaderboardWindow.Visible = true;
+                return;
+            }
+
+            _leaderboardWindow = new Panel
+            {
+                Title = "Global Leaderboards",
+                Parent = GameService.Graphics.SpriteScreen,
+                Size = new Point(460, 600),
+                Location = new Point(400, 150),
+                ShowBorder = true,
+                BackgroundColor = new Color(0, 0, 0, 240),
+                ZIndex = 1000
+            };
+
+            var closeBtn = new StandardButton { Text = "Close", Parent = _leaderboardWindow, Location = new Point(340, 10), Width = 90 };
+            closeBtn.Click += (s, e) => {
+                _leaderboardWindow.Visible = false;
+                if (_speciesSelectionWindow != null) _speciesSelectionWindow.Visible = false;
+            };
+
+            _leaderboardWindow.LeftMouseButtonPressed += (s, ev) => {
+                if (GameService.Input.Mouse.ActiveControl == _leaderboardWindow)
+                {
+                    _isDraggingLeaderboard = true;
+                    _leaderboardDragOffset = new Point(GameService.Input.Mouse.PositionRaw.X - _leaderboardWindow.Location.X, GameService.Input.Mouse.PositionRaw.Y - _leaderboardWindow.Location.Y);
+                }
+            };
+
+            // 1. Sort Dropdown (Weight/Length)
+            new Label { Text = "Sort:", Parent = _leaderboardWindow, Location = new Point(10, 15), AutoSizeWidth = true };
+            _lbSortDropdown = new Dropdown() { Parent = _leaderboardWindow, Location = new Point(50, 10), Width = 90 };
+            _lbSortDropdown.Items.Add("Weight");
+            _lbSortDropdown.Items.Add("Length");
+            _lbSortDropdown.SelectedItem = "Weight";
+            _lbSortDropdown.ValueChanged += async (s, e) => { await RefreshLeaderboardData(); };
+
+            // 2. Species Selection Button (Replaces the broken dropdown)
+            new Label { Text = "Fish:", Parent = _leaderboardWindow, Location = new Point(150, 15), AutoSizeWidth = true };
+            _speciesFilterBtn = new StandardButton
+            {
+                Text = "All Species",
+                Parent = _leaderboardWindow,
+                Location = new Point(190, 10),
+                Width = 140,
+                BasicTooltipText = "Click to select a specific fish species to filter."
+            };
+            _speciesFilterBtn.Click += (s, e) => ShowSpeciesPicker();
+
+            // 3. The List Panel
+            _lbListPanel = new FlowPanel()
+            {
+                Parent = _leaderboardWindow,
+                Location = new Point(10, 50),
+                Size = new Point(440, 530),
+                CanScroll = true,
+                FlowDirection = ControlFlowDirection.SingleTopToBottom
+            };
+
+            _leaderboardWindow.Visible = true;
+            _ = RefreshLeaderboardData();
+        }
+
+        private async Task RefreshLeaderboardData()
+        {
+            if (_lbListPanel == null || _leaderboardWindow == null) return;
+
+            _lbListPanel.ClearChildren();
+            new Label { Text = "Loading data...", Parent = _lbListPanel, AutoSizeWidth = true, TextColor = Microsoft.Xna.Framework.Color.Yellow };
+
+            try
+            {
+                string sortMode = _lbSortDropdown.SelectedItem.ToLower();
+                string selectedSpecies = _currentlySelectedSpecies;
+
+                if (_cachedLeaderboardData == null || (DateTime.Now - _lastLeaderboardFetchTime).TotalMinutes >= 10)
+                {
+                    var response = await _httpClient.GetAsync($"{API_BASE_URL}/get-leaderboard");
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        string json = await response.Content.ReadAsStringAsync();
+                        _cachedLeaderboardData = JsonConvert.DeserializeObject<List<LeaderboardEntry>>(json);
+                        _lastLeaderboardFetchTime = DateTime.Now;
+                    }
+                    else
+                    {
+                        _lbListPanel.ClearChildren();
+                        new Label { Text = "Server Error: Waiting for website API...", Parent = _lbListPanel, TextColor = Microsoft.Xna.Framework.Color.Red, AutoSizeWidth = true };
+                        return;
+                    }
+                }
+
+                _lbListPanel.ClearChildren();
+                _leaderboardWindow.Title = selectedSpecies == "All Species" ? $"Global Top 10 ({sortMode.ToUpper()})" : $"Top 10 {selectedSpecies}";
+
+                if (_cachedLeaderboardData == null || _cachedLeaderboardData.Count == 0)
+                {
+                    new Label { Text = "No records found.", Parent = _lbListPanel, AutoSizeWidth = true };
+                    return;
+                }
+
+                var filteredRecords = _cachedLeaderboardData.Where(r => r.RecordType == sortMode);
+
+                if (selectedSpecies != "All Species")
+                {
+                    filteredRecords = filteredRecords.Where(r => r.FishName.Equals(selectedSpecies, StringComparison.OrdinalIgnoreCase));
+                }
+
+                var top10List = filteredRecords
+                    .OrderByDescending(r => sortMode == "weight" ? r.Weight : r.Length)
+                    .Take(10)
+                    .ToList();
+
+                if (top10List.Count == 0)
+                {
+                    new Label { Text = "No catches logged for this species yet.", Parent = _lbListPanel, AutoSizeWidth = true, TextColor = Microsoft.Xna.Framework.Color.LightGray };
+                    return;
+                }
+
+                // --- 1. HEADER ---
+                var headerRow = new Panel { Parent = _lbListPanel, Width = _lbListPanel.Width - 20, Height = 30 };
+                new Label { Text = "Rank", Parent = headerRow, Location = new Point(5, 5), Width = 45, TextColor = Microsoft.Xna.Framework.Color.Cyan, Font = GameService.Content.DefaultFont16 };
+                new Label { Text = "Angler", Parent = headerRow, Location = new Point(65, 5), Width = 160, TextColor = Microsoft.Xna.Framework.Color.Cyan, Font = GameService.Content.DefaultFont16 };
+                new Label { Text = "Species", Parent = headerRow, Location = new Point(235, 5), Width = 110, TextColor = Microsoft.Xna.Framework.Color.Cyan, Font = GameService.Content.DefaultFont16 };
+                new Label { Text = sortMode == "weight" ? "Weight" : "Length", Parent = headerRow, Location = new Point(355, 5), Width = 65, TextColor = Microsoft.Xna.Framework.Color.Cyan, Font = GameService.Content.DefaultFont16 };
+
+                new Image { Texture = ContentService.Textures.Pixel, Parent = _lbListPanel, Width = _lbListPanel.Width - 25, Height = 2, Tint = Microsoft.Xna.Framework.Color.Gray * 0.5f };
+
+                // --- 2. ROWS ---
+                int rank = 1;
+                var customSilver = new Microsoft.Xna.Framework.Color(190, 210, 230);
+                var customBronze = new Microsoft.Xna.Framework.Color(205, 127, 50);
+
+                foreach (var entry in top10List)
+                {
+                    var row = new Panel { Parent = _lbListPanel, Width = _lbListPanel.Width - 25, Height = 40 };
+                    Microsoft.Xna.Framework.Color rankColor = rank == 1 ? Microsoft.Xna.Framework.Color.Gold : (rank == 2 ? customSilver : (rank == 3 ? customBronze : Microsoft.Xna.Framework.Color.White));
+
+                    new Label { Text = $"#{rank}", Parent = row, Location = new Point(5, 10), Width = 45, TextColor = rankColor, Font = GameService.Content.DefaultFont18 };
+                    new Image { Texture = ContentService.Textures.Pixel, Parent = row, Location = new Point(55, 5), Width = 1, Height = 30, Tint = Microsoft.Xna.Framework.Color.White * 0.1f };
+
+                    string countryCode = (entry.Country ?? "xx").ToLower();
+                    int nameXPos = 65;
+                    if (countryCode != "xx")
+                    {
+                        try
+                        {
+                            var flagTex = ContentsManager.GetTexture($"flags/{countryCode}.png");
+                            new Image { Texture = flagTex, Parent = row, Location = new Point(65, 12), Size = new Point(24, 16) };
+                            nameXPos = 95;
+                        }
+                        catch { }
+                    }
+                    new Label { Text = entry.PlayerName, Parent = row, Location = new Point(nameXPos, 10), Width = 225 - nameXPos, TextColor = rankColor, Font = GameService.Content.DefaultFont14, AutoSizeWidth = false };
+
+                    new Image { Texture = ContentService.Textures.Pixel, Parent = row, Location = new Point(230, 5), Width = 1, Height = 30, Tint = Microsoft.Xna.Framework.Color.White * 0.1f };
+
+                    int speciesXPos = 235;
+                    var dbFish = _allFishEntries.FirstOrDefault(x => x.Data.Name.Equals(entry.FishName, StringComparison.OrdinalIgnoreCase))?.Data;
+                    if (dbFish != null)
+                    {
+                        string safeName = dbFish.Name.Replace(" ", "_").Replace("'", "").Replace("-", "");
+                        new Image { Texture = ContentsManager.GetTexture($"images/{safeName}.png"), Parent = row, Location = new Point(235, 4), Size = new Point(32, 32), BasicTooltipText = dbFish.Name };
+                        speciesXPos = 270;
+                    }
+                    new Label { Text = entry.FishName, Parent = row, Location = new Point(speciesXPos, 10), Width = 350 - speciesXPos, TextColor = Microsoft.Xna.Framework.Color.LightGray, WrapText = false, Font = GameService.Content.DefaultFont12 };
+
+                    new Image { Texture = ContentService.Textures.Pixel, Parent = row, Location = new Point(350, 5), Width = 1, Height = 30, Tint = Microsoft.Xna.Framework.Color.White * 0.1f };
+
+                    string statText = sortMode == "weight" ? $"{entry.Weight} lbs" : $"{entry.Length} in";
+                    new Label { Text = statText, Parent = row, Location = new Point(355, 10), Width = 75, TextColor = Microsoft.Xna.Framework.Color.White, Font = GameService.Content.DefaultFont14 };
+
+                    new Image { Texture = ContentService.Textures.Pixel, Parent = _lbListPanel, Width = _lbListPanel.Width - 25, Height = 1, Tint = Microsoft.Xna.Framework.Color.White * 0.15f };
+
+                    rank++;
+                }
+            } // This closes the 'try'
+            catch (Exception ex)
+            {
+                Logger.Error(ex, "Failed to load in-game leaderboard.");
+                _lbListPanel.ClearChildren();
+                new Label { Text = "Network Error!", Parent = _lbListPanel, TextColor = Microsoft.Xna.Framework.Color.Red, AutoSizeWidth = true };
+            }
+        }
+        private void ShowSpeciesPicker()
+        {
+            if (_speciesSelectionWindow != null)
+            {
+                _speciesSelectionWindow.Visible = !_speciesSelectionWindow.Visible;
+                return;
+            }
+
+            _speciesSelectionWindow = new Panel
+            {
+                Title = "Select Species",
+                Parent = GameService.Graphics.SpriteScreen,
+                Size = new Point(250, 400),
+                Location = new Point(_leaderboardWindow.Right + 5, _leaderboardWindow.Top), // Snaps to the right of the leaderboard
+                ShowBorder = true,
+                BackgroundColor = new Color(0, 0, 0, 220),
+                ZIndex = 1100
+            };
+
+            var scroll = new FlowPanel
+            {
+                Parent = _speciesSelectionWindow,
+                Size = new Point(230, 350),
+                Location = new Point(10, 10),
+                CanScroll = true,
+                FlowDirection = ControlFlowDirection.SingleTopToBottom
+            };
+
+            // Add "All Species" first
+            var allBtn = new StandardButton { Text = "All Species", Parent = scroll, Width = 200 };
+            allBtn.Click += async (s, e) => {
+                _currentlySelectedSpecies = "All Species";
+                _speciesFilterBtn.Text = "All Species";
+                _speciesSelectionWindow.Visible = false;
+                await RefreshLeaderboardData();
+            };
+
+            // Sort all fish from your DB and add buttons
+            var sortedFishNames = _allFishEntries.Select(x => x.Data.Name).Distinct().OrderBy(n => n);
+            foreach (var name in sortedFishNames)
+            {
+                var fBtn = new StandardButton { Text = name, Parent = scroll, Width = 200 };
+                fBtn.Click += async (s, e) => {
+                    _currentlySelectedSpecies = name;
+                    _speciesFilterBtn.Text = name;
+                    _speciesSelectionWindow.Visible = false;
+                    await RefreshLeaderboardData();
+                };
+            }
+        }
         private void CopyToClipboard(string text)
         {
             if (string.IsNullOrEmpty(text)) return;
@@ -373,6 +623,7 @@ namespace Gorthax.Gilledwars
             catch (Exception ex) { Logger.Error(ex, "JSON Load Fail"); }
         }
 
+   
         private async Task InitializeAccountAndLoadAsync()
         {
             string newDir = ModuleDirectory;   // Correct folder: .../storage/gilledwars
@@ -871,6 +1122,28 @@ namespace Gorthax.Gilledwars
             var casualBtn = new StandardButton { Text = "Casual Fishing", Parent = _mainWindow, Location = new Point(10, 10), Width = 150 };
             var tourneyBtn = new StandardButton { Text = "Tournament Mode", Parent = _mainWindow, Location = new Point(170, 10), Width = 150 };
 
+            // MOVED HERE: Safely at the top, next to Tournament Mode
+            var linkButton = new StandardButton { Text = "Open Leaderboards", Parent = _mainWindow, Location = new Point(330, 10), Width = 150, BasicTooltipText = "Opens gilledwars.com in your web browser." };
+            linkButton.Click += (s, ev) => {
+                System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo { FileName = "https://www.gilledwars.com", UseShellExecute = true });
+            };
+
+            // --- ADD THIS NEW BUTTON ---
+            var inGameLbBtn = new StandardButton
+            {
+                Text = "In-Game Top 10",
+                Parent = _mainWindow,
+                Location = new Point(490, 10), // Placed right next to the link button
+                Width = 115,
+                BasicTooltipText = "View the live top 10 without leaving the game!"
+            };
+
+            // MOVED INSIDE THE METHOD: This hooks up the click event!
+            inGameLbBtn.Click += (s, ev) => {
+                ScreenNotification.ShowNotification("Loading Top 10...");
+                ShowLeaderboardWindow();
+            };
+
             _casualPanel = new Panel { Parent = _mainWindow, Size = new Point(600, 500), Location = new Point(10, 50), Visible = true };
             _tournamentPanel = new Panel { Parent = _mainWindow, Size = new Point(600, 500), Location = new Point(10, 50), Visible = false };
 
@@ -1025,6 +1298,16 @@ namespace Gorthax.Gilledwars
                     BasicTooltipText = "Submit your valid DRF-tracked catches to the global leaderboards!"
                 };
 
+                new Label
+                {
+                    Text = "www.gilledwars.com",
+                    Parent = filterPanel,
+                    Location = new Point(330, 75),
+                    AutoSizeWidth = true,
+                    TextColor = Color.LightGray,
+                    Font = GameService.Content.DefaultFont14
+                };
+
                 pushLeaderboardBtn.Click += async (sender, ev) =>
                 {
                     if (_isCheater)
@@ -1151,7 +1434,7 @@ namespace Gorthax.Gilledwars
                     pushLeaderboardBtn.Enabled = true;
                     pushLeaderboardBtn.Text = "Push PBs to Leaderboard";
                 };
-                var scroll = new FlowPanel { Parent = parent, Location = new Point(10, 115), Size = new Point(580, parent.Height - 120), CanScroll = true, FlowDirection = ControlFlowDirection.SingleTopToBottom };
+                var scroll = new FlowPanel { Parent = parent, Location = new Point(10, 135), Size = new Point(580, parent.Height - 140), CanScroll = true, FlowDirection = ControlFlowDirection.SingleTopToBottom };
 
                 void ApplyFilters()
                 {
@@ -1258,10 +1541,28 @@ namespace Gorthax.Gilledwars
                             };
 
                             img.Click += (sender, ev) => {
+                                // 1. Generate the GW2 item chat code
                                 byte[] linkData = new byte[6]; linkData[0] = 0x02; linkData[1] = 0x01;
                                 BitConverter.GetBytes(fish.ItemId).CopyTo(linkData, 2);
-                                CopyToClipboard($"[&{Convert.ToBase64String(linkData)}]");
-                                ScreenNotification.ShowNotification($"Link copied: {fish.Name}");
+                                string chatCode = $"[&{Convert.ToBase64String(linkData)}]";
+
+                                string clipboardString = chatCode;
+
+                                // 2. Check if they have a PB, and append the brag text!
+                                if (_personalBests.TryGetValue(fish.ItemId, out var rec))
+                                {
+                                    double w = rec.BestWeight?.Weight ?? 0;
+                                    double l = rec.BestLength?.Length ?? 0;
+
+                                    if (w > 0 || l > 0)
+                                    {
+                                        clipboardString = $"{chatCode} My best weight is {w} lbs and my best length is {l} in!";
+                                    }
+                                }
+
+                                // 3. Copy to clipboard and notify
+                                CopyToClipboard(clipboardString);
+                                ScreenNotification.ShowNotification($"Copied {fish.Name} PB to clipboard!");
                             };
 
                             var entry = _allFishEntries.First(x => x.Data.ItemId == fish.ItemId);
@@ -1913,6 +2214,7 @@ namespace Gorthax.Gilledwars
             if (_isDraggingSummary && _currentSummaryWindow != null) _currentSummaryWindow.Location = new Point(GameService.Input.Mouse.PositionRaw.X - _summaryDragOffset.X, GameService.Input.Mouse.PositionRaw.Y - _summaryDragOffset.Y);
             if (_isCompactDragging && _casualCompactPanel != null) _casualCompactPanel.Location = new Point(GameService.Input.Mouse.PositionRaw.X - _compactDragOffset.X, GameService.Input.Mouse.PositionRaw.Y - _compactDragOffset.Y);
             if (_isDraggingTarget && _targetSelectionWindow != null) _targetSelectionWindow.Location = new Point(GameService.Input.Mouse.PositionRaw.X - _targetDragOffset.X, GameService.Input.Mouse.PositionRaw.Y - _targetDragOffset.Y);
+            if (_isDraggingLeaderboard && _leaderboardWindow != null) _leaderboardWindow.Location = new Point(GameService.Input.Mouse.PositionRaw.X - _leaderboardDragOffset.X, GameService.Input.Mouse.PositionRaw.Y - _leaderboardDragOffset.Y);
 
             if (_isCheater && _cheaterLabel != null)
             {
@@ -2044,10 +2346,28 @@ namespace Gorthax.Gilledwars
             }
         }
 
+
+        private void OnToggleHotkeyActivated(object sender, EventArgs e)
+        {
+            if (_mainWindow != null)
+            {
+                _mainWindow.Visible = !_mainWindow.Visible;
+            }
+            ScreenNotification.ShowNotification("Gilled Wars UI Toggled!");
+        }
+
         protected override void Unload()
         {
+            // Unhook global events and hotkeys
             GameService.Input.Mouse.LeftMouseButtonReleased -= OnMouseLeftButtonReleased;
+            if (ToggleHotkey != null)
+            {
+                ToggleHotkey.Value.Activated -= OnToggleHotkeyActivated;
+            }
+
             StopDrfListener();
+
+            // Dispose UI
             _cheaterLabel?.Dispose();
             _cornerIcon?.Dispose();
             _mainWindow?.Dispose();
@@ -2104,6 +2424,16 @@ namespace Gorthax.Gilledwars
         public FishData Data { get; set; }
         public Image Icon { get; set; }
         public FlowPanel CategoryPanel { get; set; }
+    }
+
+    public class LeaderboardEntry
+    {
+        [JsonProperty("player_name")] public string PlayerName { get; set; }
+        [JsonProperty("fish_name")] public string FishName { get; set; }
+        [JsonProperty("weight")] public double Weight { get; set; }
+        [JsonProperty("length")] public double Length { get; set; }
+        [JsonProperty("record_type")] public string RecordType { get; set; }
+        [JsonProperty("country")] public string Country { get; set; }
     }
 
     public class TournamentCatch
