@@ -98,6 +98,7 @@ namespace Gorthax.Gilledwars
         private Panel _speciesSelectionWindow;
         private StandardButton _speciesFilterBtn;
         private string _currentlySelectedSpecies = "All Species";
+        private TextBox _speciesSearchBox;
 
         // --- Tournament Variables ---
         private bool _isTournamentActive = false;
@@ -403,45 +404,72 @@ namespace Gorthax.Gilledwars
 
             _speciesSelectionWindow = new Panel
             {
-                Title = "Select Species",
+                Title = "Filter by Species",
                 Parent = GameService.Graphics.SpriteScreen,
-                Size = new Point(250, 400),
-                Location = new Point(_leaderboardWindow.Right + 5, _leaderboardWindow.Top), // Snaps to the right of the leaderboard
+                Size = new Point(280, 500),
+                Location = new Point(_leaderboardWindow.Right + 5, _leaderboardWindow.Top),
                 ShowBorder = true,
                 BackgroundColor = new Color(0, 0, 0, 220),
                 ZIndex = 1100
             };
 
+            // 1. ADD SEARCH BOX
+            _speciesSearchBox = new TextBox
+            {
+                Parent = _speciesSelectionWindow,
+                Location = new Point(10, 10),
+                Width = 240,
+                PlaceholderText = "Search species..."
+            };
+
             var scroll = new FlowPanel
             {
                 Parent = _speciesSelectionWindow,
-                Size = new Point(230, 350),
-                Location = new Point(10, 10),
+                Size = new Point(260, 420),
+                Location = new Point(10, 50), // Moved down to make room for search
                 CanScroll = true,
                 FlowDirection = ControlFlowDirection.SingleTopToBottom
             };
 
-            // Add "All Species" first
-            var allBtn = new StandardButton { Text = "All Species", Parent = scroll, Width = 200 };
-            allBtn.Click += async (s, e) => {
-                _currentlySelectedSpecies = "All Species";
-                _speciesFilterBtn.Text = "All Species";
-                _speciesSelectionWindow.Visible = false;
-                await RefreshLeaderboardData();
-            };
-
-            // Sort all fish from your DB and add buttons
-            var sortedFishNames = _allFishEntries.Select(x => x.Data.Name).Distinct().OrderBy(n => n);
-            foreach (var name in sortedFishNames)
+            // Helper to fill the list
+            void PopulateList(string filter = "")
             {
-                var fBtn = new StandardButton { Text = name, Parent = scroll, Width = 200 };
-                fBtn.Click += async (s, e) => {
-                    _currentlySelectedSpecies = name;
-                    _speciesFilterBtn.Text = name;
+                scroll.ClearChildren();
+
+                // Always show "All Species" at top
+                var allBtn = new StandardButton { Text = "All Species", Parent = scroll, Width = 230 };
+                allBtn.Click += async (s, e) => {
+                    _currentlySelectedSpecies = "All Species";
+                    _speciesFilterBtn.Text = "All Species";
                     _speciesSelectionWindow.Visible = false;
                     await RefreshLeaderboardData();
                 };
+
+                var filteredNames = _allFishEntries
+                    .Select(x => x.Data.Name)
+                    .Distinct()
+                    .Where(n => string.IsNullOrEmpty(filter) || n.ToLower().Contains(filter.ToLower()))
+                    .OrderBy(n => n);
+
+                foreach (var name in filteredNames)
+                {
+                    var fBtn = new StandardButton { Text = name, Parent = scroll, Width = 230 };
+                    fBtn.Click += async (s, e) => {
+                        _currentlySelectedSpecies = name;
+                        _speciesFilterBtn.Text = name.Length > 15 ? name.Substring(0, 12) + "..." : name;
+                        _speciesSelectionWindow.Visible = false;
+                        await RefreshLeaderboardData();
+                    };
+                }
             }
+
+            // Initial fill
+            PopulateList();
+
+            // 2. TRIGGER SEARCH ON TEXT CHANGE
+            _speciesSearchBox.TextChanged += (s, e) => {
+                PopulateList(_speciesSearchBox.Text);
+            };
         }
         private void CopyToClipboard(string text)
         {
