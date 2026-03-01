@@ -181,7 +181,20 @@ namespace Gorthax.Gilledwars
             };
 
             _cornerIcon.Click += (s, ev) => {
-                if (_mainWindow != null) _mainWindow.Visible = !_mainWindow.Visible;
+                // 1. If we are in Compact mode, expand back to the Main Window
+                if (_casualCompactPanel != null && _casualCompactPanel.Visible)
+                {
+                    _casualCompactPanel.Visible = false;
+                    if (_mainWindow != null) _mainWindow.Visible = true;
+                    ScreenNotification.ShowNotification("Expanding to Main View");
+                    return;
+                }
+
+                // 2. Otherwise, perform the standard toggle for the Main Window
+                if (_mainWindow != null)
+                {
+                    _mainWindow.Visible = !_mainWindow.Visible;
+                }
             };
 
             // Clean Hotkey Registration
@@ -224,10 +237,42 @@ namespace Gorthax.Gilledwars
                 ZIndex = 1000
             };
 
+            // --- CLOSE BUTTON ---
             var closeBtn = new StandardButton { Text = "Close", Parent = _leaderboardWindow, Location = new Point(340, 10), Width = 90 };
             closeBtn.Click += (s, e) => {
                 _leaderboardWindow.Visible = false;
                 if (_speciesSelectionWindow != null) _speciesSelectionWindow.Visible = false;
+            };
+
+            // --- REFRESH BUTTON WITH 5-MINUTE COOLDOWN ---
+            var refreshBtn = new StandardButton
+            {
+                Text = "Refresh",
+                Parent = _leaderboardWindow,
+                Location = new Point(340, 45), // Placed directly under the Close button
+                Width = 90,
+                BasicTooltipText = "Force fetch latest leaderboard data (5-minute cooldown)."
+            };
+
+            refreshBtn.Click += async (s, e) => {
+                double elapsedMinutes = (DateTime.Now - _lastLeaderboardFetchTime).TotalMinutes;
+
+                // Check if 5 minutes have passed since the last successful fetch
+                if (elapsedMinutes < 5 && _cachedLeaderboardData != null)
+                {
+                    int remaining = 5 - (int)elapsedMinutes;
+                    ScreenNotification.ShowNotification($"Refresh is on cooldown! Wait {remaining}m.", ScreenNotification.NotificationType.Warning);
+                    return;
+                }
+
+                refreshBtn.Enabled = false; // Disable while loading
+                _cachedLeaderboardData = null; // Clear existing cache
+                _lastLeaderboardFetchTime = DateTime.MinValue; // Force immediate refresh
+
+                await RefreshLeaderboardData();
+
+                refreshBtn.Enabled = true;
+                ScreenNotification.ShowNotification("Leaderboard Refreshed!");
             };
 
             _leaderboardWindow.LeftMouseButtonPressed += (s, ev) => {
@@ -246,7 +291,7 @@ namespace Gorthax.Gilledwars
             _lbSortDropdown.SelectedItem = "Weight";
             _lbSortDropdown.ValueChanged += async (s, e) => { await RefreshLeaderboardData(); };
 
-            // 2. Species Selection Button (Replaces the broken dropdown)
+            // 2. Species Selection Button
             new Label { Text = "Fish:", Parent = _leaderboardWindow, Location = new Point(150, 15), AutoSizeWidth = true };
             _speciesFilterBtn = new StandardButton
             {
@@ -262,8 +307,8 @@ namespace Gorthax.Gilledwars
             _lbListPanel = new FlowPanel()
             {
                 Parent = _leaderboardWindow,
-                Location = new Point(10, 50),
-                Size = new Point(440, 530),
+                Location = new Point(10, 85), // Shifted down to avoid overlapping the Refresh button
+                Size = new Point(440, 500),
                 CanScroll = true,
                 FlowDirection = ControlFlowDirection.SingleTopToBottom
             };
@@ -329,7 +374,7 @@ namespace Gorthax.Gilledwars
                     return;
                 }
 
-                // --- 1. HEADER ---
+                // --- HEADER ---
                 var headerRow = new Panel { Parent = _lbListPanel, Width = _lbListPanel.Width - 20, Height = 30 };
                 new Label { Text = "Rank", Parent = headerRow, Location = new Point(5, 5), Width = 45, TextColor = Microsoft.Xna.Framework.Color.Cyan, Font = GameService.Content.DefaultFont16 };
                 new Label { Text = "Angler", Parent = headerRow, Location = new Point(65, 5), Width = 160, TextColor = Microsoft.Xna.Framework.Color.Cyan, Font = GameService.Content.DefaultFont16 };
@@ -338,7 +383,7 @@ namespace Gorthax.Gilledwars
 
                 new Image { Texture = ContentService.Textures.Pixel, Parent = _lbListPanel, Width = _lbListPanel.Width - 25, Height = 2, Tint = Microsoft.Xna.Framework.Color.Gray * 0.5f };
 
-                // --- 2. ROWS ---
+                // --- ROWS ---
                 int rank = 1;
                 var customSilver = new Microsoft.Xna.Framework.Color(190, 210, 230);
                 var customBronze = new Microsoft.Xna.Framework.Color(205, 127, 50);
@@ -383,10 +428,9 @@ namespace Gorthax.Gilledwars
                     new Label { Text = statText, Parent = row, Location = new Point(355, 10), Width = 75, TextColor = Microsoft.Xna.Framework.Color.White, Font = GameService.Content.DefaultFont14 };
 
                     new Image { Texture = ContentService.Textures.Pixel, Parent = _lbListPanel, Width = _lbListPanel.Width - 25, Height = 1, Tint = Microsoft.Xna.Framework.Color.White * 0.15f };
-
                     rank++;
                 }
-            } // This closes the 'try'
+            }
             catch (Exception ex)
             {
                 Logger.Error(ex, "Failed to load in-game leaderboard.");
@@ -394,82 +438,31 @@ namespace Gorthax.Gilledwars
                 new Label { Text = "Network Error!", Parent = _lbListPanel, TextColor = Microsoft.Xna.Framework.Color.Red, AutoSizeWidth = true };
             }
         }
+
         private void ShowSpeciesPicker()
         {
-            if (_speciesSelectionWindow != null)
-            {
-                _speciesSelectionWindow.Visible = !_speciesSelectionWindow.Visible;
-                return;
-            }
+            if (_speciesSelectionWindow != null) { _speciesSelectionWindow.Visible = !_speciesSelectionWindow.Visible; return; }
 
-            _speciesSelectionWindow = new Panel
-            {
-                Title = "Filter by Species",
-                Parent = GameService.Graphics.SpriteScreen,
-                Size = new Point(280, 500),
-                Location = new Point(_leaderboardWindow.Right + 5, _leaderboardWindow.Top),
-                ShowBorder = true,
-                BackgroundColor = new Color(0, 0, 0, 220),
-                ZIndex = 1100
-            };
+            _speciesSelectionWindow = new Panel { Title = "Filter by Species", Parent = GameService.Graphics.SpriteScreen, Size = new Point(280, 500), Location = new Point(_leaderboardWindow.Right + 5, _leaderboardWindow.Top), ShowBorder = true, BackgroundColor = new Color(0, 0, 0, 220), ZIndex = 1100 };
+            _speciesSearchBox = new TextBox { Parent = _speciesSelectionWindow, Location = new Point(10, 10), Width = 240, PlaceholderText = "Search species..." };
 
-            // 1. ADD SEARCH BOX
-            _speciesSearchBox = new TextBox
-            {
-                Parent = _speciesSelectionWindow,
-                Location = new Point(10, 10),
-                Width = 240,
-                PlaceholderText = "Search species..."
-            };
+            var scroll = new FlowPanel { Parent = _speciesSelectionWindow, Size = new Point(260, 420), Location = new Point(10, 50), CanScroll = true, FlowDirection = ControlFlowDirection.SingleTopToBottom };
 
-            var scroll = new FlowPanel
-            {
-                Parent = _speciesSelectionWindow,
-                Size = new Point(260, 420),
-                Location = new Point(10, 50), // Moved down to make room for search
-                CanScroll = true,
-                FlowDirection = ControlFlowDirection.SingleTopToBottom
-            };
-
-            // Helper to fill the list
-            void PopulateList(string filter = "")
-            {
+            Action<string> populateList = (filter) => {
                 scroll.ClearChildren();
-
-                // Always show "All Species" at top
                 var allBtn = new StandardButton { Text = "All Species", Parent = scroll, Width = 230 };
-                allBtn.Click += async (s, e) => {
-                    _currentlySelectedSpecies = "All Species";
-                    _speciesFilterBtn.Text = "All Species";
-                    _speciesSelectionWindow.Visible = false;
-                    await RefreshLeaderboardData();
-                };
+                allBtn.Click += async (s, e) => { _currentlySelectedSpecies = "All Species"; _speciesFilterBtn.Text = "All Species"; _speciesSelectionWindow.Visible = false; await RefreshLeaderboardData(); };
 
-                var filteredNames = _allFishEntries
-                    .Select(x => x.Data.Name)
-                    .Distinct()
-                    .Where(n => string.IsNullOrEmpty(filter) || n.ToLower().Contains(filter.ToLower()))
-                    .OrderBy(n => n);
-
+                var filteredNames = _allFishEntries.Select(x => x.Data.Name).Distinct().Where(n => string.IsNullOrEmpty(filter) || n.ToLower().Contains(filter.ToLower())).OrderBy(n => n);
                 foreach (var name in filteredNames)
                 {
                     var fBtn = new StandardButton { Text = name, Parent = scroll, Width = 230 };
-                    fBtn.Click += async (s, e) => {
-                        _currentlySelectedSpecies = name;
-                        _speciesFilterBtn.Text = name.Length > 15 ? name.Substring(0, 12) + "..." : name;
-                        _speciesSelectionWindow.Visible = false;
-                        await RefreshLeaderboardData();
-                    };
+                    fBtn.Click += async (s, e) => { _currentlySelectedSpecies = name; _speciesFilterBtn.Text = name.Length > 15 ? name.Substring(0, 12) + "..." : name; _speciesSelectionWindow.Visible = false; await RefreshLeaderboardData(); };
                 }
-            }
-
-            // Initial fill
-            PopulateList();
-
-            // 2. TRIGGER SEARCH ON TEXT CHANGE
-            _speciesSearchBox.TextChanged += (s, e) => {
-                PopulateList(_speciesSearchBox.Text);
             };
+
+            populateList("");
+            _speciesSearchBox.TextChanged += (s, e) => populateList(_speciesSearchBox.Text);
         }
         private void CopyToClipboard(string text)
         {
@@ -651,22 +644,41 @@ namespace Gorthax.Gilledwars
             catch (Exception ex) { Logger.Error(ex, "JSON Load Fail"); }
         }
 
-   
+
         private async Task InitializeAccountAndLoadAsync()
         {
-            string newDir = ModuleDirectory;   // Correct folder: .../storage/gilledwars
-            Directory.CreateDirectory(newDir);
+            string newDir = ModuleDirectory; // Path: Documents\Guild Wars 2\addons\blishhud\storage\gilledwars
 
-            Logger.Info($"[GilledWars] Using correct folder: {newDir}");
+            try
+            {
+                // 1. FORCE DIRECTORY CREATION
+                // This ensures the folder exists, even if OneDrive is trying to 'offload' it.
+                Directory.CreateDirectory(newDir);
 
-            // Old folders we want to completely remove
-            // REMOVED "gilledwars" FROM THIS LIST SO IT DOES NOT NUKE ITSELF!
+                // 2. THE PERMISSIONS POKE (OneDrive Fix)
+                // We write a tiny file and delete it immediately to force Windows/OneDrive 
+                // to grant write access to this folder right now.
+                string testFile = Path.Combine(newDir, "permissions_check.txt");
+                File.WriteAllText(testFile, "Gilled Wars Write Test - Success");
+                File.Delete(testFile);
+
+                Logger.Info($"[GilledWars] Storage directory verified: {newDir}");
+            }
+            catch (Exception ex)
+            {
+                // If this fails, the user likely has a strict OneDrive 'Read-Only' lock.
+                Logger.Error(ex, "CRITICAL: Could not write to module storage. OneDrive or Permissions issue.");
+                ScreenNotification.ShowNotification("Gilled Wars: Folder Access Error! Check your Documents permissions.", ScreenNotification.NotificationType.Error);
+            }
+
+            // --- MIGRATION SECTION ---
+            // Old folders we want to completely remove (without nuking the new one!)
             string[] oldDirs = {
-                Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
-                             "Guild Wars 2", "addons", "blishhud", "gilledwarsanglers"),
-                Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
-                             "Guild Wars 2", "addons", "blishhud", "gilledwarsanglers_OLD")
-            };
+        Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+                     "Guild Wars 2", "addons", "blishhud", "gilledwarsanglers"),
+        Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+                     "Guild Wars 2", "addons", "blishhud", "gilledwarsanglers_OLD")
+    };
 
             bool didMigrate = false;
 
@@ -676,7 +688,6 @@ namespace Gorthax.Gilledwars
 
                 Logger.Info($"[GilledWars] Found old folder to clean: {oldDir}");
 
-                // 1. Migrate the important files
                 foreach (string oldFile in Directory.GetFiles(oldDir, "personal_bests*.json"))
                 {
                     string dest = Path.Combine(newDir, Path.GetFileName(oldFile));
@@ -693,10 +704,9 @@ namespace Gorthax.Gilledwars
                     }
                 }
 
-                // 2. Completely delete the old folder
                 try
                 {
-                    Directory.Delete(oldDir, true);   // recursive delete
+                    Directory.Delete(oldDir, true);
                     Logger.Info($"[GilledWars] ✅ Completely deleted old folder: {oldDir}");
                 }
                 catch (Exception ex)
@@ -707,11 +717,10 @@ namespace Gorthax.Gilledwars
 
             if (didMigrate)
             {
-                ScreenNotification.ShowNotification("Gilled Wars: Files migrated & old folder cleaned up!",
-                    ScreenNotification.NotificationType.Info);
+                ScreenNotification.ShowNotification("Gilled Wars: Files migrated & old folder cleaned up!", ScreenNotification.NotificationType.Info);
             }
 
-            // === Account detection ===
+            // --- ACCOUNT DETECTION ---
             bool accountFound = false;
 
             if (!string.IsNullOrWhiteSpace(_customApiKey.Value))
@@ -746,13 +755,13 @@ namespace Gorthax.Gilledwars
                 }
             }
 
-            if (!accountFound)
-                _localAccountName = "UnknownAccount";
+            if (!accountFound) _localAccountName = "UnknownAccount";
 
+            // Final load and UI refresh
             LoadPersonalBests();
             RefreshFishLogUI();
 
-            Logger.Info($"[GilledWars] Loaded with account: {_localAccountName}");
+            Logger.Info($"[GilledWars] Module fully initialized for: {_localAccountName}");
         }
 
         private void LoadPersonalBests()
@@ -1445,6 +1454,9 @@ namespace Gorthax.Gilledwars
                             foreach (var w in submittedWeights) w.IsSubmitted = true;
                             foreach (var l in submittedLengths) l.IsSubmitted = true;
                             SavePersonalBests();
+
+                            _cachedLeaderboardData = null; 
+                            _lastLeaderboardFetchTime = DateTime.MinValue; 
 
                             ScreenNotification.ShowNotification("PB submitted to the Leaderboards, good luck!");
                         }
