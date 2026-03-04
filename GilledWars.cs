@@ -3003,12 +3003,11 @@ namespace Gorthax.Gilledwars
         {
             try
             {
-                // 1. Gather all unsubmitted Personal Bests using KeyValuePair so we have the ItemId (the Key)
+                
                 var unsubmittedKvps = _personalBests.Where(kvp =>
-                    (kvp.Value.BestWeight != null && !kvp.Value.BestWeight.IsSubmitted) ||
-                    (kvp.Value.BestLength != null && !kvp.Value.BestLength.IsSubmitted)).ToList();
+                    (kvp.Value.BestWeight != null && !kvp.Value.BestWeight.IsSubmitted && !kvp.Value.BestWeight.IsCheater) ||
+                    (kvp.Value.BestLength != null && !kvp.Value.BestLength.IsSubmitted && !kvp.Value.BestLength.IsCheater)).ToList();
 
-                // 2. The exact check and message you asked for
                 if (!unsubmittedKvps.Any())
                 {
                     ScreenNotification.ShowNotification("No new submissions found.", ScreenNotification.NotificationType.Info);
@@ -3017,7 +3016,12 @@ namespace Gorthax.Gilledwars
 
                 ScreenNotification.ShowNotification($"Pushing {unsubmittedKvps.Count} unsubmitted PBs to Leaderboard...");
 
-                // 3. Process each unsubmitted record
+                
+                string accountName = _localAccountName;
+
+                var catchesToSubmit = new List<object>();
+                var recordsToMark = new List<SubRecord>(); 
+
                 foreach (var kvp in unsubmittedKvps)
                 {
                     int itemId = kvp.Key;
@@ -3026,68 +3030,79 @@ namespace Gorthax.Gilledwars
                     var fishInfo = _allFishEntries.FirstOrDefault(f => f.Data.ItemId == itemId)?.Data;
                     if (fishInfo == null) continue;
 
-                    string safeName = fishInfo.Name.Replace(" ", "_").Replace("'", "").Replace("-", "");
-                    string accountName = GameService.Gw2Mumble.PlayerCharacter.Name;
-                    if (string.IsNullOrEmpty(accountName)) accountName = "Unknown"; // Fallback if API fails
-
-                    // Weight Submission
+                    
                     if (record.BestWeight != null && !record.BestWeight.IsSubmitted && !record.BestWeight.IsCheater)
                     {
-                        var payload = new
+                        catchesToSubmit.Add(new
                         {
-                            player_name = accountName,
-                            fish_name = safeName,
+                            itemId = itemId,
+                            name = fishInfo.Name,
                             weight = record.BestWeight.Weight,
-                            length = 0.0,
-                            // Sending current time since your file doesn't track historical catch times
-                            catch_time = DateTime.UtcNow.ToString("o")
-                        };
-
-                        string jsonPayload = System.Text.Json.JsonSerializer.Serialize(payload);
-                        var content = new System.Net.Http.StringContent(jsonPayload, System.Text.Encoding.UTF8, "application/json");
-
-                        using (var client = new System.Net.Http.HttpClient())
-                        {
-                            var response = await client.PostAsync("https://gilledwars.com/api/submit_catch", content);
-                            if (response.IsSuccessStatusCode)
-                            {
-                                record.BestWeight.IsSubmitted = true;
-                            }
-                        }
+                            length = record.BestWeight.Length,
+                            characterName = record.BestWeight.CharacterName,
+                            accountName = accountName,
+                            isSuper = record.BestWeight.IsSuperPb,
+                            signature = record.BestWeight.Signature,
+                            type = "weight", 
+                            location = fishInfo.Location
+                        });
+                        recordsToMark.Add(record.BestWeight);
                     }
 
-                    // Length Submission
+                    
                     if (record.BestLength != null && !record.BestLength.IsSubmitted && !record.BestLength.IsCheater)
                     {
-                        var payload = new
+                        catchesToSubmit.Add(new
                         {
-                            player_name = accountName,
-                            fish_name = safeName,
-                            weight = 0.0,
+                            itemId = itemId,
+                            name = fishInfo.Name,
+                            weight = record.BestLength.Weight,
                             length = record.BestLength.Length,
-                            // Sending current time since your file doesn't track historical catch times
-                            catch_time = DateTime.UtcNow.ToString("o")
-                        };
-
-                        string jsonPayload = System.Text.Json.JsonSerializer.Serialize(payload);
-                        var content = new System.Net.Http.StringContent(jsonPayload, System.Text.Encoding.UTF8, "application/json");
-
-                        using (var client = new System.Net.Http.HttpClient())
-                        {
-                            var response = await client.PostAsync("https://gilledwars.com/api/submit_catch", content);
-                            if (response.IsSuccessStatusCode)
-                            {
-                                record.BestLength.IsSubmitted = true;
-                            }
-                        }
+                            characterName = record.BestLength.CharacterName,
+                            accountName = accountName,
+                            isSuper = record.BestLength.IsSuperPb,
+                            signature = record.BestLength.Signature,
+                            type = "length", 
+                            location = fishInfo.Location
+                        });
+                        recordsToMark.Add(record.BestLength);
                     }
                 }
 
-                // Save local state to flag them as submitted permanently
-                SavePersonalBests();
+                if (!catchesToSubmit.Any()) return;
 
-                // The exact success message you requested
-                ScreenNotification.ShowNotification("Fish submitted to leaderboards, Good Luck!", ScreenNotification.NotificationType.Warning);
+                
+                var payload = new { catches = catchesToSubmit };
+                string jsonPayload = JsonConvert.SerializeObject(payload);
+                var content = new StringContent(jsonPayload, Encoding.UTF8, "application/json");
+
+                
+                var response = await _httpClient.PostAsync($"{API_BASE_URL}/submit-leaderboard", content);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    string resultString = await response.Content.ReadAsStringAsync();
+                    var resultObj = JsonConvert.DeserializeObject<Dictionary<string, object>>(resultString);
+
+                    int acceptedCount = 0;
+                    if (resultObj != null && resultObj.ContainsKey("count"))
+                    {
+                        acceptedCount = Convert.ToInt32(resultObj["count"]);
+                    }
+
+                    
+                    foreach (var rec in recordsToMark)
+                    {
+                        rec.IsSubmitted = true;
+                    }
+                    SavePersonalBests();
+
+                    ScreenNotification.ShowNotification($"Analyzing Your Catches Now! Check The Leaderboard Shortly!", ScreenNotification.NotificationType.Warning);
+                }
+                else
+                {
+                    ScreenNotification.ShowNotification("Server rejected the submissions. I wonder why.", ScreenNotification.NotificationType.Error);
+                }
             }
             catch (Exception ex)
             {
@@ -3107,7 +3122,7 @@ namespace Gorthax.Gilledwars
 
         protected override void Unload()
         {
-            // Unhook global events and hotkeys
+           
             GameService.Input.Mouse.LeftMouseButtonReleased -= OnMouseLeftButtonReleased;
             if (ToggleHotkey != null)
             {
@@ -3116,7 +3131,7 @@ namespace Gorthax.Gilledwars
 
             StopDrfListener();
 
-            // Dispose UI
+            
             _cheaterLabel?.Dispose();
             _cornerIcon?.Dispose();
             _mainWindow?.Dispose();
