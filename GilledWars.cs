@@ -2654,37 +2654,53 @@ namespace Gorthax.Gilledwars
             // --- TIME OF DAY MATH LOGIC ---
             if (_timeOfDayPanel != null && _timeOfDayPanel.Visible)
             {
-                double cycleMinutes = DateTime.UtcNow.TimeOfDay.TotalMinutes % 120;
+                // A full Tyrian day cycle is exactly 2 real-world hours (120 minutes)
+                double currentCycle = DateTime.UtcNow.TimeOfDay.TotalMinutes % 120;
                 string phase = "";
                 double remainingMinutes = 0;
                 Blish_HUD.Content.AsyncTexture2D targetTex = null;
                 Color phaseColor = Color.White;
 
-                if (cycleMinutes < 5)
+                // REAL GW2 SERVER CYCLE OFFSETS (Starts at XX:25 of Even Hours):
+                // 0 to 25 = Night (ends at 25)
+                // 25 to 30 = Dawn (ends at 30)
+                // 30 to 100 = Day (ends at 100)
+                // 100 to 105 = Dusk (ends at 105)
+                // 105 to 120 = Night (ends at 120)
+
+                if (currentCycle >= 25 && currentCycle < 30)
                 {
                     phase = "Dawn";
-                    remainingMinutes = 5 - cycleMinutes;
+                    remainingMinutes = 30 - currentCycle;
                     targetTex = _texDawn;
                     phaseColor = new Color(255, 200, 150); // Peachy
                 }
-                else if (cycleMinutes < 75)
+                else if (currentCycle >= 30 && currentCycle < 100)
                 {
                     phase = "Day";
-                    remainingMinutes = 75 - cycleMinutes;
+                    remainingMinutes = 100 - currentCycle;
                     targetTex = _texDay;
                     phaseColor = Color.LightSkyBlue;
                 }
-                else if (cycleMinutes < 80)
+                else if (currentCycle >= 100 && currentCycle < 105)
                 {
                     phase = "Dusk";
-                    remainingMinutes = 80 - cycleMinutes;
+                    remainingMinutes = 105 - currentCycle;
                     targetTex = _texDusk;
-                    phaseColor = Color.Orange; // Brightened from OrangeRed
+                    phaseColor = Color.Orange;
                 }
                 else
                 {
                     phase = "Night";
-                    remainingMinutes = 120 - cycleMinutes;
+                    // If it's past 105, night runs until the 120 reset, AND continues for 25 mins into the next cycle
+                    if (currentCycle >= 105)
+                    {
+                        remainingMinutes = 145 - currentCycle;
+                    }
+                    else
+                    {
+                        remainingMinutes = 25 - currentCycle;
+                    }
                     targetTex = _texNight;
                     phaseColor = new Color(220, 190, 255); // Bright Icy Pastel Purple
                 }
@@ -2693,10 +2709,26 @@ namespace Gorthax.Gilledwars
                 _todLabel.Text = $"{phase}: {timeRemaining.Minutes:D2}:{timeRemaining.Seconds:D2}";
                 _todLabel.TextColor = phaseColor;
 
+                // Only swap the texture if the phase has actually changed
                 if (_currentTodPhase != phase)
                 {
-                    _todIcon.Texture = targetTex;
+                    bool isFirstLoad = string.IsNullOrEmpty(_currentTodPhase);
                     _currentTodPhase = phase;
+
+                    if (isFirstLoad)
+                    {
+                        // On first load, snap the texture instantly so it doesn't blink on startup
+                        _todIcon.Texture = targetTex;
+                    }
+                    else
+                    {
+                        // Smoothly fade out over 0.5s, swap the image, and fade back in over 0.5s!
+                        GameService.Animation.Tweener.Tween(_todIcon, new { Opacity = 0f }, 0.5f)
+                            .OnComplete(() => {
+                                _todIcon.Texture = targetTex;
+                                GameService.Animation.Tweener.Tween(_todIcon, new { Opacity = 1f }, 0.5f);
+                            });
+                    }
                 }
             }
 
