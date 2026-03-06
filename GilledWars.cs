@@ -25,7 +25,8 @@ namespace Gorthax.Gilledwars
         Hook,
         Hook2,
         Lure,
-        Net
+        Net,
+        FishMaster
     }
 
     public enum TodTextLayout
@@ -247,6 +248,7 @@ namespace Gorthax.Gilledwars
                 case CornerIconType.Hook2: return ContentsManager.GetTexture("images/hook2.png");
                 case CornerIconType.Lure: return ContentsManager.GetTexture("images/lure.png");
                 case CornerIconType.Net: return ContentsManager.GetTexture("images/net.png");
+                case CornerIconType.FishMaster: return ContentsManager.GetTexture("images/fishmaster.png");
                 default: return ContentsManager.GetTexture("images/hook.png");
             }
         }
