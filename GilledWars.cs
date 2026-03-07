@@ -205,6 +205,8 @@ namespace Gorthax.Gilledwars
         private int _lastBitingMapId = 0;
         private SettingEntry<int> _bitingLocX;
         private SettingEntry<int> _bitingLocY;
+        private bool _showAllBitingFish = false;
+        private StandardButton _bitingToggleBtn;
 
         // --- Tournament Variables ---
         private bool _isTournamentActive = false;
@@ -2224,16 +2226,32 @@ namespace Gorthax.Gilledwars
         {
             if (_bitingWidgetPanel == null)
             {
-                _bitingWidgetPanel = new Panel { Parent = GameService.Graphics.SpriteScreen, Size = new Point(320, 160), Location = new Point(_bitingLocX.Value, _bitingLocY.Value), BackgroundColor = new Color(13, 27, 42) * 0.9f, ShowBorder = true, Visible = false, ZIndex = 950 };
+                
+                _bitingWidgetPanel = new Panel { Parent = GameService.Graphics.SpriteScreen, Width = 320, HeightSizingMode = SizingMode.AutoSize, Location = new Point(_bitingLocX.Value, _bitingLocY.Value), BackgroundColor = new Color(13, 27, 42) * 0.9f, ShowBorder = true, Visible = false, ZIndex = 950 };
 
                 var hBar = new Panel { Parent = _bitingWidgetPanel, Size = new Point(320, 30), BackgroundColor = Color.Black * 0.6f, Location = new Point(0, 0) };
                 _bitingTitleLabel = new Label { Text = "Biting Now: Loading...", Parent = hBar, Location = new Point(10, 5), Font = GameService.Content.DefaultFont14, TextColor = new Color(201, 168, 76), AutoSizeWidth = true };
+
+                _bitingToggleBtn = new StandardButton { Text = "Missing", Parent = hBar, Location = new Point(hBar.Width - 95, 2), Width = 65, Height = 26, BasicTooltipText = "Toggle between Missing Fish and All Fish" };
+                _bitingToggleBtn.Click += async (s, e) => {
+                    _showAllBitingFish = !_showAllBitingFish;
+                    _bitingToggleBtn.Text = _showAllBitingFish ? "All" : "Missing";
+                    await RefreshBitingWidget();
+                };
+
                 var closeX = new Label { Text = "X", Parent = hBar, Location = new Point(hBar.Width - 25, 5), Font = GameService.Content.DefaultFont14, TextColor = Color.Red, AutoSizeWidth = true };
                 closeX.Click += (s, e) => _bitingWidgetPanel.Visible = false;
 
-                hBar.LeftMouseButtonPressed += (s, e) => { _isBitingDragging = true; _bitingDragOffset = new Point(GameService.Input.Mouse.Position.X - _bitingWidgetPanel.Location.X, GameService.Input.Mouse.Position.Y - _bitingWidgetPanel.Location.Y); };
+                hBar.LeftMouseButtonPressed += (s, e) => {
+                    if (GameService.Input.Mouse.ActiveControl == hBar || GameService.Input.Mouse.ActiveControl == _bitingTitleLabel)
+                    {
+                        _isBitingDragging = true;
+                        _bitingDragOffset = new Point(GameService.Input.Mouse.Position.X - _bitingWidgetPanel.Location.X, GameService.Input.Mouse.Position.Y - _bitingWidgetPanel.Location.Y);
+                    }
+                };
 
-                _bitingFishList = new FlowPanel { Parent = _bitingWidgetPanel, Location = new Point(10, 35), Size = new Point(300, 115), CanScroll = true, FlowDirection = ControlFlowDirection.LeftToRight, ControlPadding = new Vector2(5, 5) };
+                
+                _bitingFishList = new FlowPanel { Parent = _bitingWidgetPanel, Location = new Point(10, 35), Width = 300, HeightSizingMode = SizingMode.AutoSize, CanScroll = false, FlowDirection = ControlFlowDirection.LeftToRight, ControlPadding = new Vector2(5, 5) };
             }
 
             _bitingWidgetPanel.Visible = forceOpen || !_bitingWidgetPanel.Visible;
@@ -2283,7 +2301,10 @@ namespace Gorthax.Gilledwars
                         if (idProp == null) continue;
                         int fishItemId = (int)idProp.GetValue(achievementDef.Bits[i]);
 
-                        if (completedBits.Contains(i) || _caughtFishIds.Contains(fishItemId)) continue;
+                        bool isCaught = completedBits.Contains(i) || _caughtFishIds.Contains(fishItemId);
+
+                        
+                        if (!_showAllBitingFish && isCaught) continue;
 
                         var dbFish = _allFishEntries.FirstOrDefault(x => x.Data.ItemId == fishItemId)?.Data;
                         if (dbFish != null)
@@ -2300,19 +2321,25 @@ namespace Gorthax.Gilledwars
 
                             if (timeMatch)
                             {
-                                CreateFishIconWithBorder(dbFish, _bitingFishList, 38, true);
+                                
+                                CreateFishIconWithBorder(dbFish, _bitingFishList, 38, !isCaught);
                                 matchCount++;
                             }
                         }
                     }
                 }
-                if (matchCount == 0) new Label { Text = "You caught everything biting right now!", Parent = _bitingFishList, AutoSizeWidth = true, TextColor = Color.LimeGreen };
+
+                string emptyText = _showAllBitingFish ? "Nothing biting right now!" : "You caught everything biting right now!";
+                if (matchCount == 0) new Label { Text = emptyText, Parent = _bitingFishList, AutoSizeWidth = true, TextColor = Color.LimeGreen };
+
+                
+                new Panel { Parent = _bitingFishList, Width = 290, Height = 5 };
             }
             catch (Exception ex)
             {
                 Logger.Warn(ex, "Biting Widget failed on load. Retrying...");
 
-                
+                // --- SMART RETRY LOOP ---
                 _bitingTitleLabel.Text = "Biting Now: API Syncing...";
                 await Task.Delay(2000); 
                 _lastBitingMapId = 0;   
