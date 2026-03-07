@@ -2712,10 +2712,12 @@ namespace Gorthax.Gilledwars
 
             _activeExitBtn.Click += (s, e) => {
                 StopDrfListener();
+                StopCasualLogging(); // Guarantee a clean slate before auto-resuming
 
-               
+                // --- Fully kill all tournament background states! ---
                 _isTournamentActive = false;
                 _isTourneyWaitingRoom = false;
+                _isTourneyWrapUpActive = false;
                 _isSyncTimerActive = false;
 
                 _lastGeneratedCode = "";
@@ -2801,12 +2803,15 @@ namespace Gorthax.Gilledwars
 
         private async Task CompleteTournamentAsync(string title, string msg)
         {
+            
             _isTournamentActive = false;
+            _isTourneyWaitingRoom = false;
             _isTourneyWrapUpActive = false;
             if (_activeMeasureBtn != null) _activeMeasureBtn.Enabled = false;
             _isSyncTimerActive = false;
 
             StopDrfListener();
+            StopCasualLogging(); 
 
             var sortedCatches = _tourneyWinFactor == "Length"
                 ? _tourneyCatches.OrderByDescending(x => x.Length)
