@@ -2561,17 +2561,48 @@ namespace Gorthax.Gilledwars
                     if (response.IsSuccessStatusCode)
                     {
                         var tData = JsonConvert.DeserializeObject<Dictionary<string, object>>(resultString);
+
+                        // --- SAFETY NET: HARD STOP LOGGING ---
                         StopCasualLogging();
+                        StopDrfListener();
+
                         _tourneyRoomCode = roomCode; _tourneyModeUsed = tData["mode"].ToString(); _tourneyTargetItemId = Convert.ToInt32(tData["targetId"]); _tourneyWinFactor = tData["winFactor"].ToString();
                         int durMins = Convert.ToInt32(tData["durationMins"]); long startTimeMs = Convert.ToInt64(tData["startTime"]);
                         _tourneyStartTimeUtc = DateTimeOffset.FromUnixTimeMilliseconds(startTimeMs).UtcDateTime; _tourneyEndTimeUtc = _tourneyStartTimeUtc.AddMinutes(durMins);
                         _tourneyCatches.Clear();
+
                         string targetName = "All Species";
                         if (_tourneyTargetItemId != 0) { var targetFish = _allFishEntries.FirstOrDefault(x => x.Data.ItemId == _tourneyTargetItemId); if (targetFish != null) targetName = targetFish.Data.Name; }
                         if (_tourneyActivePanel != null) _tourneyActivePanel.Title = $"{targetName} ({_tourneyWinFactor})";
+
                         UpdateActiveTourneyCoolerUI();
-                        if (DateTime.UtcNow < _tourneyStartTimeUtc) { _isTourneyWaitingRoom = true; _waitingRoomLabel.Visible = true; _activeTimerLabel.Visible = false; _activeMeasureBtn.Enabled = false; ScreenNotification.ShowNotification("Entered Waiting Room..."); }
-                        else { _isTourneyWaitingRoom = false; _isTournamentActive = true; _waitingRoomLabel.Visible = false; _activeTimerLabel.Visible = true; StartTrackingMode(); ScreenNotification.ShowNotification("Tournament Fishing Started!"); }
+
+                        if (DateTime.UtcNow < _tourneyStartTimeUtc)
+                        {
+                            _isTourneyWaitingRoom = true;
+                            _waitingRoomLabel.Visible = true;
+                            _activeTimerLabel.Visible = false;
+                            _activeMeasureBtn.Enabled = false;
+
+                            // --- WAITING ROOM UI OVERHAUL ---
+                            if (_activeSyncTimerLabel != null)
+                            {
+                                _activeSyncTimerLabel.Text = _tourneyModeUsed == "DRF" ? "DRF Paused" : "API Paused";
+                                _activeSyncTimerLabel.TextColor = Color.LightGray;
+                                _activeSyncTimerLabel.Visible = true;
+                            }
+                            ScreenNotification.ShowNotification("DRF not logging. Will resume on tournament start!", ScreenNotification.NotificationType.Warning);
+                        }
+                        else
+                        {
+                            _isTourneyWaitingRoom = false;
+                            _isTournamentActive = true;
+                            _waitingRoomLabel.Visible = false;
+                            _activeTimerLabel.Visible = true;
+                            StartTrackingMode();
+                            ScreenNotification.ShowNotification("Tournament Fishing Started!");
+                        }
+
                         _mainWindow.Visible = false; _tourneyActivePanel.Visible = true;
                     }
                     else { ScreenNotification.ShowNotification("Room Not Found or Expired!", ScreenNotification.NotificationType.Error); }
@@ -2608,10 +2639,10 @@ namespace Gorthax.Gilledwars
             {
                 Title = "Active Tournament",
                 Parent = GameService.Graphics.SpriteScreen,
-                Size = new Point(320, 350), 
+                Size = new Point(320, 350),
                 Location = new Point(400, 300),
                 ShowBorder = true,
-                BackgroundColor = new Color(13, 27, 42), 
+                BackgroundColor = new Color(13, 27, 42),
                 Visible = false
             };
 
@@ -2622,7 +2653,7 @@ namespace Gorthax.Gilledwars
             _activeTimerLabel = new Label { Text = "00:00", Parent = _tourneyActivePanel, Location = new Point(10, 10), Font = GameService.Content.DefaultFont32, TextColor = Color.White, AutoSizeWidth = true, Visible = false };
             _waitingRoomLabel = new Label { Text = "Starting in...", Parent = _tourneyActivePanel, Location = new Point(10, 10), Font = GameService.Content.DefaultFont18, TextColor = Color.Yellow, AutoSizeWidth = true, Visible = false };
 
-            _activeSyncTimerLabel = new Label { Text = "05:00", Parent = _tourneyActivePanel, Location = new Point(100, 20), AutoSizeWidth = true, TextColor = Color.Yellow, Visible = false };
+            _activeSyncTimerLabel = new Label { Text = "05:00", Parent = _tourneyActivePanel, Location = new Point(190, 85), AutoSizeWidth = true, TextColor = Color.Yellow, Visible = false };
 
             _activeMeasureBtn = new StandardButton { Text = "Measure Fish", Parent = _tourneyActivePanel, Location = new Point(180, 10), Width = 110, Enabled = false };
 
@@ -2632,7 +2663,7 @@ namespace Gorthax.Gilledwars
             _activeExitBtn = new StandardButton { Text = "Exit Tourney", Parent = _tourneyActivePanel, Location = new Point(140, 50), Width = 120, Visible = false, BasicTooltipText = "Close and return to UI." };
 
             new Label { Text = "Top 5 Catches:", Parent = _tourneyActivePanel, Location = new Point(10, 85), AutoSizeWidth = true, TextColor = Color.Cyan };
-            _activeCoolerList = new FlowPanel { Parent = _tourneyActivePanel, Location = new Point(10, 110), Size = new Point(280, 150), FlowDirection = ControlFlowDirection.SingleTopToBottom };
+            _activeCoolerList = new FlowPanel { Parent = _tourneyActivePanel, Location = new Point(10, 110), Size = new Point(290, 230), CanScroll = true, FlowDirection = ControlFlowDirection.SingleTopToBottom };
 
             _activeMeasureBtn.Click += async (s, e) => {
                 _activeMeasureBtn.Enabled = false;
@@ -2653,6 +2684,13 @@ namespace Gorthax.Gilledwars
             };
 
             _activeExitBtn.Click += (s, e) => {
+                StopDrfListener();
+
+               
+                _isTournamentActive = false;
+                _isTourneyWaitingRoom = false;
+                _isSyncTimerActive = false;
+
                 _lastGeneratedCode = "";
                 _tourneyRoomCode = "";
                 _tourneyCatches.Clear();
@@ -2670,6 +2708,8 @@ namespace Gorthax.Gilledwars
 
                 _tourneyActivePanel.Visible = false;
                 _mainWindow.Visible = true;
+                ScreenNotification.ShowNotification("Exited Tournament: Casual Mode Re-Enabled!", ScreenNotification.NotificationType.Info);
+                _ = StartCasualLogging();
             };
         }
 
@@ -2813,7 +2853,12 @@ namespace Gorthax.Gilledwars
             if (_activeExitBtn != null) _activeExitBtn.Visible = true;
 
             ShowTournamentSummary(title, msg, Color.Cyan, _tourneyCatches, _tourneyWinFactor);
+
+            
+            ScreenNotification.ShowNotification("Tournament Complete: Casual Mode Re-Enabled!", ScreenNotification.NotificationType.Warning);
+            _ = StartCasualLogging();
         }
+
 
         private void UpdateActiveTourneyCoolerUI()
         {
@@ -2830,22 +2875,24 @@ namespace Gorthax.Gilledwars
                 if (c.IsSuperPb) catchColor = Color.Gold;
                 else if (c.IsNewPb) catchColor = Color.DeepSkyBlue;
 
-                
-                var row = new Panel { Parent = _activeCoolerList, Size = new Point(280, 42), BackgroundColor = Color.Black * 0.4f, ShowBorder = true };
+                // --- BOOM: 65 pixels tall. No more clipping! ---
+                var row = new Panel { Parent = _activeCoolerList, Size = new Point(270, 65), BackgroundColor = Color.Black * 0.4f, ShowBorder = true };
 
                 var dbFish = _allFishEntries.FirstOrDefault(x => x.Data.ItemId == c.Id)?.Data;
                 if (dbFish != null)
                 {
                     string safeName = dbFish.Name.Replace(" ", "_").Replace("'", "").Replace("-", "");
-                    new Image { Texture = ContentsManager.GetTexture($"images/{safeName}.png"), Parent = row, Location = new Point(5, 5), Size = new Point(32, 32) };
+                    // Centered icon in the new 65px row
+                    new Image { Texture = ContentsManager.GetTexture($"images/{safeName}.png"), Parent = row, Location = new Point(5, 16), Size = new Point(32, 32) };
                 }
 
                 string statText = _tourneyWinFactor == "Length"
                     ? $"{c.Length} in | {c.Weight} lbs"
                     : $"{c.Weight} lbs | {c.Length} in";
 
-                new Label { Text = $"{c.Name}", Parent = row, Location = new Point(45, 4), AutoSizeWidth = true, TextColor = catchColor, Font = GameService.Content.DefaultFont14 };
-                new Label { Text = statText, Parent = row, Location = new Point(45, 22), AutoSizeWidth = true, TextColor = Color.LightGray, Font = GameService.Content.DefaultFont12 };
+                
+                new Label { Text = $"{c.Name}", Parent = row, Location = new Point(45, 8), AutoSizeWidth = true, AutoSizeHeight = true, TextColor = catchColor, Font = GameService.Content.DefaultFont14 };
+                new Label { Text = statText, Parent = row, Location = new Point(45, 34), AutoSizeWidth = true, AutoSizeHeight = true, TextColor = Color.LightGray, Font = GameService.Content.DefaultFont12 };
             }
         }
 
@@ -2896,18 +2943,21 @@ namespace Gorthax.Gilledwars
 
                 foreach (var c in sorted.Take(5))
                 {
-                    var row = new Panel { Parent = list, Size = new Point(380, 48), BackgroundColor = darkTealPanel, ShowBorder = true };
+                    
+                    var row = new Panel { Parent = list, Size = new Point(380, 65), BackgroundColor = darkTealPanel, ShowBorder = true };
 
                     var dbFish = _allFishEntries.FirstOrDefault(x => x.Data.ItemId == c.Id)?.Data;
                     if (dbFish != null)
                     {
                         string safeName = dbFish.Name.Replace(" ", "_").Replace("'", "").Replace("-", "");
-                        new Image { Texture = ContentsManager.GetTexture($"images/{safeName}.png"), Parent = row, Location = new Point(5, 8), Size = new Point(32, 32) };
+                        new Image { Texture = ContentsManager.GetTexture($"images/{safeName}.png"), Parent = row, Location = new Point(5, 16), Size = new Point(32, 32) };
                     }
 
                     string statText = winFactor == "Length" ? $"{c.Length} in | {c.Weight} lbs" : $"{c.Weight} lbs | {c.Length} in";
-                    new Label { Text = $"[{c.Rarity}] {c.Name}", Parent = row, Location = new Point(45, 5), AutoSizeWidth = true, TextColor = Color.White, Font = GameService.Content.DefaultFont14 };
-                    new Label { Text = statText, Parent = row, Location = new Point(45, 25), AutoSizeWidth = true, TextColor = Color.LightGray, Font = GameService.Content.DefaultFont12 };
+
+                    
+                    new Label { Text = $"[{c.Rarity}] {c.Name}", Parent = row, Location = new Point(45, 8), AutoSizeWidth = true, AutoSizeHeight = true, TextColor = Color.White, Font = GameService.Content.DefaultFont14 };
+                    new Label { Text = statText, Parent = row, Location = new Point(45, 34), AutoSizeWidth = true, AutoSizeHeight = true, TextColor = Color.LightGray, Font = GameService.Content.DefaultFont12 };
                 }
             }
 
