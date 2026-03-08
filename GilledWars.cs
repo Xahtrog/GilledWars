@@ -413,10 +413,11 @@ namespace Gorthax.Gilledwars
         {
             try
             {
-                var prices = await Gw2ApiManager.Gw2ApiClient.V2.Commerce.Prices.ManyAsync(new[] { 96028, 96792, 95992 });
-                var ambergris = prices.FirstOrDefault(p => p.Id == 96028);
-                var fillet = prices.FirstOrDefault(p => p.Id == 96792);
-                var fineFillet = prices.FirstOrDefault(p => p.Id == 95992);
+                // 96347 = Ambergris, 95673 = Flawless Fillet, 96762 = Fine Fillet
+                var prices = await Gw2ApiManager.Gw2ApiClient.V2.Commerce.Prices.ManyAsync(new[] { 96347, 95673, 96762 });
+                var ambergris = prices.FirstOrDefault(p => p.Id == 96347);
+                var fillet = prices.FirstOrDefault(p => p.Id == 95673);
+                var fineFillet = prices.FirstOrDefault(p => p.Id == 96762);
 
                 if (ambergris != null) _ambergrisPriceCopper = ambergris.Sells.UnitPrice;
                 if (fillet != null) _filletPriceCopper = fillet.Sells.UnitPrice;
@@ -458,6 +459,9 @@ namespace Gorthax.Gilledwars
 
             var hBar = new Panel { Parent = _profitWidgetPanel, Size = new Point(220, 20), BackgroundColor = Color.Black * 0.6f, Location = new Point(0, 0) };
             new Label { Text = "Estimated Session Profit", Parent = hBar, Location = new Point(5, 0), Font = GameService.Content.DefaultFont14, TextColor = new Color(201, 168, 76), AutoSizeWidth = true };
+
+            // --- NEW: Added the sleek orange [WIP] tag to the far right of the header! ---
+            new Label { Text = "[WIP]", Parent = hBar, Location = new Point(180, 2), Font = GameService.Content.DefaultFont12, TextColor = Color.Orange, AutoSizeWidth = true };
 
             hBar.LeftMouseButtonPressed += (s, e) => {
                 _isProfitDragging = true;
@@ -1438,27 +1442,21 @@ namespace Gorthax.Gilledwars
                 }
                 else if (matchingFish.Rarity.Equals("Ascended", StringComparison.OrdinalIgnoreCase))
                 {
-                    _sessionTotalCopper += (int)(_ambergrisPriceCopper * 0.05);
+                    _sessionTotalCopper += _filletPriceCopper; // Directly uses the 14s Flawless Fillet price
                 }
                 else if (matchingFish.Rarity.Equals("Exotic", StringComparison.OrdinalIgnoreCase) || matchingFish.Rarity.Equals("Rare", StringComparison.OrdinalIgnoreCase))
                 {
-                    _sessionTotalCopper += _filletPriceCopper;
+                    // Takes 5 Fantastic/Flavorful fillets to craft 1 Flawless, so they are worth 20%
+                    _sessionTotalCopper += (int)(_filletPriceCopper * 0.20);
                 }
                 else if (matchingFish.Rarity.Equals("Masterwork", StringComparison.OrdinalIgnoreCase))
                 {
                     _sessionTotalCopper += _fineFilletPriceCopper * 2;
                 }
-                else if (matchingFish.Rarity.Equals("Fine", StringComparison.OrdinalIgnoreCase))
+                // --- FIX: Grouped Fine (Blue) and Basic (White) together! ---
+                else if (matchingFish.Rarity.Equals("Fine", StringComparison.OrdinalIgnoreCase) || matchingFish.Rarity.Equals("Basic", StringComparison.OrdinalIgnoreCase))
                 {
-                    _sessionTotalCopper += _fineFilletPriceCopper;
-                }
-                else if (matchingFish.Rarity.Equals("Basic", StringComparison.OrdinalIgnoreCase))
-                {
-                    _sessionTotalCopper += 10;
-                }
-                else if (matchingFish.Rarity.Equals("Junk", StringComparison.OrdinalIgnoreCase))
-                {
-                    _sessionTotalCopper += 1; // Literal trash vendor value so it still ticks!
+                    _sessionTotalCopper += _fineFilletPriceCopper; // Both give a Fine Fish Fillet!
                 }
             }
 
@@ -1482,34 +1480,7 @@ namespace Gorthax.Gilledwars
                 return;
             }
 
-
-            if (_isCasualLoggingActive && _sessionStartTime != DateTime.MinValue)
-            {
-                if (matchingFish.Rarity.Equals("Legendary", StringComparison.OrdinalIgnoreCase))
-                {
-                    _sessionTotalCopper += _ambergrisPriceCopper;
-                }
-                else if (matchingFish.Rarity.Equals("Ascended", StringComparison.OrdinalIgnoreCase))
-                {
-                    _sessionTotalCopper += (int)(_ambergrisPriceCopper * 0.05);
-                }
-                else if (matchingFish.Rarity.Equals("Exotic", StringComparison.OrdinalIgnoreCase) || matchingFish.Rarity.Equals("Rare", StringComparison.OrdinalIgnoreCase))
-                {
-                    _sessionTotalCopper += _filletPriceCopper;
-                }
-                else if (matchingFish.Rarity.Equals("Masterwork", StringComparison.OrdinalIgnoreCase))
-                {
-                    _sessionTotalCopper += _fineFilletPriceCopper * 2; // Greens give slightly more fillet equivalent
-                }
-                else if (matchingFish.Rarity.Equals("Fine", StringComparison.OrdinalIgnoreCase))
-                {
-                    _sessionTotalCopper += _fineFilletPriceCopper; // Blues give basic fillet
-                }
-                else if (matchingFish.Rarity.Equals("Basic", StringComparison.OrdinalIgnoreCase))
-                {
-                    _sessionTotalCopper += 10; // Basic white fish vendor for a tiny bit of raw copper
-                }
-            }
+            // (The duplicate math block that used to be right here is now completely gone!)
 
             double minW = matchingFish.MinW > 0 ? matchingFish.MinW : 1.0;
             double maxW = matchingFish.MaxW > minW ? matchingFish.MaxW : minW + 5.0;
