@@ -76,6 +76,7 @@ namespace Gorthax.Gilledwars
         private Blish_HUD.Content.AsyncTexture2D _texDawn;
         private Blish_HUD.Content.AsyncTexture2D _texDay;
         private Blish_HUD.Content.AsyncTexture2D _texDusk;
+        private Blish_HUD.Content.AsyncTexture2D _texCaughtCheck;
         private Blish_HUD.Content.AsyncTexture2D _texNight;
         private string _currentTodPhase = "";
 
@@ -351,7 +352,7 @@ namespace Gorthax.Gilledwars
                 Priority = 5
             };
 
-            
+
             _cornerIconChoice.SettingChanged += (s, ev) => {
                 _cornerIcon.Icon = GetCornerIconTexture(ev.NewValue);
             };
@@ -387,11 +388,12 @@ namespace Gorthax.Gilledwars
                 ShowShadow = true
             };
 
-            
+
             _texDawn = ContentsManager.GetTexture("images/tod_dawn.png");
             _texDay = ContentsManager.GetTexture("images/tod_day.png");
             _texDusk = ContentsManager.GetTexture("images/tod_dusk.png");
             _texNight = ContentsManager.GetTexture("images/tod_night.png");
+            _texCaughtCheck = ContentsManager.GetTexture("images/caught_check.png"); // --- NEW: Added caught checkmark ---
 
 
             BuildTimeOfDayWidget();
@@ -1798,13 +1800,13 @@ namespace Gorthax.Gilledwars
 
                     var mapInfo = await Gw2ApiManager.Gw2ApiClient.V2.Maps.GetAsync(currentMapId);
                     var achievementMap = new Dictionary<string, int> {
-                        { "Kryta", 6068 }, { "Shiverpeak", 6179 }, { "Ascalon", 6330 }, { "Maguuma Jungle", 6344 },
-                        { "Ruins of Orr", 6363 }, { "Crystal Desert", 6317 }, { "Elona", 6106 }, { "Ring of Fire", 6489 },
-                        { "Seitung Province", 6336 }, { "New Kaineng City", 6342 }, { "The Echovald Wilds", 6258 },
-                        { "Dragon's End", 6506 }, { "Skywatch Archipelago", 7114 }, { "Amnytas", 7114 },
-                        { "Inner Nayos", 7114 }, { "Lowland Shore", 8168 }, { "Janthir Syntri", 8168 },
-                        { "Mistburned Barrens", 8554 }
-                    };
+                { "Kryta", 6068 }, { "Shiverpeak", 6179 }, { "Ascalon", 6330 }, { "Maguuma Jungle", 6344 }, { "Ruins of Orr", 6363 },
+                { "Southsun Cove", 6106 }, { "Sandswept Isles", 6106 }, { "Elona", 6106 }, 
+                { "Crystal Desert", 6317 }, { "Ring of Fire", 6489 }, { "Seitung Province", 6336 }, { "New Kaineng City", 6342 },
+                { "The Echovald Wilds", 6258 }, { "Dragon's End", 6506 }, { "Skywatch Archipelago", 7114 }, { "Amnytas", 7114 },
+                { "Inner Nayos", 7114 }, { "Lowland Shore", 8168 }, { "Janthir Syntri", 8168 }, { "Mistburned Barrens", 8554 },
+                { "Castora", 8900 }
+            };
 
                     string target = achievementMap.Keys.FirstOrDefault(k => mapInfo.Name.Contains(k) || (mapInfo.RegionName != null && mapInfo.RegionName.Contains(k))) ?? "All Locations";
 
@@ -2055,8 +2057,8 @@ namespace Gorthax.Gilledwars
             {
                 Parent = parent,
                 Size = new Point(size, size),
-                BackgroundColor = isMissing ? rarityColor : rarityColor * 0.3f,
-                BasicTooltipText = tooltip 
+                BackgroundColor = rarityColor, 
+                BasicTooltipText = tooltip
             };
 
             string safeName = fish.Name.Replace(" ", "_").Replace("'", "").Replace("-", "");
@@ -2066,11 +2068,20 @@ namespace Gorthax.Gilledwars
                 Parent = borderPanel,
                 Size = new Point(size - 4, size - 4),
                 Location = new Point(2, 2),
-                Tint = isMissing ? Color.White : Color.White * 0.3f,
+                Tint = isMissing ? Color.White : Color.White * 0.4f, 
                 BasicTooltipText = tooltip
             };
 
-          
+            // --- NEW: Add a green checkmark to the corner if the fish is caught ---
+            new Image
+            {
+                Texture = _texCaughtCheck,
+                Parent = borderPanel,
+                Size = new Point(16, 16), 
+             
+                Location = new Point(size - 18, size - 18),
+                Visible = !isMissing 
+            };
 
             return borderPanel;
         }
@@ -2240,10 +2251,12 @@ namespace Gorthax.Gilledwars
             if (string.IsNullOrEmpty(currentPhase)) currentPhase = "Day";
 
             var achievementMap = new Dictionary<string, int> {
-                { "Kryta", 6068 }, { "Shiverpeak", 6179 }, { "Ascalon", 6330 }, { "Maguuma Jungle", 6344 }, { "Ruins of Orr", 6363 }, { "Crystal Desert", 6317 },
-                { "Elona", 6106 }, { "Ring of Fire", 6489 }, { "Seitung Province", 6336 }, { "New Kaineng City", 6342 }, { "The Echovald Wilds", 6258 },
-                { "Dragon's End", 6506 }, { "Skywatch Archipelago", 7114 }, { "Amnytas", 7114 }, { "Inner Nayos", 7114 }, { "Lowland Shore", 8168 },
-                { "Janthir Syntri", 8168 }, { "Mistburned Barrens", 8554 }
+                { "Kryta", 6068 }, { "Shiverpeak", 6179 }, { "Ascalon", 6330 }, { "Maguuma Jungle", 6344 }, { "Ruins of Orr", 6363 },
+                { "Southsun Cove", 6106 }, { "Sandswept Isles", 6106 }, { "Elona", 6106 }, // --- Desert Isles Fisher explicit mapping! ---
+                { "Crystal Desert", 6317 }, { "Ring of Fire", 6489 }, { "Seitung Province", 6336 }, { "New Kaineng City", 6342 },
+                { "The Echovald Wilds", 6258 }, { "Dragon's End", 6506 }, { "Skywatch Archipelago", 7114 }, { "Amnytas", 7114 },
+                { "Inner Nayos", 7114 }, { "Lowland Shore", 8168 }, { "Janthir Syntri", 8168 }, { "Mistburned Barrens", 8554 },
+                { "Castora", 8900 }
             };
 
             try
