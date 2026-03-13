@@ -1435,7 +1435,37 @@ namespace Gorthax.Gilledwars
             var matchingFish = _allFishEntries.FirstOrDefault(x => x.Data.ItemId == itemId)?.Data;
             if (matchingFish == null) return;
 
-            // --- PROFIT TRACKER MATH ---
+            // --- 1. ABORT CHECKS GO FIRST! ---
+            // If it's junk or treasure, show the notification and EXIT BEFORE DOING ANY MATH.
+            bool isJunk = (matchingFish.Rarity != null && matchingFish.Rarity.Equals("Junk", StringComparison.OrdinalIgnoreCase)) ||
+                          (matchingFish.Location != null && matchingFish.Location.Contains("Trash Collector"));
+
+            bool isTreasure = (matchingFish.Name != null && (
+                                  matchingFish.Name.IndexOf("Treasure", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                                  matchingFish.Name.IndexOf("Chest", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                                  matchingFish.Name.IndexOf("Box", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                                  matchingFish.Name.IndexOf("Runestone", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                                  matchingFish.Name.IndexOf("Cache", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                                  matchingFish.Name.IndexOf("Message", StringComparison.OrdinalIgnoreCase) >= 0
+                              )) ||
+                              (matchingFish.Location != null && matchingFish.Location.Contains("Treasure Collector"));
+
+            if (isJunk)
+            {
+                string msg = _junkMessages[_rnd.Next(_junkMessages.Length)];
+                ScreenNotification.ShowNotification(msg, ScreenNotification.NotificationType.Error);
+                return; // Kills the script entirely. No cooler, no profit, no fake weights.
+            }
+
+            if (isTreasure)
+            {
+                string msg = _treasureMessages[_rnd.Next(_treasureMessages.Length)];
+                ScreenNotification.ShowNotification(msg, ScreenNotification.NotificationType.Warning);
+                return; // Kills the script entirely. No cooler, no profit, no fake weights.
+            }
+
+
+            // --- 2. PROFIT TRACKER MATH GOES SECOND ---
             if (_isCasualLoggingActive && _sessionStartTime != DateTime.MinValue)
             {
                 if (matchingFish.Rarity.Equals("Legendary", StringComparison.OrdinalIgnoreCase))
@@ -1458,32 +1488,25 @@ namespace Gorthax.Gilledwars
                 // --- FIX: Grouped Fine (Blue) and Basic (White) together! ---
                 else if (matchingFish.Rarity.Equals("Fine", StringComparison.OrdinalIgnoreCase) || matchingFish.Rarity.Equals("Basic", StringComparison.OrdinalIgnoreCase))
                 {
-                    _sessionTotalCopper += _fineFilletPriceCopper; // Both give a Fine Fish Fillet!
+                    bool isCrustacean = matchingFish.Name.IndexOf("Crab", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                                        matchingFish.Name.IndexOf("Crawfish", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                                        matchingFish.Name.IndexOf("Prawn", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                                        matchingFish.Name.IndexOf("Shrimp", StringComparison.OrdinalIgnoreCase) >= 0;
+
+                    if (isCrustacean)
+                    {
+                        // Crustaceans only give meat, but we don't track meat price yet, so we just use fine fillet as a placeholder
+                        _sessionTotalCopper += _fineFilletPriceCopper;
+                    }
+                    else
+                    {
+                        _sessionTotalCopper += _fineFilletPriceCopper;
+                    }
                 }
             }
 
-            bool isJunk = (matchingFish.Rarity != null && matchingFish.Rarity.Equals("Junk", StringComparison.OrdinalIgnoreCase)) ||
-                          (matchingFish.Location != null && matchingFish.Location.Contains("Trash Collector"));
 
-            bool isTreasure = (matchingFish.Name != null && (matchingFish.Name.Contains("Treasure") || matchingFish.Name.Contains("Chest"))) ||
-                              (matchingFish.Location != null && matchingFish.Location.Contains("Treasure Collector"));
-
-            if (isJunk)
-            {
-                string msg = _junkMessages[_rnd.Next(_junkMessages.Length)];
-                ScreenNotification.ShowNotification(msg, ScreenNotification.NotificationType.Error);
-                return;
-            }
-
-            if (isTreasure)
-            {
-                string msg = _treasureMessages[_rnd.Next(_treasureMessages.Length)];
-                ScreenNotification.ShowNotification(msg, ScreenNotification.NotificationType.Warning);
-                return;
-            }
-
-            // (The duplicate math block that used to be right here is now completely gone!)
-
+            // --- 3. WEIGHT & LENGTH MATH ---
             double minW = matchingFish.MinW > 0 ? matchingFish.MinW : 1.0;
             double maxW = matchingFish.MaxW > minW ? matchingFish.MaxW : minW + 5.0;
             double minL = matchingFish.MinL > 0 ? matchingFish.MinL : 5.0;
@@ -1558,6 +1581,7 @@ namespace Gorthax.Gilledwars
                 _ = ShowAchievementResultsPanel(_openAnalyzerLocationName, _openAnalyzerAchievementId, 0, _openAnalyzerSubMax, _openAnalyzerSubDescription);
             }
 
+            // --- 4. UI UPDATES & NOTIFICATIONS ---
             string pbAlert = isSuperPb ? " - SUPER PB!" : (catchRecord.IsNewPb ? " - NEW PB!" : "");
             var notifType = isSuperPb ? ScreenNotification.NotificationType.Warning : ScreenNotification.NotificationType.Info;
 
@@ -1572,8 +1596,10 @@ namespace Gorthax.Gilledwars
                 else ScreenNotification.ShowNotification($"Caught: {catchRecord.Name} ({catchRecord.Weight} lbs, {catchRecord.Length} in){pbAlert}", notifType);
             }
             else ScreenNotification.ShowNotification($"Caught: {catchRecord.Name} ({catchRecord.Weight} lbs, {catchRecord.Length} in){pbAlert}", notifType);
-        }
 
+            // --- Force the Biting Widget to update the checkmarks immediately! ---
+            if (_bitingWidgetPanel != null && _bitingWidgetPanel.Visible) RefreshBitingWidget();
+        }
         private void BuildMainWindow()
         {
             // --- THEME COLORS ---
