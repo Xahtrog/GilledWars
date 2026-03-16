@@ -1,0 +1,3531 @@
+{
+"id": 6330, 
+"name": "Ascalonian Fisher", 
+"description": "<c=@flavor>The charm of fishing is in pursuing something elusive, though attainable. It is a simple yet profound practice of hope.</c>", 
+"requirement": "Collect  different fish from the waterways of Ascalon.", 
+"locked_text": "", 
+"type": "ItemSet", 
+"flags": [
+"IgnoreNearlyComplete", "Pvp", "RepairOnLogin", "Permanent"
+], 
+"bits": [
+{
+"type": "Item", 
+"id": 96297, 
+"text": "Found in the waters of Ascalon.<br>Fishing Hole: None, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97885, 
+"text": "Found in the waters of Ascalon.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 97074, 
+"text": "Found in the waters of Ascalon.<br>Fishing Hole: Lake Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 95875, 
+"text": "Found in the waters of Ascalon.<br>Fishing Hole: Lake Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96985, 
+"text": "Found in the waters of Ascalon.<br>Fishing Hole: Lake Fish<br>Favored Bait: Fish Eggs<br>Time of Day: Dusk/Dawn"
+}, {
+"type": "Item", 
+"id": 96105, 
+"text": "Found in the waters of Ascalon.<br>Fishing Hole: Lake Fish<br>Favored Bait: Freshwater Minnows<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 95609, 
+"text": "Found in the waters of Ascalon.<br>Fishing Hole: Lake Fish<br>Favored Bait: Freshwater Minnows<br>Time of Day: Dusk/Dawn"
+}, {
+"type": "Item", 
+"id": 97584, 
+"text": "Found in the waters of Ascalon.<br>Fishing Hole: None, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96176, 
+"text": "Found in the waters of Ascalon.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Fish Eggs<br>Time of Day: Dusk/Dawn"
+}, {
+"type": "Item", 
+"id": 96942, 
+"text": "Found in the waters of Ascalon.<br>Fishing Hole: Lake Fish<br>Favored Bait: Any<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 96226, 
+"text": "Found in the waters of Ascalon.<br>Fishing Hole: Lake Fish<br>Favored Bait: Fish Eggs<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 96672, 
+"text": "Found in the waters of Ascalon.<br>Fishing Hole: Lake Fish<br>Favored Bait: Any<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 95843, 
+"text": "Found in the waters of Ascalon.<br>Fishing Hole: Lake Fish<br>Favored Bait: Freshwater Minnows<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 97004, 
+"text": "Found in the waters of Ascalon.<br>Fishing Hole: Lake Fish<br>Favored Bait: Freshwater Minnows<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 96532, 
+"text": "Found in the waters of Ascalon.<br>Fishing Hole: None, Open Water<br>Favored Bait: Fish Eggs<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97121, 
+"text": "Found in the waters of Ascalon.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96931, 
+"text": "Found in the waters of Ascalon.<br>Fishing Hole: Noxious Water Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97887, 
+"text": "Found in the waters of Ascalon.<br>Fishing Hole: Noxious Water Fish<br>Favored Bait: Any<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 97479, 
+"text": "Found in the waters of Ascalon.<br>Fishing Hole: Noxious Water Fish<br>Favored Bait: Lightning Bugs<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97163, 
+"text": "Found in the waters of Ascalon.<br>Fishing Hole: Noxious Water Fish<br>Favored Bait: Lightning Bugs<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96081, 
+"text": "Found in the waters of Ascalon.<br>Fishing Hole: Noxious Water Fish<br>Favored Bait: Lightning Bugs<br>Time of Day: Nighttime"
+}
+], 
+"tiers": [
+{
+"count": 1, 
+"points": 2
+}, {
+"count": 7, 
+"points": 3
+}, {
+"count": 14, 
+"points": 4
+}, {
+"count": 21, 
+"points": 5
+}
+], 
+"rewards": [
+{
+"type": "Item", 
+"id": 96347, 
+"count": 6
+}
+]
+}
+
+{
+"id": 6317, 
+"name": "Desert Fisher", 
+"description": "<c=@flavor>The charm of fishing is in pursuing something elusive, though attainable. It is a simple yet profound practice of hope.</c>", 
+"requirement": "Collect  different fish from the waterways of the Crystal Desert and the Elonian mainland.", 
+"locked_text": "", 
+"type": "ItemSet", 
+"flags": [
+"IgnoreNearlyComplete", "Pvp", "RepairOnLogin", "Permanent"
+], 
+"bits": [
+{
+"type": "Item", 
+"id": 96445, 
+"text": "Found in the waters of the Elon River,<br>the Crystal Desert, and the Elonian mainland.<br>Fishing Hole: None, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96367, 
+"text": "Found in the waters of the Elon River,<br>the Crystal Desert, and the Elonian mainland.<br>Fishing Hole: Desert Fish, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97744, 
+"text": "Found in the waters of the Elon River,<br>the Crystal Desert, and the Elonian mainland.<br>Fishing Hole: Desert Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97848, 
+"text": "Found in the waters of the Elon River,<br>the Crystal Desert, and the Elonian mainland.<br>Fishing Hole: Desert Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96769, 
+"text": "Found in the waters of the Elon River,<br>the Crystal Desert, and the Elonian mainland.<br>Fishing Hole: Desert Fish<br>Favored Bait: Any<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 96724, 
+"text": "Found in the waters of the Elon River,<br>the Crystal Desert, and the Elonian mainland.<br>Fishing Hole: Desert Fish<br>Favored Bait: Scorpions<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97466, 
+"text": "Found in the waters of the Elon River,<br>the Crystal Desert, and the Elonian mainland.<br>Fishing Hole: Desert Fish<br>Favored Bait: Any<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 96349, 
+"text": "Found in the waters of the Elon River,<br>the Crystal Desert, and the Elonian mainland.<br>Fishing Hole: None, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96308, 
+"text": "Found in the waters of the Elon River,<br>the Crystal Desert, and the Elonian mainland.<br>Fishing Hole: Desert Fish, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96676, 
+"text": "Found in the waters of the Elon River,<br>the Crystal Desert, and the Elonian mainland.<br>Fishing Hole: Desert Fish<br>Favored Bait: Any<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 97109, 
+"text": "Found in the waters of the Elon River,<br>the Crystal Desert, and the Elonian mainland.<br>Fishing Hole: Desert Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96428, 
+"text": "Found in the waters of the Elon River,<br>the Crystal Desert, and the Elonian mainland.<br>Fishing Hole: Desert Fish<br>Favored Bait: Any<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 96094, 
+"text": "Found in the waters of the Elon River,<br>the Crystal Desert, and the Elonian mainland.<br>Fishing Hole: Desert Fish<br>Favored Bait: Scorpions<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 97763, 
+"text": "Found in the waters of the Elon River,<br>the Crystal Desert, and the Elonian mainland.<br>Fishing Hole: Desert Fish<br>Favored Bait: Mackerel<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96854, 
+"text": "Found in the waters of the Elon River,<br>the Crystal Desert, and the Elonian mainland.<br>Fishing Hole: None, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97755, 
+"text": "Found in the waters of the Elon River,<br>the Crystal Desert, and the Elonian mainland.<br>Fishing Hole: Desert Fish, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 95859, 
+"text": "Found in the waters of the Elon River,<br>the Crystal Desert, and the Elonian mainland.<br>Fishing Hole: Desert Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 95608, 
+"text": "Found in the waters of the Elon River,<br>the Crystal Desert, and the Elonian mainland.<br>Fishing Hole: Desert Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97187, 
+"text": "Found in the waters of the Elon River,<br>the Crystal Desert, and the Elonian mainland.<br>Fishing Hole: Desert Fish<br>Favored Bait: Any<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 97145, 
+"text": "Found in the waters of the Elon River,<br>the Crystal Desert, and the Elonian mainland.<br>Fishing Hole: Desert Fish<br>Favored Bait: Mackerel<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 95929, 
+"text": "Found in the waters of the Elon River,<br>the Crystal Desert, and the Elonian mainland.<br>Fishing Hole: Desert Fish<br>Favored Bait: Scorpions<br>Time of Day: Any"
+}
+], 
+"tiers": [
+{
+"count": 1, 
+"points": 2
+}, {
+"count": 7, 
+"points": 3
+}, {
+"count": 14, 
+"points": 4
+}, {
+"count": 21, 
+"points": 5
+}
+], 
+"rewards": [
+{
+"type": "Item", 
+"id": 96347, 
+"count": 6
+}
+]
+}
+
+{
+"id": 6106, 
+"name": "Desert Isles Fisher", 
+"description": "<c=@flavor>The charm of fishing is in pursuing something elusive, though attainable. It is a simple yet profound practice of hope.</c>", 
+"requirement": "Collect  different fish from the isles off the coast of Elona.", 
+"locked_text": "", 
+"type": "ItemSet", 
+"flags": [
+"IgnoreNearlyComplete", "Pvp", "RepairOnLogin", "Permanent"
+], 
+"bits": [
+{
+"type": "Item", 
+"id": 97369, 
+"text": "Found in the waters of the isles of Elona.<br>Fishing Hole: None, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96085, 
+"text": "Found in the waters of the isles of Elona.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 95794, 
+"text": "Found in the waters of the isles of Elona.<br>Fishing Hole: Shore Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97756, 
+"text": "Found in the waters of the isles of Elona.<br>Fishing Hole: Shore Fish<br>Favored Bait: Any<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 97746, 
+"text": "Found in the waters of the isles of Elona.<br>Fishing Hole: Shore Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96513, 
+"text": "Found in the waters of the isles of Elona.<br>Fishing Hole: Shore Fish<br>Favored Bait: Mackerel<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 96225, 
+"text": "Found in the waters of the isles of Elona.<br>Fishing Hole: Shore Fish<br>Favored Bait: Fish Eggs<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 95890, 
+"text": "Found in the waters of the isles of Elona.<br>Fishing Hole: None, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96397, 
+"text": "Found in the waters of the isles of Elona.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97844, 
+"text": "Found in the waters of the isles of Elona.<br>Fishing Hole: Offshore Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97001, 
+"text": "Found in the waters off the isles of Elona.<br>Fishing Hole: Offshore Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97443, 
+"text": "Found in the waters of the isles of Elona.<br>Fishing Hole: Offshore Fish<br>Favored Bait: Any<br>Time of Day: Dusk/Dawn"
+}, {
+"type": "Item", 
+"id": 95849, 
+"text": "Found in the waters of the isles of Elona.<br>Fishing Hole: Offshore Fish<br>Favored Bait: Mackerel<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 97489, 
+"text": "Found in the waters of the isles of Elona.<br>Fishing Hole: Offshore Fish<br>Favored Bait: Fish Eggs<br>Time of Day: Nighttime"
+}
+], 
+"tiers": [
+{
+"count": 1, 
+"points": 2
+}, {
+"count": 7, 
+"points": 3
+}, {
+"count": 14, 
+"points": 4
+}
+], 
+"rewards": [
+{
+"type": "Item", 
+"id": 96347, 
+"count": 4
+}
+]
+}
+
+{
+"id": 6506, 
+"name": "Dragon's End Fisher", 
+"description": "<c=@flavor>The charm of fishing is in pursuing something elusive, though attainable. It is a simple yet profound practice of hope.</c>", 
+"requirement": "Collect  different fish from the waterways around Dragon's End.", 
+"locked_text": "", 
+"type": "ItemSet", 
+"flags": [
+"IgnoreNearlyComplete", "Pvp", "RepairOnLogin", "Permanent"
+], 
+"bits": [
+{
+"type": "Item", 
+"id": 97240, 
+"text": "Found in the waters of Dragon's End.<br>Fishing Hole: None, Open Water<br>Favored Bait: Any<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 97814, 
+"text": "Found in the waters of Dragon's End.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97853, 
+"text": "Found in the waters of Dragon's End.<br>Fishing Hole: Quarry Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97183, 
+"text": "Found in the waters of Dragon's End.<br>Fishing Hole: Quarry Fish<br>Favored Bait: Any<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 96443, 
+"text": "Found in the waters of Dragon's End.<br>Fishing Hole: Quarry Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96181, 
+"text": "Found in the waters of Dragon's End.<br>Fishing Hole: Quarry Fish<br>Favored Bait: Nightcrawlers<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 96817, 
+"text": "Found in the waters of Dragon's End.<br>Fishing Hole: Quarry Fish<br>Favored Bait: Shrimplings<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 96913, 
+"text": "Found in the waters of Dragon's End.<br>Fishing Hole: None, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 95729, 
+"text": "Found in the waters of Dragon's End.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 95670, 
+"text": "Found in the waters of Dragon's End.<br>Fishing Hole: Cavern Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96076, 
+"text": "Found in the waters of Dragon's End.<br>Fishing Hole: Cavern Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97794, 
+"text": "Found in the waters of Dragon's End.<br>Fishing Hole: Cavern Fish<br>Favored Bait: Any<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 95699, 
+"text": "Found in the waters of Dragon's End.<br>Fishing Hole: Cavern Fish<br>Favored Bait: Nightcrawlers<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 95632, 
+"text": "Found in the waters of Dragon's End.<br>Fishing Hole: Cavern Fish<br>Favored Bait: Shrimplings<br>Time of Day: Any"
+}
+], 
+"tiers": [
+{
+"count": 1, 
+"points": 2
+}, {
+"count": 7, 
+"points": 3
+}, {
+"count": 14, 
+"points": 4
+}
+], 
+"rewards": [
+{
+"type": "Item", 
+"id": 96347, 
+"count": 4
+}
+]
+}
+
+
+"id": 6258, 
+"name": "Echovald Wilds Fisher", 
+"description": "<c=@flavor>The charm of fishing is in pursuing something elusive, though attainable. It is a simple yet profound practice of hope.</c>", 
+"requirement": "Collect  different fish from the waterways around Echovald Wilds.", 
+"locked_text": "", 
+"type": "ItemSet", 
+"flags": [
+"IgnoreNearlyComplete", "Pvp", "RepairOnLogin", "Permanent"
+], 
+"bits": [
+{
+"type": "Item", 
+"id": 96807, 
+"text": "Found in the waters of the Echovald Wilds.<br>Fishing Hole: None, Open Water<br>Favored Bait: Any<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 96195, 
+"text": "Found in the waters of the Echovald Wilds.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96017, 
+"text": "Found in the waters of the Echovald Wilds.<br>Fishing Hole: Lake Fish<br>Favored Bait: Any<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 96834, 
+"text": "Found in the waters of the Echovald Wilds.<br>Fishing Hole: Lake Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 95861, 
+"text": "Found in the waters of the Echovald Wilds.<br>Fishing Hole: Lake Fish<br>Favored Bait: Any<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 95584, 
+"text": "Found in the waters of the Echovald Wilds.<br>Fishing Hole: Lake Fish<br>Favored Bait: Freshwater Minnows<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 97716, 
+"text": "Found in the waters of the Echovald Wilds.<br>Fishing Hole: Lake Fish<br>Favored Bait: Freshwater Minnows<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 96096, 
+"text": "Found in the waters of the Echovald Wilds.<br>Fishing Hole: None, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 95596, 
+"text": "Found in the waters of the Echovald Wilds.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96310, 
+"text": "Found in the waters of the Echovald Wilds.<br>Fishing Hole: Grotto Fish<br>Favored Bait: Any<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 96792, 
+"text": "Found in the waters of the Echovald Wilds.<br>Fishing Hole: Grotto Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97329, 
+"text": "Found in the waters of the Echovald Wilds.<br>Fishing Hole: Grotto Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 95765, 
+"text": "Found in the waters of the Echovald Wilds.<br>Fishing Hole: Grotto Fish<br>Favored Bait: Glow Worms<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 97559, 
+"text": "Found in the waters of the Echovald Wilds.<br>Fishing Hole: Grotto Fish<br>Favored Bait: Glow Worms<br>Time of Day: Daytime"
+}
+], 
+"tiers": [
+{
+"count": 1, 
+"points": 2
+}, {
+"count": 7, 
+"points": 3
+}, {
+"count": 14, 
+"points": 4
+}
+
+{
+"id": 6342, 
+"name": "Kaineng Fisher", 
+"description": "<c=@flavor>The charm of fishing is in pursuing something elusive, though attainable. It is a simple yet profound practice of hope.</c>", 
+"requirement": "Collect  different fish from the waterways of Kaineng.", 
+"locked_text": "", 
+"type": "ItemSet", 
+"flags": [
+"IgnoreNearlyComplete", "Pvp", "RepairOnLogin", "Permanent"
+], 
+"bits": [
+{
+"type": "Item", 
+"id": 97612, 
+"text": "Found in the waters of New Kaineng City.<br>Fishing Hole: None, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96933, 
+"text": "Found in the waters of New Kaineng City.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 97772, 
+"text": "Found in the waters of New Kaineng City.<br>Fishing Hole: Coastal Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96053, 
+"text": "Found in the waters of New Kaineng City.<br>Fishing Hole: Coastal Fish<br>Favored Bait: Any<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 95951, 
+"text": "Found in the waters of New Kaineng City.<br>Fishing Hole: Coastal Fish<br>Favored Bait: Any<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 97463, 
+"text": "Found in the waters of New Kaineng City.<br>Fishing Hole: Coastal Fish<br>Favored Bait: Sardines<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96401, 
+"text": "Found in the waters of New Kaineng City.<br>Fishing Hole: Coastal Fish<br>Favored Bait: Mackerel<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96876, 
+"text": "Found in the waters of New Kaineng City.<br>Fishing Hole: None, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 95797, 
+"text": "Found in the waters of New Kaineng City.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97507, 
+"text": "Found in the waters of New Kaineng City.<br>Fishing Hole: Coastal Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97830, 
+"text": "Found in the waters of New Kaineng City.<br>Fishing Hole: Coastal Fish<br>Favored Bait: Any<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 96344, 
+"text": "Found in the waters of New Kaineng City.<br>Fishing Hole: Channel Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97857, 
+"text": "Found in the waters of New Kaineng City.<br>Fishing Hole: Coastal Fish<br>Favored Bait: Shrimplings<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97654, 
+"text": "Found in the waters of New Kaineng City.<br>Fishing Hole: Coastal Fish<br>Favored Bait: Mackerel<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 95633, 
+"text": "Found in the waters of New Kaineng City.<br>Fishing Hole: None, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96839, 
+"text": "Found in the waters of New Kaineng City.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96145, 
+"text": "Found in the waters of New Kaineng City.<br>Fishing Hole: Channel Fish<br>Favored Bait: Any<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 97792, 
+"text": "Found in the waters of New Kaineng City.<br>Fishing Hole: Channel Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96238, 
+"text": "Found in the waters of New Kaineng City.<br>Fishing Hole: Channel Fish<br>Favored Bait: Any<br>Time of Day: Dusk/Dawn"
+}, {
+"type": "Item", 
+"id": 96863, 
+"text": "Found in the waters of New Kaineng City.<br>Fishing Hole: Channel Fish<br>Favored Bait: Sardines<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 96196, 
+"text": "Found in the waters of New Kaineng City.<br>Fishing Hole: Channel Fish<br>Favored Bait: Shrimplings<br>Time of Day: Any"
+}
+], 
+"tiers": [
+{
+"count": 1, 
+"points": 2
+}, {
+"count": 7, 
+"points": 3
+}, {
+"count": 14, 
+"points": 4
+}, {
+"count": 21, 
+"points": 5
+}
+], 
+"rewards": [
+{
+"type": "Item", 
+"id": 96347, 
+"count": 6
+}
+]
+}
+
+{
+"id": 6068, 
+"name": "Krytan Fisher", 
+"description": "<c=@flavor>The charm of fishing is in pursuing something elusive, though attainable. It is a simple yet profound practice of hope.</c>", 
+"requirement": "Collect  different fish from the waterways of Kryta.", 
+"locked_text": "", 
+"type": "ItemSet", 
+"flags": [
+"IgnoreNearlyComplete", "Pvp", "RepairOnLogin", "Permanent"
+], 
+"bits": [
+{
+"type": "Item", 
+"id": 95961, 
+"text": "Found in the waters of Kryta.<br>Fishing Hole: None, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96032, 
+"text": "Found in the waters of Kryta.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96192, 
+"text": "Found in the waters of Kryta.<br>Fishing Hole: River Fish<br>Favored Bait: Fish Eggs<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97787, 
+"text": "Found in the waters of Kryta.<br>Fishing Hole: River Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 95819, 
+"text": "Found in the waters of Kryta.<br>Fishing Hole: River Fish<br>Favored Bait: Any<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 95731, 
+"text": "Found in the waters of Kryta.<br>Fishing Hole: River Fish<br>Favored Bait: Freshwater Minnows<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96543, 
+"text": "Found in the waters of Kryta.<br>Fishing Hole: River Fish<br>Favored Bait: Freshwater Minnows<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 97462, 
+"text": "Found in the waters of Kryta.<br>Fishing Hole: None, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96740, 
+"text": "Found in the waters of Kryta.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 97341, 
+"text": "Found in the waters of Kryta.<br>Fishing Hole: Lake Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97509, 
+"text": "Found in the waters of Kryta.<br>Fishing Hole: Lake Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97103, 
+"text": "Found in the waters of Kryta.<br>Fishing Hole: Lake Fish<br>Favored Bait: Any<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 96571, 
+"text": "Found in the waters of Kryta.<br>Fishing Hole: Lake Fish<br>Favored Bait: Freshwater Minnows<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 97485, 
+"text": "Found in the waters of Kryta.<br>Fishing Hole: Lake Fish<br>Favored Bait: Freshwater Minnows<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 96001, 
+"text": "Found in the waters of Kryta.<br>Fishing Hole: None, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 95881, 
+"text": "Found in the waters of Kryta.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97785, 
+"text": "Found in the waters of Kryta.<br>Fishing Hole: Coastal Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97005, 
+"text": "Found in the waters of Kryta.<br>Fishing Hole: Coastal Fish<br>Favored Bait: Any<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 96667, 
+"text": "Found in the waters of Kryta.<br>Fishing Hole: Coastal Fish<br>Favored Bait: Any<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 97409, 
+"text": "Found in the waters of Kryta.<br>Fishing Hole: Coastal Fish<br>Favored Bait: Shrimplings<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 97527, 
+"text": "Found in the waters of Kryta.<br>Fishing Hole: Coastal Fish<br>Favored Bait: Shrimplings<br>Time of Day: Any"
+}
+], 
+"tiers": [
+{
+"count": 1, 
+"points": 2
+}, {
+"count": 7, 
+"points": 3
+}, {
+"count": 14, 
+"points": 4
+}, {
+"count": 21, 
+"points": 5
+}
+], 
+"rewards": [
+{
+"type": "Item", 
+"id": 96347, 
+"count": 6
+}
+]
+}
+
+{
+"id": 6344, 
+"name": "Maguuma Fisher", 
+"description": "<c=@flavor>The charm of fishing is in pursuing something elusive, though attainable. It is a simple yet profound practice of hope.</c>", 
+"requirement": "Collect  different fish from the waterways of the Maguuma Jungle.", 
+"locked_text": "", 
+"type": "ItemSet", 
+"flags": [
+"IgnoreNearlyComplete", "Pvp", "RepairOnLogin", "Permanent"
+], 
+"bits": [
+{
+"type": "Item", 
+"id": 96020, 
+"text": "Found in the waters of the Maguuma Jungle.<br>Fishing Hole: None, Open Water<br>Favored Bait: Any<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 97568, 
+"text": "Found in the waters of the Maguuma Jungle.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96325, 
+"text": "Found in the waters of the Maguuma Jungle.<br>Fishing Hole: Freshwater Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96320, 
+"text": "Found in the waters of the Maguuma Jungle.<br>Fishing Hole: Freshwater Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97057, 
+"text": "Found in the waters of the Maguuma Jungle.<br>Fishing Hole: Freshwater Fish<br>Favored Bait: Any<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 96692, 
+"text": "Found in the waters of the Maguuma Jungle.<br>Fishing Hole: Freshwater Fish<br>Favored Bait: Sparkfly Larvae<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 97078, 
+"text": "Found in the waters of the Maguuma Jungle.<br>Fishing Hole: Freshwater Fish<br>Favored Bait: Sparkfly Larvae<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 96201, 
+"text": "Found in the waters of the Maguuma Jungle.<br>Fishing Hole: None, Open Water<br>Favored Bait: Any<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 95751, 
+"text": "Found in the waters of the Maguuma Jungle.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96191, 
+"text": "Found in the waters of the Maguuma Jungle.<br>Fishing Hole: Freshwater Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97841, 
+"text": "Found in the waters of the Maguuma Jungle.<br>Fishing Hole: Freshwater Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97644, 
+"text": "Found in the waters of the Maguuma Jungle.<br>Fishing Hole: Freshwater Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97465, 
+"text": "Found in the waters of the Maguuma Jungle.<br>Fishing Hole: Freshwater Fish<br>Favored Bait: Sparkfly Larvae<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 95908, 
+"text": "Found in the waters of the Maguuma Jungle.<br>Fishing Hole: Saltwater Fish<br>Favored Bait: Sardines<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96983, 
+"text": "Found in the waters of the Maguuma Jungle.<br>Fishing Hole: None, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96653, 
+"text": "Found in the waters of the Maguuma Jungle.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97546, 
+"text": "Found in the waters of the Maguuma Jungle.<br>Fishing Hole: Saltwater Fish<br>Favored Bait: Any<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 96645, 
+"text": "Found in the waters of the Maguuma Jungle.<br>Fishing Hole: Saltwater Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97122, 
+"text": "Found in the waters of the Maguuma Jungle.<br>Fishing Hole: Saltwater Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97543, 
+"text": "Found in the waters of the Maguuma Jungle.<br>Fishing Hole: Saltwater Fish<br>Favored Bait: Sardines<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 96439, 
+"text": "Found in the waters of the Maguuma Jungle.<br>Fishing Hole: Saltwater Fish<br>Favored Bait: Any<br>Time of Day: Nighttime"
+}
+], 
+"tiers": [
+{
+"count": 1, 
+"points": 2
+}, {
+"count": 7, 
+"points": 3
+}, {
+"count": 14, 
+"points": 4
+}, {
+"count": 21, 
+"points": 5
+}
+], 
+"rewards": [
+{
+"type": "Item", 
+"id": 96347, 
+"count": 6
+}
+]
+}
+
+{
+"id": 6363, 
+"name": "Orrian Fisher", 
+"description": "<c=@flavor>The charm of fishing is in pursuing something elusive, though attainable. It is a simple yet profound practice of hope.</c>", 
+"requirement": "Collect  different fish from the waterways of Orr.", 
+"locked_text": "", 
+"type": "ItemSet", 
+"flags": [
+"IgnoreNearlyComplete", "Pvp", "RepairOnLogin", "Permanent"
+], 
+"bits": [
+{
+"type": "Item", 
+"id": 96132, 
+"text": "Found in the waters of the Ruins of Orr.<br>Fishing Hole: None, Open Water<br>Favored Bait: Any<br>Time of Day: Dusk/Dawn"
+}, {
+"type": "Item", 
+"id": 97035, 
+"text": "Found in the waters of the Ruins of Orr.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96723, 
+"text": "Found in the waters of the Ruins of Orr.<br>Fishing Hole: Offshore Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97770, 
+"text": "Found in the waters of the Ruins of Orr.<br>Fishing Hole: Offshore Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97470, 
+"text": "Found in the waters of the Ruins of Orr.<br>Fishing Hole: Offshore Fish<br>Favored Bait: Any<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 96813, 
+"text": "Found in the waters of the Ruins of Orr.<br>Fishing Hole: Offshore Fish<br>Favored Bait: Leeches<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96332, 
+"text": "Found in the waters of the Ruins of Orr.<br>Fishing Hole: Offshore Fish<br>Favored Bait: Leeches<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 95924, 
+"text": "Found in the waters of the Ruins of Orr.<br>Fishing Hole: None, Open Water<br>Favored Bait: Any<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 96055, 
+"text": "Found in the waters of the Ruins of Orr.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97556, 
+"text": "Found in the waters of the Ruins of Orr.<br>Fishing Hole: Offshore Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96631, 
+"text": "Found in the waters of the Ruins of Orr.<br>Fishing Hole: Offshore Fish<br>Favored Bait: Any<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 96135, 
+"text": "Found in the waters of the Ruins of Orr.<br>Fishing Hole: Offshore Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96874, 
+"text": "Found in the waters of the Ruins of Orr.<br>Fishing Hole: Offshore Fish<br>Favored Bait: Sardines<br>Time of Day: Dusk/Dawn"
+}, {
+"type": "Item", 
+"id": 96936, 
+"text": "Found in the waters of the Ruins of Orr.<br>Fishing Hole: Offshore Fish<br>Favored Bait: Sardines<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 95873, 
+"text": "Found in the waters of the Ruins of Orr.<br>Fishing Hole: None, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96666, 
+"text": "Found in the waters of the Ruins of Orr.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96701, 
+"text": "Found in the waters of the Ruins of Orr.<br>Fishing Hole: Shore Fish<br>Favored Bait: Any<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 96551, 
+"text": "Found in the waters of the Ruins of Orr.<br>Fishing Hole: Shore Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97302, 
+"text": "Found in the waters of the Ruins of Orr.<br>Fishing Hole: Shore Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97186, 
+"text": "Found in the waters of the Ruins of Orr.<br>Fishing Hole: Shore Fish<br>Favored Bait: Leeches<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97017, 
+"text": "Found in the waters of the Ruins of Orr.<br>Fishing Hole: Shore Fish<br>Favored Bait: Leeches<br>Time of Day: Nighttime"
+}
+], 
+"tiers": [
+{
+"count": 1, 
+"points": 2
+}, {
+"count": 7, 
+"points": 3
+}, {
+"count": 14, 
+"points": 4
+}, {
+"count": 21, 
+"points": 5
+}
+], 
+"rewards": [
+{
+"type": "Item", 
+"id": 96347, 
+"count": 6
+}
+]
+}
+
+
+{
+"id": 6489, 
+"name": "Ring of Fire Fisher", 
+"description": "<c=@flavor>The charm of fishing is in pursuing something elusive, though attainable. It is a simple yet profound practice of hope.</c>", 
+"requirement": "Collect  different fish from the waterways around the Ring of Fire.", 
+"locked_text": "", 
+"type": "ItemSet", 
+"flags": [
+"IgnoreNearlyComplete", "Pvp", "RepairOnLogin", "Permanent"
+], 
+"bits": [
+{
+"type": "Item", 
+"id": 96547, 
+"text": "Found in the waters of Draconis Mons.<br>Fishing Hole: None, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96720, 
+"text": "Found in the waters of Draconis Mons.<br>Fishing Hole: Volcanic Fish, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96589, 
+"text": "Found in the waters of Draconis Mons.<br>Fishing Hole: Volcanic Fish<br>Favored Bait: Any<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 96283, 
+"text": "Found in the waters of Draconis Mons.<br>Fishing Hole: Volcanic Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97471, 
+"text": "Found in the waters of Draconis Mons.<br>Fishing Hole: Volcanic Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96530, 
+"text": "Found in the waters of Draconis Mons.<br>Fishing Hole: Volcanic Fish<br>Favored Bait: Lava Beetles<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 96595, 
+"text": "Found in the waters of Draconis Mons.<br>Fishing Hole: Volcanic Fish<br>Favored Bait: Lava Beetles<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96491, 
+"text": "Found in the waters of Ember Bay.<br>Fishing Hole: None, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96597, 
+"text": "Found in the waters of Ember Bay.<br>Fishing Hole: Coastal Fish, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96889, 
+"text": "Found in the waters of Ember Bay.<br>Fishing Hole: Coastal Fish<br>Favored Bait: Any<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 96555, 
+"text": "Found in the waters of Ember Bay.<br>Fishing Hole: Coastal Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97100, 
+"text": "Found in the waters of Ember Bay.<br>Fishing Hole: Coastal Fish<br>Favored Bait: Any<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 97498, 
+"text": "Found in the waters of Ember Bay.<br>Fishing Hole: Coastal Fish<br>Favored Bait: Lava Beetles<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 96361, 
+"text": "Found in the waters of Ember Bay.<br>Fishing Hole: Coastal Fish<br>Favored Bait: Lava Beetles<br>Time of Day: Any"
+}
+], 
+"tiers": [
+{
+"count": 1, 
+"points": 2
+}, {
+"count": 7, 
+"points": 3
+}, {
+"count": 14, 
+"points": 4
+}
+], 
+"rewards": [
+{
+"type": "Item", 
+"id": 96347, 
+"count": 4
+}
+]
+}
+
+{
+"id": 6471, 
+"name": "Saltwater Fisher", 
+"description": "<c=@flavor>The charm of fishing is in pursuing something elusive, though attainable. It is a simple yet profound practice of hope.</c>", 
+"requirement": "Collect  different fish from the world's bodies of saltwater.", 
+"locked_text": "", 
+"type": "ItemSet", 
+"flags": [
+"IgnoreNearlyComplete", "Pvp", "RepairOnLogin", "Permanent"
+], 
+"bits": [
+{
+"type": "Item", 
+"id": 95654, 
+"text": "Found in bodies of saltwater all across the world.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96632, 
+"text": "Found in bodies of saltwater all across the world.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96082, 
+"text": "Found in bodies of saltwater all across the world.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97247, 
+"text": "Found in bodies of saltwater all across the world.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97241, 
+"text": "Found in bodies of saltwater all across the world.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97596, 
+"text": "Found in bodies of saltwater all across the world.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 95600, 
+"text": "Found in bodies of saltwater all across the world.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96097, 
+"text": "Found in bodies of saltwater all across the world.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96265, 
+"text": "Found in bodies of saltwater all across the world.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96110, 
+"text": "Found in bodies of saltwater all across the world.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97340, 
+"text": "Found in bodies of saltwater all across the world.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 95793, 
+"text": "Found in bodies of saltwater all across the world.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 95968, 
+"text": "Found in bodies of saltwater all across the world.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97534, 
+"text": "Found in bodies of saltwater all across the world.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}
+], 
+"tiers": [
+{
+"count": 1, 
+"points": 2
+}, {
+"count": 7, 
+"points": 3
+}, {
+"count": 14, 
+"points": 4
+}
+], 
+"rewards": [
+{
+"type": "Item", 
+"id": 96347, 
+"count": 5
+}
+]
+}
+
+{
+"id": 6336, 
+"name": "Seitung Province Fisher", 
+"description": "<c=@flavor>The charm of fishing is in pursuing something elusive, though attainable. It is a simple yet profound practice of hope.</c>", 
+"requirement": "Collect  different fish from the waterways around Seitung Province.", 
+"locked_text": "", 
+"type": "ItemSet", 
+"flags": [
+"IgnoreNearlyComplete", "Pvp", "RepairOnLogin", "Permanent"
+], 
+"bits": [
+{
+"type": "Item", 
+"id": 95894, 
+"text": "Found in the waters of Seitung Province.<br>Fishing Hole: None, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96350, 
+"text": "Found in the waters of Seitung Province.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97278, 
+"text": "Found in the waters of Seitung Province.<br>Fishing Hole: Shore Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96425, 
+"text": "Found in the waters of Seitung Province.<br>Fishing Hole: Shore Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97604, 
+"text": "Found in the waters of Seitung Province.<br>Fishing Hole: Shore Fish<br>Favored Bait: Any<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 95603, 
+"text": "Found in the waters of Seitung Province.<br>Fishing Hole: Shore Fish<br>Favored Bait: Shrimplings<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 97753, 
+"text": "Found in the waters of Seitung Province.<br>Fishing Hole: Shore Fish<br>Favored Bait: Shrimplings<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 97865, 
+"text": "Found in the waters of Seitung Province.<br>Fishing Hole: None, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96719, 
+"text": "Found in the waters of Seitung Province.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 95936, 
+"text": "Found in the waters of Seitung Province.<br>Fishing Hole: Offshore Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97692, 
+"text": "Found in the waters of Seitung Province.<br>Fishing Hole: Offshore Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97722, 
+"text": "Found in the waters of Seitung Province.<br>Fishing Hole: Offshore Fish<br>Favored Bait: Any<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 96523, 
+"text": "Found in the waters of Seitung Province.<br>Fishing Hole: Offshore Fish<br>Favored Bait: Sardines<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 95926, 
+"text": "Found in the waters of Seitung Province.<br>Fishing Hole: Offshore Fish<br>Favored Bait: Sardines<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96757, 
+"text": "Found in the waters of Seitung Province.<br>Fishing Hole: None, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96071, 
+"text": "Found in the waters of Seitung Province.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96944, 
+"text": "Found in the waters of Seitung Province.<br>Fishing Hole: Offshore Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97061, 
+"text": "Found in the waters of Seitung Province.<br>Fishing Hole: Offshore Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97714, 
+"text": "Found in the waters of Seitung Province.<br>Fishing Hole: Offshore Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96318, 
+"text": "Found in the waters of Seitung Province.<br>Fishing Hole: Offshore Fish<br>Favored Bait: Sardines<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 97181, 
+"text": "Found in the waters of Seitung Province.<br>Fishing Hole: Offshore Fish<br>Favored Bait: Shrimplings<br>Time of Day: Daytime"
+}
+], 
+"tiers": [
+{
+"count": 1, 
+"points": 2
+}, {
+"count": 7, 
+"points": 3
+}, {
+"count": 14, 
+"points": 4
+}, {
+"count": 21, 
+"points": 5
+}
+], 
+"rewards": [
+{
+"type": "Item", 
+"id": 96347, 
+"count": 6
+}
+]
+}
+
+{
+"id": 6179, 
+"name": "Shiverpeaks Fisher", 
+"description": "<c=@flavor>The charm of fishing is in pursuing something elusive, though attainable. It is a simple yet profound practice of hope.</c>", 
+"requirement": "Collect  different fish from the waterways of the Shiverpeaks.", 
+"locked_text": "", 
+"type": "ItemSet", 
+"flags": [
+"IgnoreNearlyComplete", "Pvp", "RepairOnLogin", "Permanent"
+], 
+"bits": [
+{
+"type": "Item", 
+"id": 97799, 
+"text": "Found in the waters of the Shiverpeak Mountains.<br>Fishing Hole: None, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97364, 
+"text": "Found in the waters of the Shiverpeak Mountains.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97356, 
+"text": "Found in the waters of the Shiverpeak Mountains.<br>Fishing Hole: Lake Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 95668, 
+"text": "Found in the waters of the Shiverpeak Mountains.<br>Fishing Hole: Lake Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 95896, 
+"text": "Found in the waters of the Shiverpeak Mountains.<br>Fishing Hole: Lake Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96218, 
+"text": "Found in the waters of the Shiverpeak Mountains.<br>Fishing Hole: Lake Fish<br>Favored Bait: Ramshorn Snails<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 96882, 
+"text": "Found in the waters of the Shiverpeak Mountains.<br>Fishing Hole: Lake Fish<br>Favored Bait: Shrimplings<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 95766, 
+"text": "Found in the waters of the Shiverpeak Mountains.<br>Fishing Hole: None, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97713, 
+"text": "Found in the waters of the Shiverpeak Mountains.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 97866, 
+"text": "Found in the waters of the Shiverpeak Mountains.<br>Fishing Hole: Lake Fish<br>Favored Bait: Any<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 95822, 
+"text": "Found in the waters of the Shiverpeak Mountains.<br>Fishing Hole: Lake Fish<br>Favored Bait: Any<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 96619, 
+"text": "Found in the waters of the Shiverpeak Mountains.<br>Fishing Hole: Boreal Fish<br>Favored Bait: Any<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 97301, 
+"text": "Found in the waters of the Shiverpeak Mountains.<br>Fishing Hole: Lake Fish<br>Favored Bait: Ramshorn Snails<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 95723, 
+"text": "Found in the waters of the Shiverpeak Mountains.<br>Fishing Hole: Boreal Fish<br>Favored Bait: Ramshorn Snails<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 96276, 
+"text": "Found in the waters of the Shiverpeak Mountains.<br>Fishing Hole: None, Open Water<br>Favored Bait: Any<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 96643, 
+"text": "Found in the waters of the Shiverpeak Mountains.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 97456, 
+"text": "Found in the waters of the Shiverpeak Mountains.<br>Fishing Hole: Boreal Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97496, 
+"text": "Found in the waters of the Shiverpeak Mountains.<br>Fishing Hole: Boreal Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96373, 
+"text": "Found in the waters of the Shiverpeak Mountains.<br>Fishing Hole: Boreal Fish<br>Favored Bait: Any<br>Time of Day: Dusk/Dawn"
+}, {
+"type": "Item", 
+"id": 96954, 
+"text": "Found in the waters of the Shiverpeak Mountains.<br>Fishing Hole: Boreal Fish<br>Favored Bait: Ramshorn Snails<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 97225, 
+"text": "Found in the waters of the Shiverpeak Mountains.<br>Fishing Hole: Boreal Fish<br>Favored Bait: Shrimplings<br>Time of Day: Any"
+}
+], 
+"tiers": [
+{
+"count": 1, 
+"points": 2
+}, {
+"count": 7, 
+"points": 3
+}, {
+"count": 14, 
+"points": 4
+}, {
+"count": 21, 
+"points": 5
+}
+], 
+"rewards": [
+{
+"type": "Item", 
+"id": 96347, 
+"count": 6
+}
+]
+}
+
+{
+"id": 6224, 
+"name": "World Class Fisher", 
+"description": "<c=@flavor>The charm of fishing is in pursuing something elusive, though attainable. It is a simple yet profound practice of hope.</c>", 
+"requirement": "Collect  different fish from the waterways of the world.", 
+"locked_text": "", 
+"type": "ItemSet", 
+"flags": [
+"IgnoreNearlyComplete", "Pvp", "RepairOnLogin", "Permanent"
+], 
+"bits": [
+{
+"type": "Item", 
+"id": 96852, 
+"text": "Found in bodies of water all across the world.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96635, 
+"text": "Found in bodies of water all across the world.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 95992, 
+"text": "Found in bodies of water all across the world.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96804, 
+"text": "Found in bodies of water all across the world.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96108, 
+"text": "Found in bodies of water all across the world.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96304, 
+"text": "Found in bodies of water all across the world.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97097, 
+"text": "Found in bodies of water all across the world.<br>Fishing Hole: Any<br>Favored Bait: Any<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 97388, 
+"text": "Found in bodies of water all across the world.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96116, 
+"text": "Found in bodies of water all across the world.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 95624, 
+"text": "Found in bodies of water all across the world.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 95682, 
+"text": "Found in bodies of water all across the world.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96141, 
+"text": "Found in bodies of water all across the world.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97497, 
+"text": "Found in bodies of water all across the world.<br>Fishing Hole: Any<br>Favored Bait: Any<br>Time of Day: Dusk/Dawn"
+}, {
+"type": "Item", 
+"id": 95870, 
+"text": "Found in bodies of water all across the world.<br>Fishing Hole: Any<br>Favored Bait: Any<br>Time of Day: Nighttime"
+}
+], 
+"tiers": [
+{
+"count": 1, 
+"points": 2
+}, {
+"count": 7, 
+"points": 3
+}, {
+"count": 14, 
+"points": 4
+}
+], 
+"rewards": [
+{
+"type": "Item", 
+"id": 96347, 
+"count": 5
+}
+]
+}
+
+{
+"id": 6439, 
+"name": "Aquatic Trash Collector", 
+"description": "", 
+"requirement": "Collect these  junk items by fishing throughout Tyria.", 
+"locked_text": "", 
+"type": "ItemSet", 
+"flags": [
+"Pvp", "RepairOnLogin", "Permanent"
+], 
+"bits": [
+{
+"type": "Item", 
+"id": 95767
+}, {
+"type": "Item", 
+"id": 96819
+}, {
+"type": "Item", 
+"id": 96885
+}, {
+"type": "Item", 
+"id": 96153
+}, {
+"type": "Item", 
+"id": 97032
+}, {
+"type": "Item", 
+"id": 96500
+}, {
+"type": "Item", 
+"id": 97250
+}, {
+"type": "Item", 
+"id": 97667
+}, {
+"type": "Item", 
+"id": 95880
+}, {
+"type": "Item", 
+"id": 97252
+}, {
+"type": "Item", 
+"id": 97566
+}, {
+"type": "Item", 
+"id": 96779
+}, {
+"type": "Item", 
+"id": 97707
+}, {
+"type": "Item", 
+"id": 96063
+}
+], 
+"tiers": [
+{
+"count": 1, 
+"points": 1
+}, {
+"count": 7, 
+"points": 1
+}, {
+"count": 14, 
+"points": 3
+}
+], 
+"rewards": [
+{
+"type": "Item", 
+"id": 96347, 
+"count": 1
+}
+]
+}
+
+{
+"id": 6505, 
+"name": "Aquatic Treasure Collector", 
+"description": "", 
+"requirement": "Collect these  valuable junk items by fishing throughout Tyria.", 
+"locked_text": "", 
+"type": "ItemSet", 
+"flags": [
+"Pvp", "RepairOnLogin", "Permanent"
+], 
+"bits": [
+{
+"type": "Item", 
+"id": 96234
+}, {
+"type": "Item", 
+"id": 97015
+}, {
+"type": "Item", 
+"id": 97747
+}, {
+"type": "Item", 
+"id": 97007
+}, {
+"type": "Item", 
+"id": 96016
+}, {
+"type": "Item", 
+"id": 95816
+}, {
+"type": "Item", 
+"id": 95885
+}
+], 
+"tiers": [
+{
+"count": 1, 
+"points": 1
+}, {
+"count": 7, 
+"points": 2
+}
+], 
+"rewards": [
+{
+"type": "Item", 
+"id": 96347, 
+"count": 1
+}
+]
+}
+
+{
+"id": 6484, 
+"name": "Avid Ascalonian Fisher", 
+"description": "<c=@flavor>The charm of fishing is in pursuing something elusive, though attainable. It is a simple yet profound practice of hope.</c>", 
+"requirement": "Collect  different fish from the waterways of Ascalon.", 
+"locked_text": "", 
+"type": "ItemSet", 
+"flags": [
+"IgnoreNearlyComplete", "Pvp", "RepairOnLogin", "Repeatable", "Permanent"
+], 
+"bits": [
+{
+"type": "Item", 
+"id": 96297, 
+"text": "Found in the waters of Ascalon.<br>Fishing Hole: None, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97885, 
+"text": "Found in the waters of Ascalon.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 97074, 
+"text": "Found in the waters of Ascalon.<br>Fishing Hole: Lake Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 95875, 
+"text": "Found in the waters of Ascalon.<br>Fishing Hole: Lake Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96985, 
+"text": "Found in the waters of Ascalon.<br>Fishing Hole: Lake Fish<br>Favored Bait: Fish Eggs<br>Time of Day: Dusk/Dawn"
+}, {
+"type": "Item", 
+"id": 96105, 
+"text": "Found in the waters of Ascalon.<br>Fishing Hole: Lake Fish<br>Favored Bait: Freshwater Minnows<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 95609, 
+"text": "Found in the waters of Ascalon.<br>Fishing Hole: Lake Fish<br>Favored Bait: Freshwater Minnows<br>Time of Day: Dusk/Dawn"
+}, {
+"type": "Item", 
+"id": 97584, 
+"text": "Found in the waters of Ascalon.<br>Fishing Hole: None, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96176, 
+"text": "Found in the waters of Ascalon.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Fish Eggs<br>Time of Day: Dusk/Dawn"
+}, {
+"type": "Item", 
+"id": 96942, 
+"text": "Found in the waters of Ascalon.<br>Fishing Hole: Lake Fish<br>Favored Bait: Any<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 96226, 
+"text": "Found in the waters of Ascalon.<br>Fishing Hole: Lake Fish<br>Favored Bait: Fish Eggs<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 96672, 
+"text": "Found in the waters of Ascalon.<br>Fishing Hole: Lake Fish<br>Favored Bait: Any<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 95843, 
+"text": "Found in the waters of Ascalon.<br>Fishing Hole: Lake Fish<br>Favored Bait: Freshwater Minnows<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 97004, 
+"text": "Found in the waters of Ascalon.<br>Fishing Hole: Lake Fish<br>Favored Bait: Freshwater Minnows<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 96532, 
+"text": "Found in the waters of Ascalon.<br>Fishing Hole: None, Open Water<br>Favored Bait: Fish Eggs<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97121, 
+"text": "Found in the waters of Ascalon.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96931, 
+"text": "Found in the waters of Ascalon.<br>Fishing Hole: Noxious Water Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97887, 
+"text": "Found in the waters of Ascalon.<br>Fishing Hole: Noxious Water Fish<br>Favored Bait: Any<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 97479, 
+"text": "Found in the waters of Ascalon.<br>Fishing Hole: Noxious Water Fish<br>Favored Bait: Lightning Bugs<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97163, 
+"text": "Found in the waters of Ascalon.<br>Fishing Hole: Noxious Water Fish<br>Favored Bait: Lightning Bugs<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96081, 
+"text": "Found in the waters of Ascalon.<br>Fishing Hole: Noxious Water Fish<br>Favored Bait: Lightning Bugs<br>Time of Day: Nighttime"
+}
+], 
+"tiers": [
+{
+"count": 21, 
+"points": 0
+}
+], 
+"prerequisites": [
+6330
+], 
+"point_cap": -1, 
+"rewards": [
+{
+"type": "Item", 
+"id": 96744, 
+"count": 1
+}
+]
+}
+
+{
+"id": 6509, 
+"name": "Avid Desert Fisher", 
+"description": "<c=@flavor>The charm of fishing is in pursuing something elusive, though attainable. It is a simple yet profound practice of hope.</c>", 
+"requirement": "Collect  different fish from the waterways of the Crystal Desert and the Elonian mainland.", 
+"locked_text": "", 
+"type": "ItemSet", 
+"flags": [
+"IgnoreNearlyComplete", "Pvp", "RepairOnLogin", "Repeatable", "Permanent"
+], 
+"bits": [
+{
+"type": "Item", 
+"id": 96445, 
+"text": "Found in the waters of the Elon River,<br>the Crystal Desert, and the Elonian mainland.<br>Fishing Hole: None, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96367, 
+"text": "Found in the waters of the Elon River,<br>the Crystal Desert, and the Elonian mainland.<br>Fishing Hole: Desert Fish, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97744, 
+"text": "Found in the waters of the Elon River,<br>the Crystal Desert, and the Elonian mainland.<br>Fishing Hole: Desert Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97848, 
+"text": "Found in the waters of the Elon River,<br>the Crystal Desert, and the Elonian mainland.<br>Fishing Hole: Desert Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96769, 
+"text": "Found in the waters of the Elon River,<br>the Crystal Desert, and the Elonian mainland.<br>Fishing Hole: Desert Fish<br>Favored Bait: Any<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 96724, 
+"text": "Found in the waters of the Elon River,<br>the Crystal Desert, and the Elonian mainland.<br>Fishing Hole: Desert Fish<br>Favored Bait: Scorpions<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97466, 
+"text": "Found in the waters of the Elon River,<br>the Crystal Desert, and the Elonian mainland.<br>Fishing Hole: Desert Fish<br>Favored Bait: Any<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 96349, 
+"text": "Found in the waters of the Elon River,<br>the Crystal Desert, and the Elonian mainland.<br>Fishing Hole: None, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96308, 
+"text": "Found in the waters of the Elon River,<br>the Crystal Desert, and the Elonian mainland.<br>Fishing Hole: Desert Fish, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96676, 
+"text": "Found in the waters of the Elon River,<br>the Crystal Desert, and the Elonian mainland.<br>Fishing Hole: Desert Fish<br>Favored Bait: Any<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 97109, 
+"text": "Found in the waters of the Elon River,<br>the Crystal Desert, and the Elonian mainland.<br>Fishing Hole: Desert Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96428, 
+"text": "Found in the waters of the Elon River,<br>the Crystal Desert, and the Elonian mainland.<br>Fishing Hole: Desert Fish<br>Favored Bait: Any<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 96094, 
+"text": "Found in the waters of the Elon River,<br>the Crystal Desert, and the Elonian mainland.<br>Fishing Hole: Desert Fish<br>Favored Bait: Scorpions<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 97763, 
+"text": "Found in the waters of the Elon River,<br>the Crystal Desert, and the Elonian mainland.<br>Fishing Hole: Desert Fish<br>Favored Bait: Mackerel<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96854, 
+"text": "Found in the waters of the Elon River,<br>the Crystal Desert, and the Elonian mainland.<br>Fishing Hole: None, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97755, 
+"text": "Found in the waters of the Elon River,<br>the Crystal Desert, and the Elonian mainland.<br>Fishing Hole: Desert Fish, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 95859, 
+"text": "Found in the waters of the Elon River,<br>the Crystal Desert, and the Elonian mainland.<br>Fishing Hole: Desert Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 95608, 
+"text": "Found in the waters of the Elon River,<br>the Crystal Desert, and the Elonian mainland.<br>Fishing Hole: Desert Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97187, 
+"text": "Found in the waters of the Elon River,<br>the Crystal Desert, and the Elonian mainland.<br>Fishing Hole: Desert Fish<br>Favored Bait: Any<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 97145, 
+"text": "Found in the waters of the Elon River,<br>the Crystal Desert, and the Elonian mainland.<br>Fishing Hole: Desert Fish<br>Favored Bait: Mackerel<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 95929, 
+"text": "Found in the waters of the Elon River,<br>the Crystal Desert, and the Elonian mainland.<br>Fishing Hole: Desert Fish<br>Favored Bait: Scorpions<br>Time of Day: Any"
+}
+], 
+"tiers": [
+{
+"count": 21, 
+"points": 0
+}
+], 
+"prerequisites": [
+6317
+], 
+"point_cap": -1, 
+"rewards": [
+{
+"type": "Item", 
+"id": 96789, 
+"count": 1
+}
+]
+}
+
+{
+"id": 6250, 
+"name": "Avid Desert Isles Fisher", 
+"description": "<c=@flavor>The charm of fishing is in pursuing something elusive, though attainable. It is a simple yet profound practice of hope.</c>", 
+"requirement": "Collect  different fish from the isles off the coast of Elona.", 
+"locked_text": "", 
+"type": "ItemSet", 
+"flags": [
+"IgnoreNearlyComplete", "Pvp", "RepairOnLogin", "Repeatable", "Permanent"
+], 
+"bits": [
+{
+"type": "Item", 
+"id": 97369, 
+"text": "Found in the waters of the isles of Elona.<br>Fishing Hole: None, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96085, 
+"text": "Found in the waters of the isles of Elona.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 95794, 
+"text": "Found in the waters of the isles of Elona.<br>Fishing Hole: Shore Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97756, 
+"text": "Found in the waters of the isles of Elona.<br>Fishing Hole: Shore Fish<br>Favored Bait: Any<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 97746, 
+"text": "Found in the waters of the isles of Elona.<br>Fishing Hole: Shore Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96513, 
+"text": "Found in the waters of the isles of Elona.<br>Fishing Hole: Shore Fish<br>Favored Bait: Mackerel<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 96225, 
+"text": "Found in the waters of the isles of Elona.<br>Fishing Hole: Shore Fish<br>Favored Bait: Fish Eggs<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 95890, 
+"text": "Found in the waters of the isles of Elona.<br>Fishing Hole: None, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96397, 
+"text": "Found in the waters of the isles of Elona.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97844, 
+"text": "Found in the waters of the isles of Elona.<br>Fishing Hole: Offshore Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97001, 
+"text": "Found in the waters off the isles of Elona.<br>Fishing Hole: Offshore Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97443, 
+"text": "Found in the waters of the isles of Elona.<br>Fishing Hole: Offshore Fish<br>Favored Bait: Any<br>Time of Day: Dusk/Dawn"
+}, {
+"type": "Item", 
+"id": 95849, 
+"text": "Found in the waters of the isles of Elona.<br>Fishing Hole: Offshore Fish<br>Favored Bait: Mackerel<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 97489, 
+"text": "Found in the waters of the isles of Elona.<br>Fishing Hole: Offshore Fish<br>Favored Bait: Fish Eggs<br>Time of Day: Nighttime"
+}
+], 
+"tiers": [
+{
+"count": 14, 
+"points": 0
+}
+], 
+"prerequisites": [
+6106
+], 
+"point_cap": -1, 
+"rewards": [
+{
+"type": "Item", 
+"id": 96103, 
+"count": 1
+}
+]
+}
+
+{
+"id": 6402, 
+"name": "Avid Dragon's End Fisher", 
+"description": "<c=@flavor>The charm of fishing is in pursuing something elusive, though attainable. It is a simple yet profound practice of hope.</c>", 
+"requirement": "Collect  different fish from the waterways around Dragon's End.", 
+"locked_text": "", 
+"type": "ItemSet", 
+"flags": [
+"IgnoreNearlyComplete", "Pvp", "RepairOnLogin", "Repeatable", "Permanent"
+], 
+"bits": [
+{
+"type": "Item", 
+"id": 97240, 
+"text": "Found in the waters of Dragon's End.<br>Fishing Hole: None, Open Water<br>Favored Bait: Any<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 97814, 
+"text": "Found in the waters of Dragon's End.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97853, 
+"text": "Found in the waters of Dragon's End.<br>Fishing Hole: Quarry Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97183, 
+"text": "Found in the waters of Dragon's End.<br>Fishing Hole: Quarry Fish<br>Favored Bait: Any<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 96443, 
+"text": "Found in the waters of Dragon's End.<br>Fishing Hole: Quarry Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96181, 
+"text": "Found in the waters of Dragon's End.<br>Fishing Hole: Quarry Fish<br>Favored Bait: Nightcrawlers<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 96817, 
+"text": "Found in the waters of Dragon's End.<br>Fishing Hole: Quarry Fish<br>Favored Bait: Shrimplings<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 96913, 
+"text": "Found in the waters of Dragon's End.<br>Fishing Hole: None, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 95729, 
+"text": "Found in the waters of Dragon's End.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 95670, 
+"text": "Found in the waters of Dragon's End.<br>Fishing Hole: Cavern Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96076, 
+"text": "Found in the waters of Dragon's End.<br>Fishing Hole: Cavern Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97794, 
+"text": "Found in the waters of Dragon's End.<br>Fishing Hole: Cavern Fish<br>Favored Bait: Any<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 95699, 
+"text": "Found in the waters of Dragon's End.<br>Fishing Hole: Cavern Fish<br>Favored Bait: Nightcrawlers<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 95632, 
+"text": "Found in the waters of Dragon's End.<br>Fishing Hole: Cavern Fish<br>Favored Bait: Shrimplings<br>Time of Day: Any"
+}
+], 
+"tiers": [
+{
+"count": 14, 
+"points": 0
+}
+], 
+"prerequisites": [
+6506
+], 
+"point_cap": -1, 
+"rewards": [
+{
+"type": "Item", 
+"id": 97081, 
+"count": 1
+}
+]
+}
+
+{
+"id": 6466, 
+"name": "Avid Echovald Wilds Fisher", 
+"description": "<c=@flavor>The charm of fishing is in pursuing something elusive, though attainable. It is a simple yet profound practice of hope.</c>", 
+"requirement": "Collect  different fish from the waterways around Echovald Wilds.", 
+"locked_text": "", 
+"type": "ItemSet", 
+"flags": [
+"IgnoreNearlyComplete", "Pvp", "RepairOnLogin", "Repeatable", "Permanent"
+], 
+"bits": [
+{
+"type": "Item", 
+"id": 96807, 
+"text": "Found in the waters of the Echovald Wilds.<br>Fishing Hole: None, Open Water<br>Favored Bait: Any<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 96195, 
+"text": "Found in the waters of the Echovald Wilds.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96017, 
+"text": "Found in the waters of the Echovald Wilds.<br>Fishing Hole: Lake Fish<br>Favored Bait: Any<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 96834, 
+"text": "Found in the waters of the Echovald Wilds.<br>Fishing Hole: Lake Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 95861, 
+"text": "Found in the waters of the Echovald Wilds.<br>Fishing Hole: Lake Fish<br>Favored Bait: Any<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 95584, 
+"text": "Found in the waters of the Echovald Wilds.<br>Fishing Hole: Lake Fish<br>Favored Bait: Freshwater Minnows<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 97716, 
+"text": "Found in the waters of the Echovald Wilds.<br>Fishing Hole: Lake Fish<br>Favored Bait: Freshwater Minnows<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 96096, 
+"text": "Found in the waters of the Echovald Wilds.<br>Fishing Hole: None, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 95596, 
+"text": "Found in the waters of the Echovald Wilds.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96310, 
+"text": "Found in the waters of the Echovald Wilds.<br>Fishing Hole: Grotto Fish<br>Favored Bait: Any<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 96792, 
+"text": "Found in the waters of the Echovald Wilds.<br>Fishing Hole: Grotto Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97329, 
+"text": "Found in the waters of the Echovald Wilds.<br>Fishing Hole: Grotto Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 95765, 
+"text": "Found in the waters of the Echovald Wilds.<br>Fishing Hole: Grotto Fish<br>Favored Bait: Glow Worms<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 97559, 
+"text": "Found in the waters of the Echovald Wilds.<br>Fishing Hole: Grotto Fish<br>Favored Bait: Glow Worms<br>Time of Day: Daytime"
+}
+], 
+"tiers": [
+{
+"count": 14, 
+"points": 0
+}
+], 
+"prerequisites": [
+6258
+], 
+"point_cap": -1, 
+"rewards": [
+{
+"type": "Item", 
+"id": 96489, 
+"count": 1
+}
+]
+}
+
+{
+"id": 6192, 
+"name": "Avid Kaineng Fisher", 
+"description": "<c=@flavor>The charm of fishing is in pursuing something elusive, though attainable. It is a simple yet profound practice of hope.</c>", 
+"requirement": "Collect  different fish from the waterways of Kaineng.", 
+"locked_text": "", 
+"type": "ItemSet", 
+"flags": [
+"IgnoreNearlyComplete", "Pvp", "RepairOnLogin", "Repeatable", "Permanent"
+], 
+"bits": [
+{
+"type": "Item", 
+"id": 97612, 
+"text": "Found in the waters of New Kaineng City.<br>Fishing Hole: None, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96933, 
+"text": "Found in the waters of New Kaineng City.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 97772, 
+"text": "Found in the waters of New Kaineng City.<br>Fishing Hole: Coastal Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96053, 
+"text": "Found in the waters of New Kaineng City.<br>Fishing Hole: Coastal Fish<br>Favored Bait: Any<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 95951, 
+"text": "Found in the waters of New Kaineng City.<br>Fishing Hole: Coastal Fish<br>Favored Bait: Any<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 97463, 
+"text": "Found in the waters of New Kaineng City.<br>Fishing Hole: Coastal Fish<br>Favored Bait: Sardines<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96401, 
+"text": "Found in the waters of New Kaineng City.<br>Fishing Hole: Coastal Fish<br>Favored Bait: Mackerel<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96876, 
+"text": "Found in the waters of New Kaineng City.<br>Fishing Hole: None, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 95797, 
+"text": "Found in the waters of New Kaineng City.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97507, 
+"text": "Found in the waters of New Kaineng City.<br>Fishing Hole: Coastal Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97830, 
+"text": "Found in the waters of New Kaineng City.<br>Fishing Hole: Coastal Fish<br>Favored Bait: Any<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 96344, 
+"text": "Found in the waters of New Kaineng City.<br>Fishing Hole: Channel Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97857, 
+"text": "Found in the waters of New Kaineng City.<br>Fishing Hole: Coastal Fish<br>Favored Bait: Shrimplings<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97654, 
+"text": "Found in the waters of New Kaineng City.<br>Fishing Hole: Coastal Fish<br>Favored Bait: Mackerel<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 95633, 
+"text": "Found in the waters of New Kaineng City.<br>Fishing Hole: None, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96839, 
+"text": "Found in the waters of New Kaineng City.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96145, 
+"text": "Found in the waters of New Kaineng City.<br>Fishing Hole: Channel Fish<br>Favored Bait: Any<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 97792, 
+"text": "Found in the waters of New Kaineng City.<br>Fishing Hole: Channel Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96238, 
+"text": "Found in the waters of New Kaineng City.<br>Fishing Hole: Channel Fish<br>Favored Bait: Any<br>Time of Day: Dusk/Dawn"
+}, {
+"type": "Item", 
+"id": 96863, 
+"text": "Found in the waters of New Kaineng City.<br>Fishing Hole: Channel Fish<br>Favored Bait: Sardines<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 96196, 
+"text": "Found in the waters of New Kaineng City.<br>Fishing Hole: Channel Fish<br>Favored Bait: Shrimplings<br>Time of Day: Any"
+}
+], 
+"tiers": [
+{
+"count": 21, 
+"points": 0
+}
+], 
+"prerequisites": [
+6342
+], 
+"point_cap": -1, 
+"rewards": [
+{
+"type": "Item", 
+"id": 97144, 
+"count": 1
+}
+]
+}
+
+{
+"id": 6263, 
+"name": "Avid Krytan Fisher", 
+"description": "<c=@flavor>The charm of fishing is in pursuing something elusive, though attainable. It is a simple yet profound practice of hope.</c>", 
+"requirement": "Collect  different fish from the waterways of Kryta.", 
+"locked_text": "", 
+"type": "ItemSet", 
+"flags": [
+"IgnoreNearlyComplete", "Pvp", "RepairOnLogin", "Repeatable", "Permanent"
+], 
+"bits": [
+{
+"type": "Item", 
+"id": 95961, 
+"text": "Found in the waters of Kryta.<br>Fishing Hole: None, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96032, 
+"text": "Found in the waters of Kryta.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96192, 
+"text": "Found in the waters of Kryta.<br>Fishing Hole: River Fish<br>Favored Bait: Fish Eggs<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97787, 
+"text": "Found in the waters of Kryta.<br>Fishing Hole: River Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 95819, 
+"text": "Found in the waters of Kryta.<br>Fishing Hole: River Fish<br>Favored Bait: Any<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 95731, 
+"text": "Found in the waters of Kryta.<br>Fishing Hole: River Fish<br>Favored Bait: Freshwater Minnows<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96543, 
+"text": "Found in the waters of Kryta.<br>Fishing Hole: River Fish<br>Favored Bait: Freshwater Minnows<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 97462, 
+"text": "Found in the waters of Kryta.<br>Fishing Hole: None, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96740, 
+"text": "Found in the waters of Kryta.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 97341, 
+"text": "Found in the waters of Kryta.<br>Fishing Hole: Lake Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97509, 
+"text": "Found in the waters of Kryta.<br>Fishing Hole: Lake Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97103, 
+"text": "Found in the waters of Kryta.<br>Fishing Hole: Lake Fish<br>Favored Bait: Any<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 96571, 
+"text": "Found in the waters of Kryta.<br>Fishing Hole: Lake Fish<br>Favored Bait: Freshwater Minnows<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 97485, 
+"text": "Found in the waters of Kryta.<br>Fishing Hole: Lake Fish<br>Favored Bait: Freshwater Minnows<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 96001, 
+"text": "Found in the waters of Kryta.<br>Fishing Hole: None, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 95881, 
+"text": "Found in the waters of Kryta.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97785, 
+"text": "Found in the waters of Kryta.<br>Fishing Hole: Coastal Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97005, 
+"text": "Found in the waters of Kryta.<br>Fishing Hole: Coastal Fish<br>Favored Bait: Any<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 96667, 
+"text": "Found in the waters of Kryta.<br>Fishing Hole: Coastal Fish<br>Favored Bait: Any<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 97409, 
+"text": "Found in the waters of Kryta.<br>Fishing Hole: Coastal Fish<br>Favored Bait: Shrimplings<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 97527, 
+"text": "Found in the waters of Kryta.<br>Fishing Hole: Coastal Fish<br>Favored Bait: Shrimplings<br>Time of Day: Any"
+}
+], 
+"tiers": [
+{
+"count": 21, 
+"points": 0
+}
+], 
+"prerequisites": [
+6068
+], 
+"point_cap": -1, 
+"rewards": [
+{
+"type": "Item", 
+"id": 97334, 
+"count": 1
+}
+]
+}
+
+{
+"id": 6475, 
+"name": "Avid Maguuma Fisher", 
+"description": "<c=@flavor>The charm of fishing is in pursuing something elusive, though attainable. It is a simple yet profound practice of hope.</c>", 
+"requirement": "Collect  different fish from the waterways of the Maguuma Jungle.", 
+"locked_text": "", 
+"type": "ItemSet", 
+"flags": [
+"IgnoreNearlyComplete", "Pvp", "RepairOnLogin", "Repeatable", "Permanent"
+], 
+"bits": [
+{
+"type": "Item", 
+"id": 96020, 
+"text": "Found in the waters of the Maguuma Jungle.<br>Fishing Hole: None, Open Water<br>Favored Bait: Any<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 97568, 
+"text": "Found in the waters of the Maguuma Jungle.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96325, 
+"text": "Found in the waters of the Maguuma Jungle.<br>Fishing Hole: Freshwater Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96320, 
+"text": "Found in the waters of the Maguuma Jungle.<br>Fishing Hole: Freshwater Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97057, 
+"text": "Found in the waters of the Maguuma Jungle.<br>Fishing Hole: Freshwater Fish<br>Favored Bait: Any<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 96692, 
+"text": "Found in the waters of the Maguuma Jungle.<br>Fishing Hole: Freshwater Fish<br>Favored Bait: Sparkfly Larvae<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 97078, 
+"text": "Found in the waters of the Maguuma Jungle.<br>Fishing Hole: Freshwater Fish<br>Favored Bait: Sparkfly Larvae<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 96201, 
+"text": "Found in the waters of the Maguuma Jungle.<br>Fishing Hole: None, Open Water<br>Favored Bait: Any<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 95751, 
+"text": "Found in the waters of the Maguuma Jungle.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96191, 
+"text": "Found in the waters of the Maguuma Jungle.<br>Fishing Hole: Freshwater Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97841, 
+"text": "Found in the waters of the Maguuma Jungle.<br>Fishing Hole: Freshwater Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97644, 
+"text": "Found in the waters of the Maguuma Jungle.<br>Fishing Hole: Freshwater Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97465, 
+"text": "Found in the waters of the Maguuma Jungle.<br>Fishing Hole: Freshwater Fish<br>Favored Bait: Sparkfly Larvae<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 95908, 
+"text": "Found in the waters of the Maguuma Jungle.<br>Fishing Hole: Saltwater Fish<br>Favored Bait: Sardines<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96983, 
+"text": "Found in the waters of the Maguuma Jungle.<br>Fishing Hole: None, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96653, 
+"text": "Found in the waters of the Maguuma Jungle.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97546, 
+"text": "Found in the waters of the Maguuma Jungle.<br>Fishing Hole: Saltwater Fish<br>Favored Bait: Any<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 96645, 
+"text": "Found in the waters of the Maguuma Jungle.<br>Fishing Hole: Saltwater Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97122, 
+"text": "Found in the waters of the Maguuma Jungle.<br>Fishing Hole: Saltwater Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97543, 
+"text": "Found in the waters of the Maguuma Jungle.<br>Fishing Hole: Saltwater Fish<br>Favored Bait: Sardines<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 96439, 
+"text": "Found in the waters of the Maguuma Jungle.<br>Fishing Hole: Saltwater Fish<br>Favored Bait: Any<br>Time of Day: Nighttime"
+}
+], 
+"tiers": [
+{
+"count": 21, 
+"points": 0
+}
+], 
+"prerequisites": [
+6344
+], 
+"point_cap": -1, 
+"rewards": [
+{
+"type": "Item", 
+"id": 97749, 
+"count": 1
+}
+]
+}
+
+
+"id": 6227, 
+"name": "Avid Orrian Fisher", 
+"description": "<c=@flavor>The charm of fishing is in pursuing something elusive, though attainable. It is a simple yet profound practice of hope.</c>", 
+"requirement": "Collect  different fish from the waterways of Orr.", 
+"locked_text": "", 
+"type": "ItemSet", 
+"flags": [
+"IgnoreNearlyComplete", "Pvp", "RepairOnLogin", "Repeatable", "Permanent"
+], 
+"bits": [
+{
+"type": "Item", 
+"id": 96132, 
+"text": "Found in the waters of the Ruins of Orr.<br>Fishing Hole: None, Open Water<br>Favored Bait: Any<br>Time of Day: Dusk/Dawn"
+}, {
+"type": "Item", 
+"id": 97035, 
+"text": "Found in the waters of the Ruins of Orr.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96723, 
+"text": "Found in the waters of the Ruins of Orr.<br>Fishing Hole: Offshore Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97770, 
+"text": "Found in the waters of the Ruins of Orr.<br>Fishing Hole: Offshore Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97470, 
+"text": "Found in the waters of the Ruins of Orr.<br>Fishing Hole: Offshore Fish<br>Favored Bait: Any<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 96813, 
+"text": "Found in the waters of the Ruins of Orr.<br>Fishing Hole: Offshore Fish<br>Favored Bait: Leeches<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96332, 
+"text": "Found in the waters of the Ruins of Orr.<br>Fishing Hole: Offshore Fish<br>Favored Bait: Leeches<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 95924, 
+"text": "Found in the waters of the Ruins of Orr.<br>Fishing Hole: None, Open Water<br>Favored Bait: Any<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 96055, 
+"text": "Found in the waters of the Ruins of Orr.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97556, 
+"text": "Found in the waters of the Ruins of Orr.<br>Fishing Hole: Offshore Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96631, 
+"text": "Found in the waters of the Ruins of Orr.<br>Fishing Hole: Offshore Fish<br>Favored Bait: Any<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 96135, 
+"text": "Found in the waters of the Ruins of Orr.<br>Fishing Hole: Offshore Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96874, 
+"text": "Found in the waters of the Ruins of Orr.<br>Fishing Hole: Offshore Fish<br>Favored Bait: Sardines<br>Time of Day: Dusk/Dawn"
+}, {
+"type": "Item", 
+"id": 96936, 
+"text": "Found in the waters of the Ruins of Orr.<br>Fishing Hole: Offshore Fish<br>Favored Bait: Sardines<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 95873, 
+"text": "Found in the waters of the Ruins of Orr.<br>Fishing Hole: None, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96666, 
+"text": "Found in the waters of the Ruins of Orr.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96701, 
+"text": "Found in the waters of the Ruins of Orr.<br>Fishing Hole: Shore Fish<br>Favored Bait: Any<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 96551, 
+"text": "Found in the waters of the Ruins of Orr.<br>Fishing Hole: Shore Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97302, 
+"text": "Found in the waters of the Ruins of Orr.<br>Fishing Hole: Shore Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97186, 
+"text": "Found in the waters of the Ruins of Orr.<br>Fishing Hole: Shore Fish<br>Favored Bait: Leeches<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97017, 
+"text": "Found in the waters of the Ruins of Orr.<br>Fishing Hole: Shore Fish<br>Favored Bait: Leeches<br>Time of Day: Nighttime"
+}
+], 
+"tiers": [
+{
+"count": 21, 
+"points": 0
+}
+], 
+"prerequisites": [
+6363
+], 
+"point_cap": -1, 
+"rewards": [
+{
+"type": "Item", 
+"id": 97607, 
+"count": 1
+}
+]
+}
+
+{
+"id": 6339, 
+"name": "Avid Ring of Fire Fisher", 
+"description": "<c=@flavor>The charm of fishing is in pursuing something elusive, though attainable. It is a simple yet profound practice of hope.</c>", 
+"requirement": "Collect  different fish from the waterways around the Ring of Fire.", 
+"locked_text": "", 
+"type": "ItemSet", 
+"flags": [
+"IgnoreNearlyComplete", "Pvp", "RepairOnLogin", "Repeatable", "Permanent"
+], 
+"bits": [
+{
+"type": "Item", 
+"id": 96547, 
+"text": "Found in the waters of Draconis Mons.<br>Fishing Hole: None, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96720, 
+"text": "Found in the waters of Draconis Mons.<br>Fishing Hole: Volcanic Fish, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96589, 
+"text": "Found in the waters of Draconis Mons.<br>Fishing Hole: Volcanic Fish<br>Favored Bait: Any<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 96283, 
+"text": "Found in the waters of Draconis Mons.<br>Fishing Hole: Volcanic Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97471, 
+"text": "Found in the waters of Draconis Mons.<br>Fishing Hole: Volcanic Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96530, 
+"text": "Found in the waters of Draconis Mons.<br>Fishing Hole: Volcanic Fish<br>Favored Bait: Lava Beetles<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 96595, 
+"text": "Found in the waters of Draconis Mons.<br>Fishing Hole: Volcanic Fish<br>Favored Bait: Lava Beetles<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96491, 
+"text": "Found in the waters of Ember Bay.<br>Fishing Hole: None, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96597, 
+"text": "Found in the waters of Ember Bay.<br>Fishing Hole: Coastal Fish, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96889, 
+"text": "Found in the waters of Ember Bay.<br>Fishing Hole: Coastal Fish<br>Favored Bait: Any<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 96555, 
+"text": "Found in the waters of Ember Bay.<br>Fishing Hole: Coastal Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97100, 
+"text": "Found in the waters of Ember Bay.<br>Fishing Hole: Coastal Fish<br>Favored Bait: Any<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 97498, 
+"text": "Found in the waters of Ember Bay.<br>Fishing Hole: Coastal Fish<br>Favored Bait: Lava Beetles<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 96361, 
+"text": "Found in the waters of Ember Bay.<br>Fishing Hole: Coastal Fish<br>Favored Bait: Lava Beetles<br>Time of Day: Any"
+}
+], 
+"tiers": [
+{
+"count": 14, 
+"points": 0
+}
+], 
+"prerequisites": [
+6489
+], 
+"point_cap": -1, 
+"rewards": [
+{
+"type": "Item", 
+"id": 95716, 
+"count": 1
+}
+]
+}
+
+{
+"id": 6393, 
+"name": "Avid Saltwater Fisher", 
+"description": "<c=@flavor>The charm of fishing is in pursuing something elusive, though attainable. It is a simple yet profound practice of hope.</c>", 
+"requirement": "Collect  different fish from the world's bodies of saltwater.", 
+"locked_text": "", 
+"type": "ItemSet", 
+"flags": [
+"IgnoreNearlyComplete", "Pvp", "RepairOnLogin", "Repeatable", "Permanent"
+], 
+"bits": [
+{
+"type": "Item", 
+"id": 95654, 
+"text": "Found in bodies of saltwater all across the world.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96632, 
+"text": "Found in bodies of saltwater all across the world.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96082, 
+"text": "Found in bodies of saltwater all across the world.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97247, 
+"text": "Found in bodies of saltwater all across the world.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97241, 
+"text": "Found in bodies of saltwater all across the world.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97596, 
+"text": "Found in bodies of saltwater all across the world.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 95600, 
+"text": "Found in bodies of saltwater all across the world.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96097, 
+"text": "Found in bodies of saltwater all across the world.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96265, 
+"text": "Found in bodies of saltwater all across the world.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96110, 
+"text": "Found in bodies of saltwater all across the world.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97340, 
+"text": "Found in bodies of saltwater all across the world.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 95793, 
+"text": "Found in bodies of saltwater all across the world.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 95968, 
+"text": "Found in bodies of saltwater all across the world.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97534, 
+"text": "Found in bodies of saltwater all across the world.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}
+], 
+"tiers": [
+{
+"count": 14, 
+"points": 0
+}
+], 
+"prerequisites": [
+6471
+], 
+"point_cap": -1, 
+"rewards": [
+{
+"type": "Item", 
+"id": 96904, 
+"count": 1
+}
+]
+}
+
+{
+"id": 6264, 
+"name": "Avid Seitung Province Fisher", 
+"description": "<c=@flavor>The charm of fishing is in pursuing something elusive, though attainable. It is a simple yet profound practice of hope.</c>", 
+"requirement": "Collect  different fish from the waterways around Seitung Province.", 
+"locked_text": "", 
+"type": "ItemSet", 
+"flags": [
+"IgnoreNearlyComplete", "Pvp", "RepairOnLogin", "Repeatable", "Permanent"
+], 
+"bits": [
+{
+"type": "Item", 
+"id": 95894, 
+"text": "Found in the waters of Seitung Province.<br>Fishing Hole: None, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96350, 
+"text": "Found in the waters of Seitung Province.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97278, 
+"text": "Found in the waters of Seitung Province.<br>Fishing Hole: Shore Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96425, 
+"text": "Found in the waters of Seitung Province.<br>Fishing Hole: Shore Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97604, 
+"text": "Found in the waters of Seitung Province.<br>Fishing Hole: Shore Fish<br>Favored Bait: Any<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 95603, 
+"text": "Found in the waters of Seitung Province.<br>Fishing Hole: Shore Fish<br>Favored Bait: Shrimplings<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 97753, 
+"text": "Found in the waters of Seitung Province.<br>Fishing Hole: Shore Fish<br>Favored Bait: Shrimplings<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 97865, 
+"text": "Found in the waters of Seitung Province.<br>Fishing Hole: None, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96719, 
+"text": "Found in the waters of Seitung Province.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 95936, 
+"text": "Found in the waters of Seitung Province.<br>Fishing Hole: Offshore Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97692, 
+"text": "Found in the waters of Seitung Province.<br>Fishing Hole: Offshore Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97722, 
+"text": "Found in the waters of Seitung Province.<br>Fishing Hole: Offshore Fish<br>Favored Bait: Any<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 96523, 
+"text": "Found in the waters of Seitung Province.<br>Fishing Hole: Offshore Fish<br>Favored Bait: Sardines<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 95926, 
+"text": "Found in the waters of Seitung Province.<br>Fishing Hole: Offshore Fish<br>Favored Bait: Sardines<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96757, 
+"text": "Found in the waters of Seitung Province.<br>Fishing Hole: None, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96071, 
+"text": "Found in the waters of Seitung Province.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96944, 
+"text": "Found in the waters of Seitung Province.<br>Fishing Hole: Offshore Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97061, 
+"text": "Found in the waters of Seitung Province.<br>Fishing Hole: Offshore Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97714, 
+"text": "Found in the waters of Seitung Province.<br>Fishing Hole: Offshore Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96318, 
+"text": "Found in the waters of Seitung Province.<br>Fishing Hole: Offshore Fish<br>Favored Bait: Sardines<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 97181, 
+"text": "Found in the waters of Seitung Province.<br>Fishing Hole: Offshore Fish<br>Favored Bait: Shrimplings<br>Time of Day: Daytime"
+}
+], 
+"tiers": [
+{
+"count": 21, 
+"points": 0
+}
+], 
+"prerequisites": [
+6336
+], 
+"point_cap": -1, 
+"rewards": [
+{
+"type": "Item", 
+"id": 96728, 
+"count": 1
+}
+]
+}
+
+{
+"id": 6153, 
+"name": "Avid Shiverpeaks Fisher", 
+"description": "<c=@flavor>The charm of fishing is in pursuing something elusive, though attainable. It is a simple yet profound practice of hope.</c>", 
+"requirement": "Collect  different fish from the waterways of the Shiverpeaks.", 
+"locked_text": "", 
+"type": "ItemSet", 
+"flags": [
+"IgnoreNearlyComplete", "Pvp", "RepairOnLogin", "Repeatable", "Permanent"
+], 
+"bits": [
+{
+"type": "Item", 
+"id": 97799, 
+"text": "Found in the waters of the Shiverpeak Mountains.<br>Fishing Hole: None, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97364, 
+"text": "Found in the waters of the Shiverpeak Mountains.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97356, 
+"text": "Found in the waters of the Shiverpeak Mountains.<br>Fishing Hole: Lake Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 95668, 
+"text": "Found in the waters of the Shiverpeak Mountains.<br>Fishing Hole: Lake Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 95896, 
+"text": "Found in the waters of the Shiverpeak Mountains.<br>Fishing Hole: Lake Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96218, 
+"text": "Found in the waters of the Shiverpeak Mountains.<br>Fishing Hole: Lake Fish<br>Favored Bait: Ramshorn Snails<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 96882, 
+"text": "Found in the waters of the Shiverpeak Mountains.<br>Fishing Hole: Lake Fish<br>Favored Bait: Shrimplings<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 95766, 
+"text": "Found in the waters of the Shiverpeak Mountains.<br>Fishing Hole: None, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97713, 
+"text": "Found in the waters of the Shiverpeak Mountains.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 97866, 
+"text": "Found in the waters of the Shiverpeak Mountains.<br>Fishing Hole: Lake Fish<br>Favored Bait: Any<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 95822, 
+"text": "Found in the waters of the Shiverpeak Mountains.<br>Fishing Hole: Lake Fish<br>Favored Bait: Any<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 96619, 
+"text": "Found in the waters of the Shiverpeak Mountains.<br>Fishing Hole: Boreal Fish<br>Favored Bait: Any<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 97301, 
+"text": "Found in the waters of the Shiverpeak Mountains.<br>Fishing Hole: Lake Fish<br>Favored Bait: Ramshorn Snails<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 95723, 
+"text": "Found in the waters of the Shiverpeak Mountains.<br>Fishing Hole: Boreal Fish<br>Favored Bait: Ramshorn Snails<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 96276, 
+"text": "Found in the waters of the Shiverpeak Mountains.<br>Fishing Hole: None, Open Water<br>Favored Bait: Any<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 96643, 
+"text": "Found in the waters of the Shiverpeak Mountains.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 97456, 
+"text": "Found in the waters of the Shiverpeak Mountains.<br>Fishing Hole: Boreal Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97496, 
+"text": "Found in the waters of the Shiverpeak Mountains.<br>Fishing Hole: Boreal Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96373, 
+"text": "Found in the waters of the Shiverpeak Mountains.<br>Fishing Hole: Boreal Fish<br>Favored Bait: Any<br>Time of Day: Dusk/Dawn"
+}, {
+"type": "Item", 
+"id": 96954, 
+"text": "Found in the waters of the Shiverpeak Mountains.<br>Fishing Hole: Boreal Fish<br>Favored Bait: Ramshorn Snails<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 97225, 
+"text": "Found in the waters of the Shiverpeak Mountains.<br>Fishing Hole: Boreal Fish<br>Favored Bait: Shrimplings<br>Time of Day: Any"
+}
+], 
+"tiers": [
+{
+"count": 21, 
+"points": 0
+}
+], 
+"prerequisites": [
+6179
+], 
+"point_cap": -1, 
+"rewards": [
+{
+"type": "Item", 
+"id": 96309, 
+"count": 1
+}
+]
+}
+
+{
+"id": 6110, 
+"name": "Avid World Class Fisher", 
+"description": "<c=@flavor>The charm of fishing is in pursuing something elusive, though attainable. It is a simple yet profound practice of hope.</c>", 
+"requirement": "Collect  different fish from the waterways of the world.", 
+"locked_text": "", 
+"type": "ItemSet", 
+"flags": [
+"IgnoreNearlyComplete", "Pvp", "RepairOnLogin", "Repeatable", "Permanent"
+], 
+"bits": [
+{
+"type": "Item", 
+"id": 96852, 
+"text": "Found in bodies of water all across the world.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96635, 
+"text": "Found in bodies of water all across the world.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 95992, 
+"text": "Found in bodies of water all across the world.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96804, 
+"text": "Found in bodies of water all across the world.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96108, 
+"text": "Found in bodies of water all across the world.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96304, 
+"text": "Found in bodies of water all across the world.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97097, 
+"text": "Found in bodies of water all across the world.<br>Fishing Hole: Any<br>Favored Bait: Any<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 97388, 
+"text": "Found in bodies of water all across the world.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96116, 
+"text": "Found in bodies of water all across the world.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 95624, 
+"text": "Found in bodies of water all across the world.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 95682, 
+"text": "Found in bodies of water all across the world.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 96141, 
+"text": "Found in bodies of water all across the world.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 97497, 
+"text": "Found in bodies of water all across the world.<br>Fishing Hole: Any<br>Favored Bait: Any<br>Time of Day: Dusk/Dawn"
+}, {
+"type": "Item", 
+"id": 95870, 
+"text": "Found in bodies of water all across the world.<br>Fishing Hole: Any<br>Favored Bait: Any<br>Time of Day: Nighttime"
+}
+], 
+"tiers": [
+{
+"count": 14, 
+"points": 0
+}
+], 
+"prerequisites": [
+6224
+], 
+"point_cap": -1, 
+"rewards": [
+{
+"type": "Item", 
+"id": 97169, 
+"count": 1
+}
+]
+}
+
+{
+"id": 7114, 
+"name": "Horn of Maguuma Fisher", 
+"description": "<c=@flavor>The charm of fishing is in pursuing something elusive, though attainable. It is a simple yet profound practice of hope.</c>", 
+"requirement": "Collect  different fish from the waterways around the Horn of Maguuma.", 
+"locked_text": "", 
+"type": "ItemSet", 
+"flags": [
+"IgnoreNearlyComplete", "Pvp", "RepairOnLogin", "Permanent"
+], 
+"bits": [
+{
+"type": "Item", 
+"id": 100682, 
+"text": "Found in the waters of Skywatch Archipelago and Inner Nayos.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 99986, 
+"text": "Found in the waters of Skywatch Archipelago and Inner Nayos.<br>Fishing Hole: Fractured Lake Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 100298, 
+"text": "Found in the waters of Skywatch Archipelago and Inner Nayos.<br>Fishing Hole: Fractured Freshwater Fish<br>Favored Bait: Any<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 100887, 
+"text": "Found in the waters of Skywatch Archipelago and Inner Nayos.<br>Fishing Hole: Fractured Freshwater Fish<br>Favored Bait: Any<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 100399, 
+"text": "Found in the waters of Skywatch Archipelago and Inner Nayos.<br>Fishing Hole: Fractured Desert Fish<br>Favored Bait: Any<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 100517, 
+"text": "Found in the waters of Skywatch Archipelago and Inner Nayos.<br>Fishing Hole: Fractured Channel Fish<br>Favored Bait: Mackerel<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 100032, 
+"text": "Found in the waters of Skywatch Archipelago and Inner Nayos.<br>Fishing Hole: Fractured Channel Fish<br>Favored Bait: Glow Worms<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 100046, 
+"text": "Found in the waters of Amnytas and Inner Nayos.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 100845, 
+"text": "Found in the waters of Amnytas and Inner Nayos.<br>Fishing Hole: Astral Fish, Spire Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 100526, 
+"text": "Found in the waters of Amnytas and Inner Nayos.<br>Fishing Hole: Astral Fish<br>Favored Bait: Any<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 100751, 
+"text": "Found in the waters of Amnytas and Inner Nayos.<br>Fishing Hole: Astral Fish<br>Favored Bait: Any<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 100354, 
+"text": "Found in the waters of Amnytas anywhere, anytime, and found in Inner Nayos. However, it is commonly seen with Spire Fish during dawn and dusk.<br>Fishing Hole: Any, Open Water, Spire Fish (Commonly Spotted)<br>Favored Bait: Any<br>Time of Day: Any (Low Chance), Dusk/Dawn"
+}, {
+"type": "Item", 
+"id": 100904, 
+"text": "Found in the waters of Amnytas and Inner Nayos.<br>Fishing Hole: Astral Fish<br>Favored Bait: Lightning Bug<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 100180, 
+"text": "Found in the waters of Amnytas and Inner Nayos.<br>Fishing Hole: Spire Fish<br>Favored Bait: Fish Eggs<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 101241, 
+"text": "Found in the waters of Inner Nayos.<br>Fishing Hole: Any, Open Water (Higher Chance)<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 101127, 
+"text": "Found in the waters of Inner Nayos.<br>Fishing Hole: Any, Open Water (Higher Chance)<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 101622, 
+"text": "Found in the waters of Inner Nayos.<br>Fishing Hole: Any, Open Water, Dream Fish (Higher Chance)<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 101240, 
+"text": "Found in the waters of Inner Nayos.<br>Fishing Hole: Any, Open Water, Nayosian Fish (Higher Chance)<br>Favored Bait: Any<br>Time of Day: Any, Night (Higher Chance)"
+}, {
+"type": "Item", 
+"id": 101523, 
+"text": "Found in the waters of Inner Nayos.<br>Fishing Hole: Any, Open Water, Dream Fish (Higher Chance)<br>Favored Bait: Any<br>Time of Day: Any, Daytime (Higher Chance)"
+}, {
+"type": "Item", 
+"id": 101209, 
+"text": "Found in the waters of Inner Nayos.<br>Fishing Hole: Any, Open Water, Nayosian Fish (Higher Chance)<br>Favored Bait: Any<br>Time of Day: Any, Daytime (Higher Chance)"
+}, {
+"type": "Item", 
+"id": 101446, 
+"text": "Found in the waters of Inner Nayos.<br>Fishing Hole: Any, Open Water, Dream Fish (Higher Chance)<br>Favored Bait: Any<br>Time of Day: Night (Higher Chance)"
+}
+], 
+"tiers": [
+{
+"count": 1, 
+"points": 2
+}, {
+"count": 7, 
+"points": 3
+}, {
+"count": 14, 
+"points": 4
+}, {
+"count": 21, 
+"points": 5
+}
+], 
+"rewards": [
+{
+"type": "Item", 
+"id": 96347, 
+"count": 6
+}
+]
+}
+
+{
+"id": 7804, 
+"name": "Avid Horn of Maguuma Fisher", 
+"description": "<c=@flavor>The charm of fishing is in pursuing something elusive, though attainable. It is a simple yet profound practice of hope.</c>", 
+"requirement": "Collect  different fish from the waterways around the Horn of Maguuma.", 
+"locked_text": "", 
+"type": "ItemSet", 
+"flags": [
+"IgnoreNearlyComplete", "Pvp", "RepairOnLogin", "Repeatable", "Permanent"
+], 
+"bits": [
+{
+"type": "Item", 
+"id": 100682, 
+"text": "Found in the waters of Skywatch Archipelago and Inner Nayos.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 99986, 
+"text": "Found in the waters of Skywatch Archipelago and Inner Nayos.<br>Fishing Hole: Fractured Lake Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 100298, 
+"text": "Found in the waters of Skywatch Archipelago and Inner Nayos.<br>Fishing Hole: Fractured Freshwater Fish<br>Favored Bait: Any<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 100887, 
+"text": "Found in the waters of Skywatch Archipelago and Inner Nayos.<br>Fishing Hole: Fractured Freshwater Fish<br>Favored Bait: Any<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 100399, 
+"text": "Found in the waters of Skywatch Archipelago and Inner Nayos.<br>Fishing Hole: Fractured Desert Fish<br>Favored Bait: Any<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 100517, 
+"text": "Found in the waters of Skywatch Archipelago and Inner Nayos.<br>Fishing Hole: Fractured Channel Fish<br>Favored Bait: Mackerel<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 100032, 
+"text": "Found in the waters of Skywatch Archipelago and Inner Nayos.<br>Fishing Hole: Fractured Channel Fish<br>Favored Bait: Glow Worms<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 100046, 
+"text": "Found in the waters of Amnytas and Inner Nayos.<br>Fishing Hole: Any, Open Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 100845, 
+"text": "Found in the waters of Amnytas and Inner Nayos.<br>Fishing Hole: Astral Fish, Spire Fish<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 100526, 
+"text": "Found in the waters of Amnytas and Inner Nayos.<br>Fishing Hole: Astral Fish<br>Favored Bait: Any<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 100751, 
+"text": "Found in the waters of Amnytas and Inner Nayos.<br>Fishing Hole: Astral Fish<br>Favored Bait: Any<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 100354, 
+"text": "Found in the waters of Amnytas anywhere, anytime, and found in Inner Nayos. However, it is commonly seen with Spire Fish during dawn and dusk.<br>Fishing Hole: Any, Open Water, Spire Fish (Commonly Spotted)<br>Favored Bait: Any<br>Time of Day: Any (Low Chance), Dusk/Dawn"
+}, {
+"type": "Item", 
+"id": 100904, 
+"text": "Found in the waters of Amnytas and Inner Nayos.<br>Fishing Hole: Astral Fish<br>Favored Bait: Lightning Bug<br>Time of Day: Daytime"
+}, {
+"type": "Item", 
+"id": 100180, 
+"text": "Found in the waters of Amnytas and Inner Nayos.<br>Fishing Hole: Spire Fish<br>Favored Bait: Fish Eggs<br>Time of Day: Nighttime"
+}, {
+"type": "Item", 
+"id": 101241, 
+"text": "Found in the waters of Inner Nayos.<br>Fishing Hole: Any, Open Water (Higher Chance)<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 101127, 
+"text": "Found in the waters of Inner Nayos.<br>Fishing Hole: Any, Open Water (Higher Chance)<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 101622, 
+"text": "Found in the waters of Inner Nayos.<br>Fishing Hole: Any, Open Water, Dream Fish (Higher Chance)<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 101240, 
+"text": "Found in the waters of Inner Nayos.<br>Fishing Hole: Any, Open Water, Nayosian Fish (Higher Chance)<br>Favored Bait: Any<br>Time of Day: Any, Night (Higher Chance)"
+}, {
+"type": "Item", 
+"id": 101523, 
+"text": "Found in the waters of Inner Nayos.<br>Fishing Hole: Any, Open Water, Dream Fish (Higher Chance)<br>Favored Bait: Any<br>Time of Day: Any, Daytime (Higher Chance)"
+}, {
+"type": "Item", 
+"id": 101209, 
+"text": "Found in the waters of Inner Nayos.<br>Fishing Hole: Any, Open Water, Nayosian Fish (Higher Chance)<br>Favored Bait: Any<br>Time of Day: Any, Daytime (Higher Chance)"
+}, {
+"type": "Item", 
+"id": 101446, 
+"text": "Found in the waters of Inner Nayos.<br>Fishing Hole: Any, Open Water, Dream Fish (Higher Chance)<br>Favored Bait: Any<br>Time of Day: Night (Higher Chance)"
+}
+], 
+"tiers": [
+{
+"count": 21, 
+"points": 0
+}
+], 
+"prerequisites": [
+7114
+], 
+"point_cap": -1, 
+"rewards": [
+{
+"type": "Item", 
+"id": 101610, 
+"count": 1
+}
+]
+}
+
+{
+"id": 8168, 
+"name": "Janthir Fisher", 
+"description": "<c=@flavor>The charm of fishing is in pursuing something elusive, though attainable. It is a simple yet profound practice of hope.</c>", 
+"requirement": "Collect  different fish from the waterways around Janthir.", 
+"locked_text": "", 
+"type": "ItemSet", 
+"flags": [
+"IgnoreNearlyComplete", "Pvp", "RepairOnLogin", "Permanent"
+], 
+"bits": [
+{
+"type": "Item", 
+"id": 102451, 
+"text": "Found in the waters of Lowland Shore.<br>Fishing Hole: Freshwater / Brackish Water<br>Favored Bait: Any<br>Time of Day: Any, Day (Higher Chance)"
+}, {
+"type": "Item", 
+"id": 103280, 
+"text": "Found in the waters of Lowland Shore.<br>Fishing Hole: Saltwater / Brackish Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 102523, 
+"text": "Found in the waters of Lowland Shore.<br>Fishing Hole: Any<br>Favored Bait: Any<br>Time of Day: Any, Day (Higher Chance)"
+}, {
+"type": "Item", 
+"id": 102796, 
+"text": "Found in the waters of Lowland Shore.<br>Fishing Hole: Any<br>Favored Bait: Any<br>Time of Day: Any, Night (Higher Chance)"
+}, {
+"type": "Item", 
+"id": 103274, 
+"text": "Found in the waters of Lowland Shore.<br>Fishing Hole: Any<br>Favored Bait: Any<br>Time of Day: Any, Night (Higher Chance)"
+}, {
+"type": "Item", 
+"id": 103060, 
+"text": "Found in the waters of Lowland Shore.<br>Fishing Hole: Any<br>Favored Bait: Any<br>Time of Day: Any, Night (Higher Chance)"
+}, {
+"type": "Item", 
+"id": 102966, 
+"text": "Found in the waters of Janthir Syntri.<br>Fishing Hole: Freshwater / Brackish Water<br>Favored Bait: Any<br>Time of Day: Any, Night (Higher Chance)"
+}, {
+"type": "Item", 
+"id": 102930, 
+"text": "Found in the waters of Janthir Syntri.<br>Fishing Hole: Any<br>Favored Bait: Any<br>Time of Day: Any, Day (Higher Chance)"
+}, {
+"type": "Item", 
+"id": 103511, 
+"text": "Found in the waters of Janthir Syntri.<br>Fishing Hole: Saltwater<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 102667, 
+"text": "Found in the waters of Janthir Syntri.<br>Fishing Hole: Any<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 102600, 
+"text": "Found in the waters of Janthir Syntri.<br>Fishing Hole: Saltwater / Brackish Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 102437, 
+"text": "Found in the waters of Janthir Syntri.<br>Fishing Hole: Saltwater<br>Favored Bait: Any<br>Time of Day: Any, Night (Higher Chance)"
+}
+], 
+"tiers": [
+{
+"count": 6, 
+"points": 5
+}, {
+"count": 12, 
+"points": 5
+}
+], 
+"rewards": [
+{
+"type": "Item", 
+"id": 96347, 
+"count": 4
+}
+]
+}
+
+{
+"id": 8246, 
+"name": "Avid Janthir Fisher", 
+"description": "<c=@flavor>The charm of fishing is in pursuing something elusive, though attainable. It is a simple yet profound practice of hope.</c>", 
+"requirement": "Collect  different fish from the waterways around Janthir.", 
+"locked_text": "", 
+"type": "ItemSet", 
+"flags": [
+"IgnoreNearlyComplete", "Pvp", "RepairOnLogin", "Repeatable", "Permanent"
+], 
+"bits": [
+{
+"type": "Item", 
+"id": 102451, 
+"text": "Found in the waters of Lowland Shore.<br>Fishing Hole: Freshwater / Brackish Water<br>Favored Bait: Any<br>Time of Day: Any, Day (Higher Chance)"
+}, {
+"type": "Item", 
+"id": 103280, 
+"text": "Found in the waters of Lowland Shore.<br>Fishing Hole: Saltwater / Brackish Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 102523, 
+"text": "Found in the waters of Lowland Shore.<br>Fishing Hole: Any<br>Favored Bait: Any<br>Time of Day: Any, Day (Higher Chance)"
+}, {
+"type": "Item", 
+"id": 102796, 
+"text": "Found in the waters of Lowland Shore.<br>Fishing Hole: Any<br>Favored Bait: Any<br>Time of Day: Any, Night (Higher Chance)"
+}, {
+"type": "Item", 
+"id": 103274, 
+"text": "Found in the waters of Lowland Shore.<br>Fishing Hole: Any<br>Favored Bait: Any<br>Time of Day: Any, Night (Higher Chance)"
+}, {
+"type": "Item", 
+"id": 103060, 
+"text": "Found in the waters of Lowland Shore.<br>Fishing Hole: Any<br>Favored Bait: Any<br>Time of Day: Any, Night (Higher Chance)"
+}, {
+"type": "Item", 
+"id": 102966, 
+"text": "Found in the waters of Janthir Syntri.<br>Fishing Hole: Freshwater / Brackish Water<br>Favored Bait: Any<br>Time of Day: Any, Night (Higher Chance)"
+}, {
+"type": "Item", 
+"id": 102930, 
+"text": "Found in the waters of Janthir Syntri.<br>Fishing Hole: Any<br>Favored Bait: Any<br>Time of Day: Any, Day (Higher Chance)"
+}, {
+"type": "Item", 
+"id": 103511, 
+"text": "Found in the waters of Janthir Syntri.<br>Fishing Hole: Saltwater<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 102667, 
+"text": "Found in the waters of Janthir Syntri.<br>Fishing Hole: Any<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 102600, 
+"text": "Found in the waters of Janthir Syntri.<br>Fishing Hole: Saltwater / Brackish Water<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 102437, 
+"text": "Found in the waters of Janthir Syntri.<br>Fishing Hole: Saltwater<br>Favored Bait: Any<br>Time of Day: Any, Night (Higher Chance)"
+}
+], 
+"tiers": [
+{
+"count": 12, 
+"points": 0
+}
+], 
+"prerequisites": [
+8168
+], 
+"point_cap": -1, 
+"rewards": [
+{
+"type": "Item", 
+"id": 103117, 
+"count": 1
+}
+]
+}
+
+{
+"id": 8554, 
+"name": "Mistburned Barrens Fisher", 
+"description": "<c=@flavor>The charm of fishing is in pursuing something elusive, though attainable. It is a simple yet profound practice of hope.</c>", 
+"requirement": "Collect  different fish from the lakes and ponds in Mistburned Barrens.", 
+"locked_text": "", 
+"type": "ItemSet", 
+"flags": [
+"IgnoreNearlyComplete", "Pvp", "RepairOnLogin", "Permanent"
+], 
+"bits": [
+{
+"type": "Item", 
+"id": 104280, 
+"text": "Found in the waters of Mistburned Barrens.<br>Fishing Hole: Any<br>Favored Bait: Any<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 104298, 
+"text": "Found in the waters of Mistburned Barrens.<br>Fishing Hole: Any<br>Favored Bait: Any<br>Time of Day: Day"
+}, {
+"type": "Item", 
+"id": 104237, 
+"text": "Found in the waters of Mistburned Barrens.<br>Fishing Hole: Any<br>Favored Bait: Any<br>Time of Day: Dusk/Dawn, Day (Higher Chance)"
+}, {
+"type": "Item", 
+"id": 104275, 
+"text": "Found in the waters of Mistburned Barrens.<br>Fishing Hole: Any<br>Favored Bait: Any<br>Time of Day: Dusk/Dawn, Night (Higher Chance)"
+}, {
+"type": "Item", 
+"id": 104303, 
+"text": "Found in the waters of Mistburned Barrens.<br>Fishing Hole: Barrens Freshwater Fish<br>Favored Bait: Sparkfly Larvae<br>Time of Day: Any"
+}, {
+"type": "Item", 
+"id": 104459, 
+"text": "Found in the waters of Mistburned Barrens.<br>Fishing Hole: Bloodstone-Infused Pond Fish<br>Favored Bait: Lava Beetles<br>Time of Day: Any"
+}
+], 
+"tiers": [
+{
+"count": 6, 
+"points": 5
+}
+], 
+"rewards": [
+{
+"type": "Item", 
+"id": 96347, 
+"count": 2
+}
+]
+}

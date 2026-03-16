@@ -1,0 +1,233 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+
+  <data name="StartLoggingBtnText" xml:space="preserve"><value>Iniciar registro</value></data>
+  <data name="StopLoggingBtnText" xml:space="preserve"><value>Detener registro</value></data>
+  <data name="MeasureFishBtnText" xml:space="preserve"><value>Medir pez</value></data>
+  <data name="CompactModeBtnText" xml:space="preserve"><value>Modo compacto</value></data>
+  <data name="WhatsBitingBtnText" xml:space="preserve"><value>Widget de pesca</value></data>
+  <data name="ProfitTrackerBtnText" xml:space="preserve"><value>Rastreador de ganancias</value></data>
+  <data name="RecentCatchesText" xml:space="preserve"><value>Capturas recientes (Últimas 20)</value></data>
+  <data name="HostTournamentBtnText" xml:space="preserve"><value>Alojar torneo</value></data>
+  <data name="JoinTournamentBtnText" xml:space="preserve"><value>Unirse a torneo</value></data>
+  <data name="UseDrfCheckboxText" xml:space="preserve"><value>Usar DRF (Tiempo Real)</value></data>
+  <data name="UseDrfTooltip" xml:space="preserve"><value>Requiere el complemento drf.rs</value></data>
+  <data name="WhatsBitingTooltip" xml:space="preserve"><value>Muestra los peces que faltan en tu mapa y hora actual.</value></data>
+  <data name="ProfitTrackerTooltip" xml:space="preserve"><value>Mostrar u ocultar el widget de Oro por Hora en vivo.</value></data>
+  <data name="CloseLodgeTooltip" xml:space="preserve"><value>Cerrar la cabaña</value></data>
+  <data name="SearchFishPlaceholder" xml:space="preserve"><value>Buscar pez...</value></data>
+  <data name="CollapseBtnText" xml:space="preserve"><value>Colapsar</value></data>
+  <data name="RevealBtnText" xml:space="preserve"><value>Revelar</value></data>
+  <data name="ResetFiltersBtnText" xml:space="preserve"><value>Restablecer filtros</value></data>
+  <data name="PushPbBtnText" xml:space="preserve"><value>Enviar PB a la tabla</value></data>
+  <data name="ZoneAnalyzerBtnText" xml:space="preserve"><value>Analizador de zona</value></data>
+  <data name="MetaProgressBtnText" xml:space="preserve"><value>Progreso de meta</value></data>
+  <data name="PushPbTooltip" xml:space="preserve"><value>¡Enviar PBs a las tablas de clasificación mundiales!</value></data>
+  <data name="ZoneAnalyzerTooltip" xml:space="preserve"><value>¡Analizar el mapa para logros faltantes!</value></data>
+  <data name="MetaProgressTooltip" xml:space="preserve"><value>¡Rastrear el progreso de la meta!</value></data>
+  <data name="HostSetupTitle" xml:space="preserve"><value>Configuración del anfitrión</value></data>
+  <data name="StartDelayLabel" xml:space="preserve"><value>Retraso de inicio</value></data>
+  <data name="DurationLabel" xml:space="preserve"><value>Duración (Min)</value></data>
+  <data name="TrackingModeLabel" xml:space="preserve"><value>Modo de seguimiento</value></data>
+  <data name="TargetSpeciesLabel" xml:space="preserve"><value>Especie objetivo</value></data>
+  <data name="WinFactorLabel" xml:space="preserve"><value>Factor de victoria</value></data>
+  <data name="CreateRoomBtn" xml:space="preserve"><value>Crear sala</value></data>
+  <data name="JoinRoomTitle" xml:space="preserve"><value>Unirse a una sala activa</value></data>
+  <data name="EnterRoomCodeLabel" xml:space="preserve"><value>Ingresar código de sala:</value></data>
+  <data name="JoinRoomBtn" xml:space="preserve"><value>Unirse a la sala</value></data>
+  <data name="ManualVerifyTitle" xml:space="preserve"><value>Verificación manual e información</value></data>
+  <data name="PasteCodePlaceholder" xml:space="preserve"><value>Pegar código de respaldo...</value></data>
+  <data name="VerifyCodeBtn" xml:space="preserve"><value>Verificar código</value></data>
+  <data name="TrackingModesInfo" xml:space="preserve"><value>MODOS: • API (5 min): Servidores oficiales. • DRF (Tiempo Real): Instantáneo vía drf.rs.</value></data>
+  <data name="LeaderboardTitle" xml:space="preserve"><value>Clasificaciones mundiales</value></data>
+  <data name="SortLabel" xml:space="preserve"><value>Ordenar:</value></data>
+  <data name="FishLabel" xml:space="preserve"><value>Pez:</value></data>
+  <data name="AllSpeciesFilterBtn" xml:space="preserve"><value>Todas las especies</value></data>
+  <data name="RefreshBtn" xml:space="preserve"><value>Actualizar</value></data>
+  <data name="WeightDropdown" xml:space="preserve"><value>Peso</value></data>
+  <data name="LengthDropdown" xml:space="preserve"><value>Longitud</value></data>
+  <data name="BitingNowTitle" xml:space="preserve"><value>Mordiendo ahora</value></data>
+  <data name="PbWeightLabel" xml:space="preserve"><value>Peso PB</value></data>
+  <data name="PbLengthLabel" xml:space="preserve"><value>Longitud PB</value></data>
+  <data name="BaitLabel" xml:space="preserve"><value>Cebo</value></data>
+  <data name="ExpandingMainView" xml:space="preserve"><value>Cambiando a vista principal</value></data>
+  <data name="LeaderboardRefreshed" xml:space="preserve"><value>¡Tabla actualizada!</value></data>
+  <data name="NoRecordsFound" xml:space="preserve"><value>No se encontraron registros.</value></data>
+  <data name="NetworkError" xml:space="preserve"><value>¡Error de red!</value></data>
+  <data name="NoAchievFound" xml:space="preserve"><value>No se encontró ningún logro de pesca aquí.</value></data>
+  <data name="TourneyBegin" xml:space="preserve"><value>¡El torneo ha comenzado!</value></data>
+  <data name="ResultsSubmitted" xml:space="preserve"><value>¡Resultados enviados al servidor!</value></data>
+  <data name="LoadingTop10" xml:space="preserve"><value>Cargando Top 10...</value></data>
+  <data name="Ready" xml:space="preserve"><value>¡Listo!</value></data>
+  <data name="Measuring" xml:space="preserve"><value>Midiendo...</value></data>
+  <data name="DrfActive" xml:space="preserve"><value>DRF Activo</value></data>
+  <data name="DrfPaused" xml:space="preserve"><value>DRF Pausado</value></data>
+  <data name="ApiPaused" xml:space="preserve"><value>API Pausada</value></data>
+  <data name="StartingIn" xml:space="preserve"><value>Iniciando en...</value></data>
+  <data name="Top5Catches" xml:space="preserve"><value>Top 5 capturas:</value></data>
+  <data name="ApiErrorBags" xml:space="preserve"><value>Error API: No se pudieron leer las bolsas.</value></data>
+  <data name="FishMeasuredCount" xml:space="preserve"><value>Peces medidos! {0} objetos escaneados. {1} nuevos encontrados.</value></data>
+  <data name="ApiErrorKey" xml:space="preserve"><value>Error API: ¡Pegue la clave API en los ajustes!</value></data>
+  <data name="SnapshotSaved" xml:space="preserve"><value>API: ¡Instantánea guardada! {0} objetos seguidos.</value></data>
+  <data name="DrfErrorToken" xml:space="preserve"><value>Error DRF: ¡Falta el token!</value></data>
+  <data name="DrfConnected" xml:space="preserve"><value>¡DRF Conectado! Rastreo en tiempo real activo.</value></data>
+  <data name="DrfFailed" xml:space="preserve"><value>¡Error de DRF! Verifique el token.</value></data>
+  <data name="CasualLoggingStopped" xml:space="preserve"><value>Registro detenido.</value></data>
+  <data name="RoomCreated" xml:space="preserve"><value>¡Sala {0} creada y copiada!</value></data>
+  <data name="ApiErrorRoom" xml:space="preserve"><value>Error API: No se pudo crear la sala.</value></data>
+  <data name="InvalidRoomCode" xml:space="preserve"><value>¡Formato de código inválido! Use GW-XXXXX</value></data>
+  <data name="RoomNotFound" xml:space="preserve"><value>¡Sala no encontrada o expirada!</value></data>
+  <data name="DrfResumeWait" xml:space="preserve"><value>DRF inactivo. ¡Se reanudará al iniciar el torneo!</value></data>
+  <data name="TourneyStarted" xml:space="preserve"><value>¡La pesca de torneo ha comenzado!</value></data>
+  <data name="BackupCopied" xml:space="preserve"><value>¡Código de respaldo copiado!</value></data>
+  <data name="TourneyCatchAlert" xml:space="preserve"><value>Captura de torneo: {0} ({1} lbs, {2} in){3}</value></data>
+  <data name="CaughtAlert" xml:space="preserve"><value>Atrapado: {0} ({1} lbs, {2} in){3}</value></data>
+  <data name="FishCodeCopied" xml:space="preserve"><value>¡Código {0} copiado!</value></data>
+  <data name="RefreshCooldown" xml:space="preserve"><value>¡En enfriamiento! Espere {0}m.</value></data>
+  <data name="SubmitCooldown" xml:space="preserve"><value>Espere {0} minutos antes de reenviar.</value></data>
+  <data name="UiToggled" xml:space="preserve"><value>UI de Gilled Wars alternada!</value></data>
+<data name="PbClipText" xml:space="preserve"><value>{0} mi PB de peso para este es: {1} lbs y mi PB de longitud es: {2} in</value></data>
+<data name="AutoSyncSuccess" xml:space="preserve"><value>Sincronización automática: ¡PB subidos exitosamente al leaderboard!</value></data>
+<data name="NoNewSubmissions" xml:space="preserve"><value>No se encontraron nuevas presentaciones.</value></data>
+<data name="PushingPBs" xml:space="preserve"><value>Enviando {0} PB no enviados al leaderboard...</value></data>
+<data name="ServerRejected" xml:space="preserve"><value>El servidor rechazó las presentaciones. Me pregunto por qué.</value></data>
+<data name="FailedConnectLB" xml:space="preserve"><value>Falló la conexión a los leaderboards.</value></data>
+<data name="TournamentOver" xml:space="preserve"><value>¡Torneo terminado! Pesando todos tus peces, por favor espera...</value></data>
+<data name="JunkMessages" xml:space="preserve"><value>Atrapaste... ¡basura! Los océanos se están curando.|¡Una bota empapada! Un verdadero premio de pescador.|Solo basura literal. ¡Mejor suerte en el próximo lanzamiento!|Sacaste un enredo enredado. Juego máximo.|¿Es un pez legendario?! No... solo esbris.</value></data>
+<data name="TreasureMessages" xml:space="preserve"><value>¡Guau, Brillante! ¡Atrapaste un tesoro real!|¡Un cofre hundido! Esperemos que no esté lleno de botas.|¡Tesoro! Vas a ser rico... probablemente.|¡Sacaste el jackpot! ¡Buena captura!|¡Apártate, Barbanegra! Botín hundido adquirido.</value></data>
+<data name="Loading" xml:space="preserve"><value>Cargando...</value></data>
+<data name="MissingLabel" xml:space="preserve"><value>Faltante</value></data>
+<data name="AllLabel" xml:space="preserve"><value>Todo</value></data>
+<data name="BitingNowLoading" xml:space="preserve"><value>Mordiendo ahora: Cargando...</value></data>
+<data name="ToggleBitingTooltip" xml:space="preserve"><value>Alternar entre peces faltantes y todos los peces</value></data>
+<data name="TargetAllSpecies" xml:space="preserve"><value>Objetivo: Todas las especies</value></data>
+<data name="TargetPrefix" xml:space="preserve"><value>Objetivo: </value></data>
+<data name="ApiErrorKeyOrChar" xml:space="preserve"><value>¡Error de API: ¡Clave o datos de personaje no válidos!</value></data>
+<data name="LoadingData" xml:space="preserve"><value>Cargando datos...</value></data>
+<data name="FetchingAchievements" xml:space="preserve"><value>Obteniendo todos los datos de logros...</value></data>
+<data name="SearchSpeciesPlaceholder" xml:space="preserve"><value>Buscar especies...</value></data>
+<data name="Scanning" xml:space="preserve"><value>Escaneando...</value></data>
+<data name="Creating" xml:space="preserve"><value>Creando...</value></data>
+<data name="Joining" xml:space="preserve"><value>Uniéndose...</value></data>
+<data name="TourneyEndedTitle" xml:space="preserve"><value>Torneo terminado</value></data>
+<data name="TourneyEndedManualTitle" xml:space="preserve"><value>Torneo terminado manualmente</value></data>
+<data name="TourneySubmitting" xml:space="preserve"><value>Enviando tus capturas al servidor...</value></data>
+<data name="TourneyResultsInitial" xml:space="preserve"><value>Resultados enviados al servidor.</value></data>
+<data name="TourneyPostedDiscord" xml:space="preserve"><value>¡Resultados publicados automáticamente en el Discord del anfitrión!</value></data>
+<data name="TourneyApiFailed" xml:space="preserve"><value>Error en el envío de la API. Por favor, copia el código de respaldo manualmente.</value></data>
+<data name="TourneyNetworkError" xml:space="preserve"><value>Error de red. Código de respaldo copiado al portapapeles.</value></data>
+<data name="TourneyComplete" xml:space="preserve"><value>¡Torneo completado: ¡Modo casual reactivado!</value></data>
+  <data name="CornerIconTooltip" xml:space="preserve"><value>Gilled Wars</value></data>
+  <data name="CornerIconSubtitle" xml:space="preserve"><value>Gilled Wars - www.gilledwars.com</value></data>
+  <data name="ProfitTotalDefault" xml:space="preserve"><value>Total: 0o 0p 0c</value></data>
+  <data name="GphDefault" xml:space="preserve"><value>OpH: 0o 0p 0c</value></data>
+  <data name="ServerError" xml:space="preserve"><value>Error del servidor: Esperando la API del sitio web...</value></data>
+  <data name="NoCatchesYet" xml:space="preserve"><value>Aún no se han registrado capturas para esta especie.</value></data>
+  <data name="RankLabel" xml:space="preserve"><value>Rango</value></data>
+  <data name="AnglerLabel" xml:space="preserve"><value>Pescador</value></data>
+  <data name="SpeciesLabel" xml:space="preserve"><value>Especie</value></data>
+  <data name="MetaTrackerTitle" xml:space="preserve"><value>Seguimiento de logros meta</value></data>
+  <data name="CasualFishingLabel" xml:space="preserve"><value>Pesca casual</value></data>
+  <data name="CasualFishingTooltip" xml:space="preserve"><value>Pesca casual</value></data>
+  <data name="TourneyModeTooltip" xml:space="preserve"><value>Modo torneo</value></data>
+  <data name="FishLogTooltip" xml:space="preserve"><value>Registro de pesca</value></data>
+  <data name="LeaderboardTooltip" xml:space="preserve"><value>Top 10 en el juego</value></data>
+  <data name="OpenWebsiteTooltip" xml:space="preserve"><value>Abrir GilledWars.com</value></data>
+  <data name="NoneLogged" xml:space="preserve"><value>NINGUNO REGISTRADO</value></data>
+  <data name="CheaterDetected" xml:space="preserve"><value>TRAMPOSO DETECTADO</value></data>
+  <data name="CloseBtnText" xml:space="preserve"><value>Cerrar</value></data>
+  <data name="UploadingText" xml:space="preserve"><value>Subiendo...</value></data>
+  <data name="EndSubmitBtn" xml:space="preserve"><value>Terminar &amp; Enviar</value></data>
+  <data name="ReCopyCodeBtn" xml:space="preserve"><value>Volver a copiar código</value></data>
+  <data name="ReCopyCodeTooltip" xml:space="preserve"><value>Copia de seguridad manual.</value></data>
+  <data name="ExitTourneyBtn" xml:space="preserve"><value>Salir del torneo</value></data>
+  <data name="ExitTourneyTooltip" xml:space="preserve"><value>Cerrar y volver a la interfaz.</value></data>
+  <data name="Top5CatchesLabel" xml:space="preserve"><value>Top 5 capturas:</value></data>
+  <data name="ExitedTournament" xml:space="preserve"><value>¡Torneo abandonado: ¡Modo casual reactivado!</value></data>
+  <data name="TournamentOverWeighing" xml:space="preserve"><value>¡Torneo terminado! Pesando todos tus peces, por favor espera...</value></data>
+  <data name="RecentCatchesCompact" xml:space="preserve"><value>Capturas recientes</value></data>
+  <data name="MaximizeUI" xml:space="preserve"><value>Maximizar interfaz</value></data>
+  <data name="NoFishingZone" xml:space="preserve"><value>No se encontró zona de pesca</value></data>
+  <data name="BitingApiSyncing" xml:space="preserve"><value>Mordiendo ahora: Sincronizando API...</value></data>
+  <data name="NameColumnHeader" xml:space="preserve"><value>NOMBRE</value></data>
+  <data name="BaitColumnHeader" xml:space="preserve"><value>CEBO</value></data>
+  <data name="TimeColumnHeader" xml:space="preserve"><value>HORA</value></data>
+  <data name="HoleColumnHeader" xml:space="preserve"><value>AGUJERO</value></data>
+  <data name="ToggleGridView" xml:space="preserve"><value>Alternar vista cuadrícula/lista</value></data>
+  <data name="SettingToggleUI" xml:space="preserve"><value>Alternar UI</value></data>
+  <data name="SettingToggleUIDesc" xml:space="preserve"><value>Abrir/Cerrar UI</value></data>
+  <data name="SettingCustomApiKey" xml:space="preserve"><value>Clave API personalizada</value></data>
+  <data name="SettingCustomApiKeyDesc" xml:space="preserve"><value>Pegue una clave API con permisos 'inventories', 'characters' y 'progression' aquí.</value></data>
+  <data name="SettingDrfToken" xml:space="preserve"><value>Token DRF</value></data>
+  <data name="SettingDrfTokenDesc" xml:space="preserve"><value>Pegue su token drf.rs aquí para seguimiento en tiempo real.</value></data>
+  <data name="SettingDiscordWebhook" xml:space="preserve"><value>Webhook de Discord (Solo anfitrión)</value></data>
+  <data name="SettingDiscordWebhookDesc" xml:space="preserve"><value>Pegue una URL de webhook de Discord para publicar automáticamente los resultados del torneo.</value></data>
+  <data name="SettingCornerIcon" xml:space="preserve"><value>Ícono de esquina</value></data>
+  <data name="SettingCornerIconDesc" xml:space="preserve"><value>Elige el ícono que se muestra en el menú superior izquierdo.</value></data>
+  <data name="SettingAutoStartLogging" xml:space="preserve"><value>Inicio automático del registro</value></data>
+  <data name="SettingAutoStartLoggingDesc" xml:space="preserve"><value>Inicia automáticamente el registro casual al cargar el juego.</value></data>
+  <data name="SettingAutoOpenBiting" xml:space="preserve"><value>Abrir automáticamente el widget de mordidas</value></data>
+  <data name="SettingAutoOpenBitingDesc" xml:space="preserve"><value>Abre automáticamente el widget 'Mordiendo ahora' según tu mapa.</value></data>
+  <data name="SettingShowProfit" xml:space="preserve"><value>Mostrar widget de ganancias</value></data>
+  <data name="SettingShowProfitDesc" xml:space="preserve"><value>Muestra una ganancia de sesión estimada y un rastreador de GpH.</value></data>
+  <data name="SettingShowTimeOfDay" xml:space="preserve"><value>Mostrar hora del día</value></data>
+  <data name="SettingShowTimeOfDayDesc" xml:space="preserve"><value>Muestra un widget con la hora tiraniana actual.</value></data>
+  <data name="SettingLockTimeOfDay" xml:space="preserve"><value>Bloquear widget de hora</value></data>
+  <data name="SettingLockTimeOfDayDesc" xml:space="preserve"><value>Evita que el widget sea arrastrado accidentalmente.</value></data>
+  <data name="SettingWidgetIconSize" xml:space="preserve"><value>Tamaño del ícono del widget</value></data>
+  <data name="SettingWidgetIconSizeDesc" xml:space="preserve"><value>Cambia el tamaño del ícono de la hora del día.</value></data>
+  <data name="SettingTextLayout" xml:space="preserve"><value>Diseño de texto</value></data>
+  <data name="SettingTextLayoutDesc" xml:space="preserve"><value>¿Dónde debe aparecer el texto de la hora respecto al ícono?</value></data>
+  <data name="SettingUILanguage" xml:space="preserve"><value>Idioma de la interfaz</value></data>
+  <data name="SettingUILanguageDesc" xml:space="preserve"><value>Idioma de la interfaz de Gilled Wars. 'auto' sigue el idioma de BlishHUD.</value></data>
+</root>
