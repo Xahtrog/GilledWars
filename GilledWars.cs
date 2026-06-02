@@ -3426,7 +3426,12 @@ namespace Gorthax.Gilledwars
                 }
 
                 TimeSpan timeRemaining = TimeSpan.FromMinutes(remainingMinutes);
-                _todLabel.Text = $"{phase}: {timeRemaining.Minutes:D2}:{timeRemaining.Seconds:D2}";
+                // TimeSpan.Minutes is the 0-59 component, not the total. Day is 70 minutes long,
+                // so without hour formatting it would read as "10:00" instead of "1:10:00" at the
+                // start of Day. Show H:MM:SS when there's an hour or more remaining; otherwise MM:SS.
+                _todLabel.Text = timeRemaining.TotalMinutes >= 60
+                    ? $"{phase}: {(int)timeRemaining.TotalHours}:{timeRemaining.Minutes:D2}:{timeRemaining.Seconds:D2}"
+                    : $"{phase}: {timeRemaining.Minutes:D2}:{timeRemaining.Seconds:D2}";
                 _todLabel.TextColor = phaseColor;
 
                 if (_currentTodPhase != phase)
