@@ -875,7 +875,9 @@ namespace Gorthax.Gilledwars
 
             try
             {
-                var metaIds = new List<int> { 6478, 6109, 6284, 6201, 6279, 6111 };
+                // Order: Kind of a Big Reel (5) -> Fishmongers Know Me (10) -> I'm Very Buoyant (15)
+                //        -> I Have Many Lure-Bound Hooks (20) -> Guild Hall (25) -> Cod (30)
+                var metaIds = new List<int> { 6201, 6478, 6109, 6284, 6279, 6111 };
                 int[] metaMaxes = { 5, 10, 15, 20, 25, 30 };
                 int[] base30 = { 6068, 6179, 6330, 6344, 6363, 6317, 6106, 6489, 6336, 6342, 6258, 6506, 6471, 6224, 6439, 6505, 6263, 6153, 6484, 6475, 6227, 6509, 6250, 6339, 6264, 6192, 6466, 6402, 6393, 6110 };
 
@@ -905,7 +907,8 @@ namespace Gorthax.Gilledwars
 
                     var progress = accAchievements.FirstOrDefault(a => a.Id == mId);
                     int max = metaMaxes[i];
-                    int current = (mId == 6279) ? (progress?.Current ?? 0) : realCompletedCollections;
+                    // All tiers reflect total completed sub-collections.
+                    int current = realCompletedCollections;
                     bool isDone = progress?.Done ?? false;
                     if (isDone || current > max) current = max;
 
@@ -1008,7 +1011,13 @@ namespace Gorthax.Gilledwars
                 var allBtn = new StandardButton { Text = strings.AllSpeciesFilterBtn, Parent = scroll, Width = 230 };
                 allBtn.Click += async (s, e) => { _currentlySelectedSpecies = AllSpeciesKey; _speciesFilterBtn.Text = strings.AllSpeciesFilterBtn; _speciesSelectionWindow.Visible = false; await RefreshLeaderboardData(); };
 
-                var filteredNames = _allFishEntries.Select(x => x.Data.Name).Distinct().Where(n => string.IsNullOrEmpty(filter) || n.ToLower().Contains(filter.ToLower())).OrderBy(n => n);
+                // Drop junk/treasure entries (runestones, chests, caches, etc.) from the picker.
+                var filteredNames = _allFishEntries
+                    .Where(x => IsRealFish(x.Data))
+                    .Select(x => x.Data.Name)
+                    .Distinct()
+                    .Where(n => string.IsNullOrEmpty(filter) || n.ToLower().Contains(filter.ToLower()))
+                    .OrderBy(n => n);
                 foreach (var name in filteredNames)
                 {
                     var fBtn = new StandardButton { Text = name, Parent = scroll, Width = 230 };
@@ -1253,10 +1262,14 @@ namespace Gorthax.Gilledwars
                 PersonalBestFile pbFile = null;
                 try { pbFile = JsonConvert.DeserializeObject<PersonalBestFile>(json); } catch { }
 
+                // Track the on-disk version so we can run later migrations exactly once.
+                // Default to 1 — anything that isn't a valid versioned file gets the legacy path.
+                int loadedVersion = (pbFile != null && pbFile.Records != null && pbFile.Version >= 2) ? pbFile.Version : 1;
+
                 if (pbFile != null && pbFile.Version >= 2 && pbFile.Records != null)
                 {
-                    // Version 2: itemId-based signatures — validate normally
-                    Logger.Info("[GilledWars] Loading PB file version 2");
+                    // Version 2+: itemId-based signatures — validate normally
+                    Logger.Info($"[GilledWars] Loading PB file version {pbFile.Version}");
                     foreach (var kvp in pbFile.Records)
                     {
                         int itemId = kvp.Key;
@@ -1269,7 +1282,7 @@ namespace Gorthax.Gilledwars
                 }
                 else
                 {
-                    // Version 1 (legacy): name-based signatures — migrate to version 2
+                    // Version 1 (legacy): name-based signatures — migrate to version 2 (then v3 below)
                     Logger.Info("[GilledWars] Migrating PB file from version 1 to version 2");
                     Dictionary<int, PersonalBestRecord> legacy = null;
                     try { legacy = JsonConvert.DeserializeObject<Dictionary<int, PersonalBestRecord>>(json); } catch { }
@@ -1288,10 +1301,36 @@ namespace Gorthax.Gilledwars
                             _personalBests[itemId] = rec;
                             _caughtFishIds.Add(itemId);
                         }
-                        // Save immediately as version 2
-                        SavePersonalBests();
-                        Logger.Info("[GilledWars] PB migration complete — saved as version 2");
+                        Logger.Info("[GilledWars] v1 -> v2 migration complete");
+                        // loadedVersion stays at 1 so the v3 step below also runs and SavePersonalBests fires once.
                     }
+                }
+
+                // --- v2 -> v3 one-shot migration ---
+                // The prior Cloudflare worker verified signatures over the localized fish name
+                // while the client signed over itemId, so every signature was silently rejected.
+                // The client still saw 200 OK and marked records IsSubmitted = true. Reset that
+                // flag for non-cheater records so the now-fixed worker actually gets them. The
+                // server's ON CONFLICT(account_name, item_id, record_type) handles any that
+                // somehow already exist — it just UPSERTs to the same values.
+                if (loadedVersion < 3 && _personalBests.Count > 0)
+                {
+                    int reset = 0;
+                    foreach (var rec in _personalBests.Values)
+                    {
+                        if (rec.BestWeight != null && !rec.BestWeight.IsCheater && rec.BestWeight.IsSubmitted)
+                        {
+                            rec.BestWeight.IsSubmitted = false;
+                            reset++;
+                        }
+                        if (rec.BestLength != null && !rec.BestLength.IsCheater && rec.BestLength.IsSubmitted)
+                        {
+                            rec.BestLength.IsSubmitted = false;
+                            reset++;
+                        }
+                    }
+                    SavePersonalBests(); // SavePersonalBests writes Version = 3, so this runs exactly once per file.
+                    Logger.Info($"[GilledWars] v3 migration: reset IsSubmitted on {reset} sub-record(s); saved as version 3");
                 }
             }
             catch (Exception ex) { Logger.Error(ex, "Failed to load personal bests"); }
@@ -1349,7 +1388,7 @@ namespace Gorthax.Gilledwars
 
             try
             {
-                var pbFile = new PersonalBestFile { Version = 2, Records = _personalBests };
+                var pbFile = new PersonalBestFile { Version = 3, Records = _personalBests };
                 File.WriteAllText(path, JsonConvert.SerializeObject(pbFile, Newtonsoft.Json.Formatting.Indented));
             }
             catch (Exception ex)
@@ -1581,6 +1620,31 @@ namespace Gorthax.Gilledwars
             }
         }
 
+        // Centralized junk/treasure classification — used by ProcessCaughtFish AND the species picker
+        // so the leaderboard search no longer surfaces runestones/chests/etc.
+        private static bool IsJunkFish(FishData f)
+        {
+            if (f == null) return false;
+            return (f.Rarity != null && f.Rarity.Equals("Junk", StringComparison.OrdinalIgnoreCase)) ||
+                   (f.Location != null && f.Location.Contains("Trash Collector"));
+        }
+
+        private static bool IsTreasureFish(FishData f)
+        {
+            if (f == null) return false;
+            bool nameHit = f.Name != null && (
+                f.Name.IndexOf("Treasure", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                f.Name.IndexOf("Chest", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                f.Name.IndexOf("Box", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                f.Name.IndexOf("Runestone", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                f.Name.IndexOf("Cache", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                f.Name.IndexOf("Message", StringComparison.OrdinalIgnoreCase) >= 0);
+            bool locHit = f.Location != null && f.Location.Contains("Treasure Collector");
+            return nameHit || locHit;
+        }
+
+        private static bool IsRealFish(FishData f) => !IsJunkFish(f) && !IsTreasureFish(f);
+
         private void ProcessCaughtFish(int itemId)
         {
             var matchingFish = _allFishEntries.FirstOrDefault(x => x.Data.ItemId == itemId)?.Data;
@@ -1588,18 +1652,8 @@ namespace Gorthax.Gilledwars
 
             // --- 1. ABORT CHECKS GO FIRST! ---
             // If it's junk or treasure, show the notification and EXIT BEFORE DOING ANY MATH.
-            bool isJunk = (matchingFish.Rarity != null && matchingFish.Rarity.Equals("Junk", StringComparison.OrdinalIgnoreCase)) ||
-                          (matchingFish.Location != null && matchingFish.Location.Contains("Trash Collector"));
-
-            bool isTreasure = (matchingFish.Name != null && (
-                                  matchingFish.Name.IndexOf("Treasure", StringComparison.OrdinalIgnoreCase) >= 0 ||
-                                  matchingFish.Name.IndexOf("Chest", StringComparison.OrdinalIgnoreCase) >= 0 ||
-                                  matchingFish.Name.IndexOf("Box", StringComparison.OrdinalIgnoreCase) >= 0 ||
-                                  matchingFish.Name.IndexOf("Runestone", StringComparison.OrdinalIgnoreCase) >= 0 ||
-                                  matchingFish.Name.IndexOf("Cache", StringComparison.OrdinalIgnoreCase) >= 0 ||
-                                  matchingFish.Name.IndexOf("Message", StringComparison.OrdinalIgnoreCase) >= 0
-                              )) ||
-                              (matchingFish.Location != null && matchingFish.Location.Contains("Treasure Collector"));
+            bool isJunk = IsJunkFish(matchingFish);
+            bool isTreasure = IsTreasureFish(matchingFish);
 
             if (isJunk)
             {
@@ -2174,8 +2228,12 @@ namespace Gorthax.Gilledwars
                 minMaxBtn.Click += async (s, e) => { _isAnalyzerMinified = !_isAnalyzerMinified; await ShowAchievementResultsPanel(locationName, achievementId, subCurrent, subMax, subDescription); };
 
                 var progress = accAchievements.FirstOrDefault(a => a.Id == achievementId);
-                var completedBits = progress?.Bits ?? new List<int>();
                 int totalBits = achievementDef.Bits?.Count ?? 0;
+                // GW2 API: 'bits' is only returned for in-progress collections. When Done is true,
+                // bits is null even though every bit is complete. Treat all bits as completed in that case.
+                var completedBits = (progress?.Done == true)
+                    ? Enumerable.Range(0, totalBits).ToList()
+                    : (progress?.Bits ?? new List<int>());
                 List<int> trueMissingBits = new List<int>();
 
                 if (achievementDef.Bits != null)
@@ -2504,7 +2562,11 @@ namespace Gorthax.Gilledwars
                 var achievementDef = await Gw2ApiManager.Gw2ApiClient.V2.Achievements.GetAsync(achId);
                 var accAchievements = await Gw2ApiManager.Gw2ApiClient.V2.Account.Achievements.GetAsync();
                 var progress = accAchievements.FirstOrDefault(a => a.Id == achId);
-                var completedBits = progress?.Bits ?? new List<int>();
+                // GW2 API only returns 'bits' for in-progress collections; when Done it's null even though every bit is complete.
+                int totalBitsForBiting = achievementDef.Bits?.Count ?? 0;
+                var completedBits = (progress?.Done == true)
+                    ? Enumerable.Range(0, totalBitsForBiting).ToList()
+                    : (progress?.Bits ?? new List<int>());
 
                 _bitingFishList.ClearChildren();
                 int matchCount = 0;
@@ -3543,7 +3605,8 @@ namespace Gorthax.Gilledwars
 
                 string accountName = _localAccountName;
                 var catchesToSubmit = new List<object>();
-                var recordsToMark = new List<SubRecord>();
+                // Track per-(itemId,type) -> SubRecord so we only mark the ones the server actually accepted.
+                var recordsByKey = new Dictionary<string, SubRecord>();
 
                 foreach (var kvp in unsubmittedKvps)
                 {
@@ -3553,16 +3616,20 @@ namespace Gorthax.Gilledwars
                     var fishInfo = _allFishEntries.FirstOrDefault(f => f.Data.ItemId == itemId)?.Data;
                     if (fishInfo == null) continue;
 
+                    // Prefer the English name we stashed during the v1->v2 migration; fall back to current (possibly localized) name.
+                    string englishWeightName = record.BestWeight?.EnglishFishName ?? fishInfo.Name;
+                    string englishLengthName = record.BestLength?.EnglishFishName ?? fishInfo.Name;
+
                     if (record.BestWeight != null && !record.BestWeight.IsSubmitted && !record.BestWeight.IsCheater)
                     {
-                        catchesToSubmit.Add(new { itemId = itemId, name = fishInfo.Name, weight = record.BestWeight.Weight, length = record.BestWeight.Length, characterName = record.BestWeight.CharacterName, accountName = accountName, isSuper = record.BestWeight.IsSuperPb, signature = record.BestWeight.Signature, type = "weight", location = fishInfo.Location });
-                        recordsToMark.Add(record.BestWeight);
+                        catchesToSubmit.Add(new { itemId = itemId, name = englishWeightName, weight = record.BestWeight.Weight, length = record.BestWeight.Length, characterName = record.BestWeight.CharacterName, accountName = accountName, isSuper = record.BestWeight.IsSuperPb, signature = record.BestWeight.Signature, type = "weight", location = fishInfo.Location });
+                        recordsByKey[$"{itemId}|weight"] = record.BestWeight;
                     }
 
                     if (record.BestLength != null && !record.BestLength.IsSubmitted && !record.BestLength.IsCheater)
                     {
-                        catchesToSubmit.Add(new { itemId = itemId, name = fishInfo.Name, weight = record.BestLength.Weight, length = record.BestLength.Length, characterName = record.BestLength.CharacterName, accountName = accountName, isSuper = record.BestLength.IsSuperPb, signature = record.BestLength.Signature, type = "length", location = fishInfo.Location });
-                        recordsToMark.Add(record.BestLength);
+                        catchesToSubmit.Add(new { itemId = itemId, name = englishLengthName, weight = record.BestLength.Weight, length = record.BestLength.Length, characterName = record.BestLength.CharacterName, accountName = accountName, isSuper = record.BestLength.IsSuperPb, signature = record.BestLength.Signature, type = "length", location = fishInfo.Location });
+                        recordsByKey[$"{itemId}|length"] = record.BestLength;
                     }
                 }
 
@@ -3576,12 +3643,54 @@ namespace Gorthax.Gilledwars
 
                 if (response.IsSuccessStatusCode)
                 {
-                    foreach (var rec in recordsToMark) { rec.IsSubmitted = true; }
+                    // CRITICAL: A 200 OK with count:0 means EVERY record was rejected server-side
+                    // (bad signature, unknown fish, impossible stats, or below top-25). We must NOT
+                    // mark those as submitted, or they'll never re-attempt and the leaderboard will
+                    // silently fall behind.
+                    string respBody = await response.Content.ReadAsStringAsync();
+                    int markedCount = 0;
+                    try
+                    {
+                        var resp = JsonConvert.DeserializeObject<SubmitResponse>(respBody);
+                        if (resp?.Accepted != null && resp.Accepted.Count > 0)
+                        {
+                            foreach (var key in resp.Accepted)
+                            {
+                                string lookup = $"{key.ItemId}|{key.Type}";
+                                if (recordsByKey.TryGetValue(lookup, out var sub))
+                                {
+                                    sub.IsSubmitted = true;
+                                    markedCount++;
+                                }
+                            }
+                        }
+                        // Legacy fallback: if the worker is an older version that doesn't return 'accepted',
+                        // fall back to the old behavior IFF count matches our submission size.
+                        else if (resp != null && resp.Count == recordsByKey.Count)
+                        {
+                            foreach (var sub in recordsByKey.Values) { sub.IsSubmitted = true; markedCount++; }
+                        }
+                    }
+                    catch (Exception parseEx)
+                    {
+                        Logger.Warn(parseEx, "Failed to parse /submit-leaderboard response body.");
+                    }
+
                     SavePersonalBests();
 
-
-                    if (!isAuto) ScreenNotification.ShowNotification(strings.SubmitCooldown.Replace("{0}", "5"), ScreenNotification.NotificationType.Warning);  // Assuming a 5-min default cooldown; adjust if needed
-                    else ScreenNotification.ShowNotification(strings.AutoSyncSuccess, ScreenNotification.NotificationType.Info);
+                    if (markedCount == 0)
+                    {
+                        // Server returned 200 but accepted nothing. Don't lie to the user.
+                        if (!isAuto) ScreenNotification.ShowNotification(strings.ServerRejected, ScreenNotification.NotificationType.Error);
+                    }
+                    else if (!isAuto)
+                    {
+                        ScreenNotification.ShowNotification(strings.SubmitCooldown.Replace("{0}", "5"), ScreenNotification.NotificationType.Warning);
+                    }
+                    else
+                    {
+                        ScreenNotification.ShowNotification(strings.AutoSyncSuccess, ScreenNotification.NotificationType.Info);
+                    }
                 }
                 else
                 {
@@ -3687,6 +3796,8 @@ namespace Gorthax.Gilledwars
     {
         // Version 1 = original (name-based signatures)
         // Version 2 = itemId-based signatures (language-independent)
+        // Version 3 = one-shot IsSubmitted reset (worker had a signature bug — every push was
+        //             silently rejected server-side but the client marked records submitted anyway)
         public int Version { get; set; } = 1;
         public Dictionary<int, PersonalBestRecord> Records { get; set; } = new Dictionary<int, PersonalBestRecord>();
     }
@@ -3721,6 +3832,21 @@ namespace Gorthax.Gilledwars
         [JsonProperty("length")] public double Length { get; set; }
         [JsonProperty("record_type")] public string RecordType { get; set; }
         [JsonProperty("country")] public string Country { get; set; }
+    }
+
+    // Response from the /submit-leaderboard worker. `accepted` lists per-record acceptance so the
+    // client can mark only truly-accepted PBs as IsSubmitted (older worker builds may omit it).
+    public class SubmitResponse
+    {
+        [JsonProperty("success")] public bool Success { get; set; }
+        [JsonProperty("count")] public int Count { get; set; }
+        [JsonProperty("accepted")] public List<AcceptedKey> Accepted { get; set; }
+    }
+
+    public class AcceptedKey
+    {
+        [JsonProperty("itemId")] public int ItemId { get; set; }
+        [JsonProperty("type")] public string Type { get; set; }
     }
 
     public class TournamentCatch
